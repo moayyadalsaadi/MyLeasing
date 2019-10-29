@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+         	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+         	xmlns:i18n="clr-namespace:MyLeasing.Prism.Helpers"
+         	xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+         	x:Class="MyLeasing.Prism.Views.EditProperty"
+         	Title="{Binding Title}">
+
+    <ScrollView>
+        <AbsoluteLayout>
+            <StackLayout 
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+        	    Padding="10">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Image
+    	            Grid.Column="0"
+    	            Source="ic_chevron_left.png"
+    	            VerticalOptions="Center"
+    	            WidthRequest="40">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding PreviousImageCommand}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <StackLayout
+    	            Grid.Column="1">
+                        <Image
+        	            HeightRequest="150"
+        	            Source="{Binding ImageSource}">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ChangeImageCommand}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </StackLayout>
+                    <Image
+    	            Grid.Column="2"
+    	            Source="ic_chevron_right.png"
+    	            VerticalOptions="Center"
+    	            WidthRequest="40">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding NextImageCommand}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Grid>
+                <StackLayout
+	            HorizontalOptions="Center"
+	            Orientation="Horizontal">
+                    <Button
+    	            Command="{Binding AddImageCommand}"
+    	            IsVisible="{Binding IsEdit}"
+    	            Text="{i18n:Translate AddImage}"/>
+
+                    <Button
+    	            Command="{Binding DeleteImageCommand}"
+    	            IsVisible="{Binding IsEdit}"
+    	            Style="{StaticResource dangerButton}"
+    	            Text="{i18n:Translate DeleteImage}"/>
+                </StackLayout>
+
+                <Label
+            	FontSize="Micro"
+            	HorizontalOptions="Center"
+            	Text="{i18n:Translate ChangeImage}"/>
+                <StackLayout Orientation="Horizontal"
+                             HorizontalOptions="Center"
+                             VerticalOptions="Center">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer  Command="{Binding MapCommand}"/>
+                    </StackLayout.GestureRecognizers>
+                    <Image
+    	            IsEnabled="{Binding IsEnabled}"
+                    IsVisible="{Binding IsVisible}"
+    	            Source="ic_location_red.png"
+    	            VerticalOptions="Center"
+                        HorizontalOptions="Center"
+    	            WidthRequest="40"/>
+                    <Label
+                         HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                	IsVisible="{Binding IsVisible}"
+                	Text="{i18n:Translate Map2}"
+                	/>
+                </StackLayout>
+                <Label
+                	
+                	Text="{i18n:Translate Neighborhood}"
+                	VerticalOptions="Center"/>
+                <Entry
+                	
+                	Placeholder="{i18n:Translate NeighborhoodPlaceHolder}"
+                	Text="{Binding Property.Neighborhood}"/>
+
+                <Label
+                	
+                	Text="{i18n:Translate Address}"
+                	VerticalOptions="Center"/>
+                <Entry
+                	
+                	Placeholder="{i18n:Translate AddressPlaceHolder}"
+                	Text="{Binding Property.Address}"/>
+
+                <Label
+                	
+                	Text="{i18n:Translate Price}"
+                	VerticalOptions="Center"/>
+                <Entry
+                	Keyboard="Numeric"
+                	Placeholder="{i18n:Translate PricePlaceHolder}"
+                	Text="{Binding Property.Price}"/>
+
+                <Label
+                	Text="{i18n:Translate SquareMeters}"
+                	VerticalOptions="Center"/>
+                <Entry
+                	Keyboard="Numeric"
+                	Placeholder="{i18n:Translate SquareMetersPlaceHolder}"
+                	Text="{Binding Property.SquareMeters}"/>
+
+                <Label
+                	Text="{i18n:Translate Rooms}"
+                	VerticalOptions="Center"/>
+                <Entry
+                	Keyboard="Numeric"
+                	Placeholder="{i18n:Translate RoomsPlaceHolder}"
+                	Text="{Binding Property.Rooms}"/>
+
+                <Label
+                	Text="{i18n:Translate Stratum}"
+                	VerticalOptions="Center"/>
+                <Picker
+                	ItemDisplayBinding="{Binding Name}"
+                	ItemsSource="{Binding Stratums}"
+                	SelectedItem="{Binding Stratum}"
+                	Title="{i18n:Translate StratumPlaceHolder}"/>
+                
+                <Label
+                	Text="{i18n:Translate TypeProp}"
+                	VerticalOptions="Center"/>
+                <Picker
+                	ItemDisplayBinding="{Binding Name}"
+                	ItemsSource="{Binding TypeProps}"
+                	SelectedItem="{Binding TypeProp}"
+                	Title="{i18n:Translate TypePropPlaceHolder}"/>
+                
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0"
+                           Grid.Row="0"
+                	Text="{i18n:Translate HasParkingLot}"
+                	VerticalOptions="Center"/>
+                    <CheckBox
+                    Grid.Column="0"
+                           Grid.Row="1"
+                	IsChecked="{Binding Property.HasParkingLot}"/>
+                    <Label
+                    Grid.Column="2"
+                    Grid.Row="0"
+                    Text="{i18n:Translate IsAvailable}"
+                	VerticalOptions="Center"/>
+                    <CheckBox Grid.Column="2"
+                    Grid.Row="1"
+                    IsChecked="{Binding Property.IsAvailable}"/>
+                </Grid>
+                <Label
+                	Text="{i18n:Translate PropertyType}"
+                	VerticalOptions="Center"/>
+               
+                <Picker
+                	ItemDisplayBinding="{Binding Name}"
+                	ItemsSource="{Binding PropertyTypes}"
+                	SelectedItem="{Binding PropertyType}"
+                	Title="{i18n:Translate PropertyTypePlaceHolder}"/>
+
+                <Label
+                	Text="{i18n:Translate Remarks}"
+                	VerticalOptions="Center"/>
+                <Editor
+                	HeightRequest="80"
+                	Text="{Binding Property.Remarks}"/>
+              
+                <StackLayout
+            	Orientation="Horizontal">
+                    <Button
+                	Command="{Binding SaveCommand}"
+                	IsEnabled="{Binding IsEnabled}"
+                	Text="{i18n:Translate Save}"/>
+
+                    <Button
+                	Command="{Binding DeleteCommand}"
+                	IsEnabled="{Binding IsEnabled}"
+                	IsVisible="{Binding IsEdit}"
+                	Style="{StaticResource dangerButton}"
+                	Text="{i18n:Translate Delete}"/>
+                </StackLayout>
+            </StackLayout>
+            <busyindicator:SfBusyIndicator  
+                AnimationType="Gear"
+                AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
+                AbsoluteLayout.LayoutFlags="All"
+                BackgroundColor="{StaticResource colorDanger}"
+                HorizontalOptions="Center"
+                TextColor="{StaticResource colorFontInverse}"
+                IsVisible="{Binding IsRunning}"
+                Title="{i18n:Translate loading}"
+                VerticalOptions="Center"
+                ViewBoxWidth="80"
+                ViewBoxHeight="80" />
+        </AbsoluteLayout>
+    </ScrollView>
+</ContentPage>

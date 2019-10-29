@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+         	 xmlns:i18n="clr-namespace:MyLeasing.Prism.Helpers"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="MyLeasing.Prism.Views.ContractPage"
+             BackgroundColor="{StaticResource colorBackgroud}"
+             Title="{Binding Title}">
+
+    <ScrollView>
+        <StackLayout
+            Padding="10">
+            <Label
+                    FontAttributes="Bold"
+                    Text="{i18n:Translate Price}"/>
+                <Label
+                    Text="{Binding Contract.Price, StringFormat='{0:C2}'}"/>
+
+                <Label
+                    FontAttributes="Bold"
+                    Text="{i18n:Translate Start}"/>
+                <Label
+                    Text="{Binding Contract.StartDateLocal, StringFormat='{0:yyyy/MM/dd}'}"/>
+
+                <Label
+                    FontAttributes="Bold"
+                    Text="{i18n:Translate End}"/>
+                <Label
+                    Text="{Binding Contract.EndDateLocal, StringFormat='{0:yyyy/MM/dd}'}"/>
+
+                <Label
+                    FontAttributes="Bold"
+                    Text="{i18n:Translate IsAvailable}"
+                    VerticalOptions="Center"/>
+                <CheckBox
+                    IsChecked="{Binding Contract.IsActive}"/>
+
+                <Label
+                    FontAttributes="Bold"
+                    Text="{i18n:Translate Lessee}"/>
+                <Label
+                    Text="{Binding Contract.Lessee.FullName}"/>
+
+                <Label
+                    FontAttributes="Bold"
+                    Text="{i18n:Translate Remarks}"/>
+                <Label
+                    Text="{Binding Contract.Remarks}"/>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

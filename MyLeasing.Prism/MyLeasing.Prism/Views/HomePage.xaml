@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"             
+             xmlns:i18n="clr-namespace:MyLeasing.Prism.Helpers"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="MyLeasing.Prism.Views.HomePage"
+             BackgroundColor="{StaticResource colorBackgroud}"
+             Title="{Binding Title}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="{i18n:Translate Login}" Command="{Binding LoginCommand}"/>
+    </ContentPage.ToolbarItems>
+
+
+    <AbsoluteLayout>
+        <ScrollView  IsVisible="{Binding Home}"
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                Padding="10">
+            <StackLayout>
+                <ListView
+            BackgroundColor="Transparent"
+            HasUnevenRows="True"
+            ItemsSource="{Binding Properties}"
+            SeparatorVisibility="None">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame
+                            CornerRadius="10"
+                            Margin="0,0,0,10">
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding SelectPropertyCommand}"/>
+                                    </Frame.GestureRecognizers>
+                                    <StackLayout>
+                                        <ffimageloading:CachedImage
+                                    Aspect="AspectFit"
+                                    CacheDuration= "50"
+                                    DownsampleToViewSize = "true"
+                                    ErrorPlaceholder= "ErrorImage"
+                                    HeightRequest="200"
+                                    LoadingPlaceholder= "LoaderImage"
+                                    RetryCount= "3"
+                                    RetryDelay= "600"
+                                    Source="{Binding FirstImage}"/>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Image
+                                        Grid.Column="0"
+                                        Source="ic_more_vert"/>
+                                            <Grid
+                                        Grid.Column="1">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                </Grid.RowDefinitions>
+                                                <Label
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            FontAttributes="Bold"
+                                            Text="{i18n:Translate Neighborhood}"/>
+                                                <Label
+                                            Grid.Row="1"
+                                            Grid.Column="1"
+                                            Text="{Binding Neighborhood}"/>
+                                                <Label
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            FontAttributes="Bold"
+                                            Text="{i18n:Translate Address}"/>
+                                                <Label
+                                            Grid.Row="1"
+                                            Grid.Column="0"
+                                            Text="{Binding Address}"/>
+                                                <Label
+                                            Grid.Row="2"
+                                            Grid.Column="0"
+                                            FontAttributes="Bold"
+                                            Text="{i18n:Translate Price}"/>
+                                                <Label
+                                            Grid.Row="3"
+                                            Grid.Column="0"
+                                            Text="{Binding Price, StringFormat='{0:C2}'}"/>
+                                                <Label
+                                            Grid.Row="2"
+                                            Grid.Column="1"
+                                            FontAttributes="Bold"
+                                            Text="{i18n:Translate PropertyType}"/>
+                                                <Label
+                                            Grid.Row="3"
+                                            Grid.Column="1"
+                                            Text="{Binding PropertyType}"/>
+                                                <Label
+                                            Grid.Row="4"
+                                            Grid.Column="0"
+                                            FontAttributes="Bold"
+                                            Text="{i18n:Translate IsAvailable}"
+                                            VerticalOptions="Center"/>
+                                                <CheckBox
+                                            Grid.Row="4"
+                                            Grid.Column="1"
+                                            HorizontalOptions="Start"
+                                            IsEnabled="False"
+                                            IsChecked="{Binding IsAvailable}"/>
+                                            </Grid>
+
+                                        </Grid>
+                                    </StackLayout>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ScrollView>
+        <ActivityIndicator 
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"          
+                HorizontalOptions="Center" 
+                IsRunning="{Binding IsRunning}"
+                Color="Blue"
+                VerticalOptions="Center"/>
+        <Frame     
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                Padding="10"
+                IsVisible="{Binding Check}">
+            <StackLayout 
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center">
+                <Image Source="nointernet"
+                           WidthRequest="200"
+                           HeightRequest="200"/>
+                <Label Text="{i18n:Translate connection}"
+                       FontSize="20"/>
+                <Button     
+                        BorderWidth="2"
+                        BorderColor="White"
+                        CornerRadius="12"
+                        Command="{Binding RefreshCommand}"
+                        Text="{i18n:Translate Refresh}"   />
+            </StackLayout>
+        </Frame>
+    </AbsoluteLayout>
+</ContentPage>

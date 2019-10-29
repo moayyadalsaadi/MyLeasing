@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+         	 xmlns:i18n="clr-namespace:MyLeasing.Prism.Helpers"
+             x:Class="MyLeasing.Prism.Views.ContractsPage"
+             BackgroundColor="{StaticResource colorBackgroud}"
+             IconImageSource="ic_action_list_alt"
+             Title="{Binding Title}">
+
+    <StackLayout
+        Padding="5">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="1"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="1"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label
+                Grid.Column="6"
+                FontAttributes="Bold"
+                Text="{i18n:Translate Start}"/>
+            <Label
+                Grid.Column="4"
+                FontAttributes="Bold"
+                Text="{i18n:Translate End}"/>
+            <Label
+                Grid.Column="2"
+                FontAttributes="Bold"
+                Text="{i18n:Translate Lessee}"/>
+        </Grid>
+        <ListView
+            HasUnevenRows="True"
+            ItemsSource="{Binding Contracts}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SelectContractCommand}"/>
+                            </Grid.GestureRecognizers>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="32"/>
+                                <ColumnDefinition Width="1"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="1"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="1"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Label
+                                Grid.Column="6"
+                                Text="{Binding StartDateLocal, StringFormat='{0:yyyy/MM/dd}'}"
+                                VerticalOptions="Center"/>
+                            <Label
+                                Grid.Column="4"
+                                Text="{Binding EndDateLocal, StringFormat='{0:yyyy/MM/dd}'}"
+                                VerticalOptions="Center"/>
+                            <Label
+                                Grid.Column="2"
+                                Text="{Binding Lessee.FullName}"
+                                VerticalOptions="Center"/>
+                            <Image
+                                Grid.Column="0"
+                                Source="ic_more_vert"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
