@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MyLeasing.Web.Data;
 using MyLeasing.Web.Data.Entities;
@@ -73,6 +74,22 @@ namespace MyLeasing.Web.Controllers
                 .Where(p => p.IsAvailable));
         }
 
+        public IActionResult SalePage()
+        {
+            return View(_dataContext.Properties
+                .Include(p => p.PropertyType)
+                .Include(p => p.PropertyImages)
+                .Where(p => p.Typeprop=="بيع"));
+        }
+
+        public IActionResult RentPage()
+        {
+            return View(_dataContext.Properties
+                .Include(p => p.PropertyType)
+                .Include(p => p.PropertyImages)
+                .Where(p => p.Typeprop == "استئجار"));
+        }
+
         public async Task<IActionResult> DetailsProperty(int? id)
         {
             if (id == null)
@@ -131,6 +148,7 @@ namespace MyLeasing.Web.Controllers
                 PropertyTypes = _combosHelper.GetComboPropertyTypes()
             };
 
+            ViewBag.Typeprop = new SelectList(new[] { "بيع", "استئجار" });
             return View(model);
         }
 
@@ -139,6 +157,7 @@ namespace MyLeasing.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                ViewBag.Typeprop = new SelectList(new[] { "بيع", "استئجار" });
                 var property = await _converterHelper.ToPropertyAsync(model, true);
                 _dataContext.Properties.Add(property);
                 await _dataContext.SaveChangesAsync();
@@ -167,6 +186,7 @@ namespace MyLeasing.Web.Controllers
             }
 
             var model = _converterHelper.ToPropertyViewModel(property);
+            ViewBag.Typeprop = new SelectList(new[] { "بيع", "استئجار" });
             return View(model);
         }
 
@@ -175,6 +195,7 @@ namespace MyLeasing.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                ViewBag.Typeprop = new SelectList(new[] { "بيع", "استئجار" });
                 var property = await _converterHelper.ToPropertyAsync(model, false);
                 _dataContext.Properties.Update(property);
                 await _dataContext.SaveChangesAsync();

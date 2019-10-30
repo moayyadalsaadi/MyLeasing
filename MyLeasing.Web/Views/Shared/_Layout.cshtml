@@ -40,6 +40,19 @@
                         <li><a asp-area="" asp-controller="PropertyTypes" asp-action="Index">نوع العقار</a></li>
                     }
                 </ul>
+                <ul class="nav navbar-nav">
+                    @if (!User.IsInRole("Manager"))
+                    {
+                        <li><a asp-area="" asp-controller="Home" asp-action="SalePage">بيع</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="RentPage">استئجار</a></li>
+                    }
+                </ul>
+                <ul class="nav navbar-nav">
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Owner"))
+                    {
+                        <li><a asp-area="" asp-controller="Home" asp-action="SearchProperties">عقاراتي</a></li>
+                    }
+                </ul>
                 <ul class="nav navbar-nav navbar-right">
                     @if (User.Identity.IsAuthenticated)
                     {

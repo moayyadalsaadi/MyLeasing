@@ -320,6 +320,7 @@ namespace MyLeasing.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                 ViewBag.Typeprop = new SelectList(new[] { "بيع", "استئجار" });
                 var property = await _converterHelper.ToPropertyAsync(model, false);
                 _dataContext.Properties.Update(property);
                 await _dataContext.SaveChangesAsync();

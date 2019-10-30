@@ -74,7 +74,8 @@ namespace MyLeasing.Web.Helpers
                 SquareMeters = model.SquareMeters,
                 Stratum = model.Stratum,
                 Latitude = model.Latitude,
-                Longitude = model.Longitude
+                Longitude = model.Longitude,
+                Typeprop=model.Typeprop
             };
         }
 
@@ -100,6 +101,7 @@ namespace MyLeasing.Web.Helpers
                 PropertyTypeId = property.PropertyType.Id,
                 Latitude = property.Latitude,
                 Longitude = property.Longitude,
+                Typeprop = property.Typeprop,
                 PropertyTypes = _combosHelper.GetComboPropertyTypes()           
             };
         }

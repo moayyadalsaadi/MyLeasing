@@ -58,6 +58,13 @@
             </div>
 
             <div class="form-group">
+                <label asp-for="Typeprop" class="control-label"></label>
+                <div>
+                    @Html.DropDownList("Typeprop", null, new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="form-group">
                 <div class="checkbox">
                     <label>
                         <input asp-for="HasParkingLot" /> @Html.DisplayNameFor(model => model.HasParkingLot)
