@@ -36,6 +36,7 @@ namespace MyLeasing.Web.Controllers.API
                 .Include(p => p.PropertyType)
                 .Include(p => p.PropertyImages)
                 .Where(p => p.IsAvailable)
+                .OrderByDescending(p => p.Id)
                 .ToListAsync();
 
             var response = new List<PropertyResponse>(properties.Select(p => new PropertyResponse
@@ -57,7 +58,8 @@ namespace MyLeasing.Web.Controllers.API
                 Remarks = p.Remarks,
                 Rooms = p.Rooms,
                 SquareMeters = p.SquareMeters,
-                Stratum = p.Stratum
+                Stratum = p.Stratum,
+                Typeprop=p.Typeprop
             }).ToList());
 
             return Ok(response);
@@ -72,7 +74,7 @@ namespace MyLeasing.Web.Controllers.API
                 var user = await _userHelper.GetUserByEmailAsync(emailRequest.Email);
                 if (user == null)
                 {
-                    return BadRequest("User not found.");
+                    return BadRequest("المستخدم غير موجود");
                 }
 
                 if (await _userHelper.IsUserInRoleAsync(user, "Owner"))
@@ -103,6 +105,7 @@ namespace MyLeasing.Web.Controllers.API
                 .Include(p => p.PropertyType)
                 .Include(p => p.PropertyImages)
                 .Where(p => p.IsAvailable)
+                .OrderByDescending(p => p.Id)
                 .ToListAsync();
 
             var response = new OwnerResponse
@@ -135,6 +138,7 @@ namespace MyLeasing.Web.Controllers.API
                     Stratum = p.Stratum,
                     Latitude = p.Latitude,
                     Longitude = p.Longitude,
+                    Typeprop=p.Typeprop
                 }).ToList(),
                 Contracts = lessee.Contracts?.Select(c => new ContractResponse
                 {
@@ -161,6 +165,7 @@ namespace MyLeasing.Web.Controllers.API
                 .Include(o => o.Contracts)
                 .ThenInclude(c => c.Lessee)
                 .ThenInclude(l => l.User)
+                .OrderByDescending(p => p.Id)
                 .FirstOrDefaultAsync(o => o.User.UserName.ToLower().Equals(emailRequest.Email.ToLower()));
 
             var response = new OwnerResponse
@@ -202,7 +207,8 @@ namespace MyLeasing.Web.Controllers.API
                     SquareMeters = p.SquareMeters,
                     Stratum = p.Stratum,
                     Latitude = p.Latitude,
-                    Longitude = p.Longitude
+                    Longitude = p.Longitude,
+                    Typeprop=p.Typeprop
                 }).ToList(),
                 Contracts = owner.Contracts?.Select(c => new ContractResponse
                 {

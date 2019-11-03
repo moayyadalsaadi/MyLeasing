@@ -9,7 +9,7 @@ namespace MyLeasing.Web.Models
         [Display(Name = "البريد الالكتروني*")]
         [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [MaxLength(100, ErrorMessage = "لا يمكن أن يحتوي الحقل {0} على أكثر من {1} حرف.")]
-        [EmailAddress]
+        [EmailAddress( ErrorMessage = " {0} غير صحيح.")]
         public string Username { get; set; }
 
         [Display(Name = "كلمة المرور*")]

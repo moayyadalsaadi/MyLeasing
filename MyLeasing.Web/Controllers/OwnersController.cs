@@ -147,7 +147,7 @@ namespace MyLeasing.Web.Controllers
                     return RedirectToAction("Index");
                 }
 
-                ModelState.AddModelError(string.Empty, "User with this eamil already exists.");
+                ModelState.AddModelError(string.Empty, "البريد الالكتروني موجود مسبقاَ.");
             }
 
             return View(model);
@@ -246,7 +246,7 @@ namespace MyLeasing.Web.Controllers
 
             if (owner.Properties.Count != 0)
             {
-                ModelState.AddModelError(string.Empty, "Owner can't be delete because it has properties.");
+                ModelState.AddModelError(string.Empty, "لا يمكن حذف المالك لأنه يحتوي على عقارات.");
                 return RedirectToAction(nameof(Index));
             }
 
@@ -537,7 +537,7 @@ namespace MyLeasing.Web.Controllers
 
             if (property.Contracts.Count != 0)
             {
-                ModelState.AddModelError(string.Empty, "The property can't be deleted because it has contracts.");
+                ModelState.AddModelError(string.Empty, "لا يمكن حذف العقار لأنه يحتوي على عقود.");
                 return RedirectToAction($"{nameof(Details)}/{property.Owner.Id}");
             }
 

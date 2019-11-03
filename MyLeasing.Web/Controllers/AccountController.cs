@@ -75,7 +75,7 @@ namespace MyLeasing.Web.Controllers
                     return RedirectToAction("Index", "Home");
                 }
 
-                ModelState.AddModelError(string.Empty, "User or password incorrect.");
+                ModelState.AddModelError(string.Empty, "البريد الالكتروني او كلمة المرور غير صحيحة");
             }
 
             return View(model);
@@ -372,7 +372,7 @@ namespace MyLeasing.Web.Controllers
                 _mailHelper.SendMail(model.Email, "MyLeasing Password Reset", $"<h1>MyLeasing Password Reset</h1>" +
                     $"To reset the password click in this link:</br></br>" +
                     $"<a href = \"{link}\">Reset Password</a>");
-                ViewBag.Message = "The instructions to recover your password has been sent to email.";
+                ViewBag.Message = "تم إرسال التعليمات لاسترداد كلمة المرور الخاصة بك إلى البريد الإلكتروني.";
                 return View();
 
             }

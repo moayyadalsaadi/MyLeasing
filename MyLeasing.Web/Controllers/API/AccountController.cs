@@ -36,7 +36,7 @@ namespace MyLeasing.Web.Controllers.API
                 return BadRequest(new Response<object>
                 {
                     IsSuccess = false,
-                    Message = "Bad request"
+                    Message = "اتصال  غير جيد"
                 });
             }
 
@@ -46,7 +46,7 @@ namespace MyLeasing.Web.Controllers.API
                 return BadRequest(new Response<object>
                 {
                     IsSuccess = false,
-                    Message = "This email is already registered."
+                    Message = "عنوان البريد الإلكترونى هذا مسجل بالفعل."
                 });
             }
 
@@ -96,7 +96,7 @@ namespace MyLeasing.Web.Controllers.API
             return Ok(new Response<object>
             {
                 IsSuccess = true,
-                Message = "A Confirmation email was sent. Please confirm your account and log into the App."
+                Message = "تم إرسال بريد إلكتروني للتأكيد. يرجى تأكيد حسابك وتسجيل الدخول إلى التطبيق."
             });
         }
 
@@ -109,7 +109,7 @@ namespace MyLeasing.Web.Controllers.API
                 return BadRequest(new Response<object>
                 {
                     IsSuccess = false,
-                    Message = "Bad request"
+                    Message = "اتصال غير جيد"
                 });
             }
 
@@ -119,7 +119,7 @@ namespace MyLeasing.Web.Controllers.API
                 return BadRequest(new Response<object>
                 {
                     IsSuccess = false,
-                    Message = "This email is not assigned to any user."
+                    Message = "لم يتم تعيين هذا البريد الإلكتروني لأي مستخدم."
                 });
             }
 
@@ -132,7 +132,7 @@ namespace MyLeasing.Web.Controllers.API
             return Ok(new Response<object>
             {
                 IsSuccess = true,
-                Message = "An email with instructions to change the password was sent."
+                Message = "تم إرسال رسالة بريد إلكتروني تحتوي على إرشادات لتغيير كلمة المرور."
             });
         }
 
@@ -148,7 +148,7 @@ namespace MyLeasing.Web.Controllers.API
             var userEntity = await _userHelper.GetUserByEmailAsync(request.Email);
             if (userEntity == null)
             {
-                return BadRequest("User not found.");
+                return BadRequest("المستخدم غير موجود");
             }
 
             userEntity.FirstName = request.FirstName;
@@ -177,7 +177,7 @@ namespace MyLeasing.Web.Controllers.API
                 return BadRequest(new Response<object>
                 {
                     IsSuccess = false,
-                    Message = "Bad request"
+                    Message = "اتصال غير جيد"
                 });
             }
 
@@ -187,7 +187,7 @@ namespace MyLeasing.Web.Controllers.API
                 return BadRequest(new Response<object>
                 {
                     IsSuccess = false,
-                    Message = "This email is not assigned to any user."
+                    Message = "لم يتم تعيين هذا البريد الإلكتروني لأي مستخدم."
                 });
             }
 
@@ -204,7 +204,7 @@ namespace MyLeasing.Web.Controllers.API
             return Ok(new Response<object>
             {
                 IsSuccess = true,
-                Message = "The password was changed successfully!"
+                Message = "تم تغيير كلمة المرور بنجاح!"
             });
         }
     }

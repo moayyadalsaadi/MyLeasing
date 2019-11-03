@@ -6,6 +6,7 @@ using MyLeasing.Web.Data;
 using MyLeasing.Web.Data.Entities;
 using MyLeasing.Web.Helpers;
 using MyLeasing.Web.Models;
+using ReflectionIT.Mvc.Paging;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -30,9 +31,15 @@ namespace MyLeasing.Web.Controllers
             _converterHelper = converterHelper;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index(int page = 1)
         {
-            return View();
+            var query = _dataContext.Properties.AsNoTracking()
+                .Include(p => p.PropertyType)
+                .Include(p => p.PropertyImages)
+                .Where(p => p.IsAvailable)
+                .OrderBy(p => p.Id);
+            var model = await PagingList.CreateAsync(query, 3, page);
+            return View(model);
         }
 
         public IActionResult About()
@@ -66,12 +73,15 @@ namespace MyLeasing.Web.Controllers
             return View();
         }
 
-        public IActionResult SearchProperties()
+        public async Task<IActionResult> SearchProperties(int page =1)
         {
-            return View(_dataContext.Properties
+            var query = _dataContext.Properties
                 .Include(p => p.PropertyType)
                 .Include(p => p.PropertyImages)
-                .Where(p => p.IsAvailable));
+                .Where(p => p.IsAvailable)
+                .OrderByDescending(p => p.Id);
+            var model = await PagingList.CreateAsync(query,2, page);
+            return View(model);
         }
 
         public IActionResult SalePage()
@@ -79,7 +89,8 @@ namespace MyLeasing.Web.Controllers
             return View(_dataContext.Properties
                 .Include(p => p.PropertyType)
                 .Include(p => p.PropertyImages)
-                .Where(p => p.Typeprop=="بيع"));
+                .Where(p => p.Typeprop=="بيع")
+                .OrderByDescending(p => p.Id));
         }
 
         public IActionResult RentPage()
@@ -87,7 +98,8 @@ namespace MyLeasing.Web.Controllers
             return View(_dataContext.Properties
                 .Include(p => p.PropertyType)
                 .Include(p => p.PropertyImages)
-                .Where(p => p.Typeprop == "استئجار"));
+                .Where(p => p.Typeprop == "استئجار")
+                .OrderByDescending(p => p.Id));
         }
 
         public async Task<IActionResult> DetailsProperty(int? id)
@@ -119,6 +131,7 @@ namespace MyLeasing.Web.Controllers
                 .ThenInclude(p => p.PropertyType)
                 .Include(o => o.Properties)
                 .ThenInclude(p => p.PropertyImages)
+                .OrderByDescending(o => o.Id)
                 .FirstOrDefaultAsync(o => o.User.UserName.ToLower().Equals(User.Identity.Name.ToLower()));
             if (owner == null)
             {

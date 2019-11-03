@@ -6,11 +6,72 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MailKit" Version="2.3.2" />
+    <None Include="Views\Account\ChangePassword.cshtml" />
+    <None Include="Views\Account\ChangeUser.cshtml" />
+    <None Include="Views\Account\ConfirmEmail.cshtml" />
+    <None Include="Views\Account\Login.cshtml" />
+    <None Include="Views\Account\NotAuthorized.cshtml" />
+    <None Include="Views\Account\RecoverPassword.cshtml" />
+    <None Include="Views\Account\Register.cshtml" />
+    <None Include="Views\Account\ResetPassword.cshtml" />
+    <None Include="Views\Home\About.cshtml" />
+    <None Include="Views\Home\AddImage.cshtml" />
+    <None Include="Views\Home\AddProperty.cshtml" />
+    <None Include="Views\Home\Contact.cshtml" />
+    <None Include="Views\Home\DetailsContract.cshtml" />
+    <None Include="Views\Home\DetailsProperty.cshtml" />
+    <None Include="Views\Home\DetailsPropertyOwner.cshtml" />
+    <None Include="Views\Home\EditProperty.cshtml" />
+    <None Include="Views\Home\Error404.cshtml" />
+    <None Include="Views\Home\Index.cshtml" />
+    <None Include="Views\Home\MyContracts.cshtml" />
+    <None Include="Views\Home\MyProperties.cshtml" />
+    <None Include="Views\Home\Privacy.cshtml" />
+    <None Include="Views\Home\RentPage.cshtml" />
+    <None Include="Views\Home\SalePage.cshtml" />
+    <None Include="Views\Home\SearchProperties.cshtml" />
+    <None Include="Views\Lessees\Create.cshtml" />
+    <None Include="Views\Lessees\Details.cshtml" />
+    <None Include="Views\Lessees\Edit.cshtml" />
+    <None Include="Views\Lessees\Index.cshtml" />
+    <None Include="Views\Managers\Create.cshtml" />
+    <None Include="Views\Managers\Details.cshtml" />
+    <None Include="Views\Managers\Edit.cshtml" />
+    <None Include="Views\Managers\Index.cshtml" />
+    <None Include="Views\Owners\AddContract.cshtml" />
+    <None Include="Views\Owners\AddImage.cshtml" />
+    <None Include="Views\Owners\AddProperty.cshtml" />
+    <None Include="Views\Owners\Create.cshtml" />
+    <None Include="Views\Owners\Delete.cshtml" />
+    <None Include="Views\Owners\Details.cshtml" />
+    <None Include="Views\Owners\DetailsContract.cshtml" />
+    <None Include="Views\Owners\DetailsProperty.cshtml" />
+    <None Include="Views\Owners\Edit.cshtml" />
+    <None Include="Views\Owners\EditContract.cshtml" />
+    <None Include="Views\Owners\EditProperty.cshtml" />
+    <None Include="Views\Owners\Index.cshtml" />
+    <None Include="Views\Owners\_Contract.cshtml" />
+    <None Include="Views\Owners\_Property.cshtml" />
+    <None Include="Views\Properties\Details.cshtml" />
+    <None Include="Views\Properties\Index.cshtml" />
+    <None Include="Views\PropertyTypes\Create.cshtml" />
+    <None Include="Views\PropertyTypes\Edit.cshtml" />
+    <None Include="Views\PropertyTypes\Index.cshtml" />
+    <None Include="Views\Shared\Error.cshtml" />
+    <None Include="Views\Shared\_CookieConsentPartial.cshtml" />
+    <None Include="Views\Shared\_DeleteDialog.cshtml" />
+    <None Include="Views\Shared\_Layout.cshtml" />
+    <None Include="Views\Shared\_User.cshtml" />
+    <None Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MailKit" Version="2.4.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.0.0" />
-    <PackageReference Include="System.Drawing.Common" Version="4.6.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.1" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.0-preview1-19509-03" />
+    <PackageReference Include="ReflectionIT.Mvc.Paging" Version="3.4.0" />
+    <PackageReference Include="System.Drawing.Common" Version="4.7.0-preview2.19523.17" />
   </ItemGroup>
 
   <ItemGroup>

@@ -10,6 +10,7 @@ using Microsoft.IdentityModel.Tokens;
 using MyLeasing.Web.Data;
 using MyLeasing.Web.Data.Entities;
 using MyLeasing.Web.Helpers;
+using ReflectionIT.Mvc.Paging;
 using System;
 using System.Text;
 
@@ -24,6 +25,7 @@ namespace MyLeasing.Web
 
         public IConfiguration Configuration { get; }
 
+        [Obsolete]
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<CookiePolicyOptions>(options =>
@@ -83,6 +85,7 @@ namespace MyLeasing.Web
             services.AddScoped<IMailHelper, MailHelper>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddPaging();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

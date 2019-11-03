@@ -6,7 +6,7 @@ namespace MyLeasing.Web.Models
     {
         [Display(Name = "البريد الالكتروني*")]
         [Required(ErrorMessage = "هذا الحقل مطلوب")]
-        [EmailAddress]
+        [EmailAddress( ErrorMessage = " {0} غير صحيح.")]
         public string Email { get; set; }
     }
 }

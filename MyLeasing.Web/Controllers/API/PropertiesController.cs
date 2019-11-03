@@ -37,13 +37,13 @@ namespace MyLeasing.Web.Controllers.API
             var owner = await _dataContext.Owners.FindAsync(request.OwnerId);
             if (owner == null)
             {
-                return BadRequest("Not valid owner.");
+                return BadRequest("غير صالح المالك.");
             }
 
             var propertyType = await _dataContext.PropertyTypes.FindAsync(request.PropertyTypeId);
             if (propertyType == null)
             {
-                return BadRequest("Not valid property type.");
+                return BadRequest("غير صحيح نوع الممتلكات.");
             }
 
             var property = new Property
@@ -81,7 +81,7 @@ namespace MyLeasing.Web.Controllers.API
             var property = await _dataContext.Properties.FindAsync(request.PropertyId);
             if (property == null)
             {
-                return BadRequest("Not valid property.");
+                return BadRequest("غير صالحة الملكية.");
             }
 
             var imageUrl = string.Empty;
@@ -128,13 +128,13 @@ namespace MyLeasing.Web.Controllers.API
             var oldProperty = await _dataContext.Properties.FindAsync(request.Id);
             if (oldProperty == null)
             {
-                return BadRequest("Property doesn't exists.");
+                return BadRequest("الملكية غير موجودة.");
             }
 
             var propertyType = await _dataContext.PropertyTypes.FindAsync(request.PropertyTypeId);
             if (propertyType == null)
             {
-                return BadRequest("Not valid property type.");
+                return BadRequest("نوع العقار غير صحيح.");
             }
 
             oldProperty.Address = request.Address;
@@ -192,7 +192,7 @@ namespace MyLeasing.Web.Controllers.API
             var propertyImage = await _dataContext.PropertyImages.FindAsync(request.Id);
             if (propertyImage == null)
             {
-                return BadRequest("Property image doesn't exist.");
+                return BadRequest("صورة العقار غير موجودة.");
             }
 
             _dataContext.PropertyImages.Remove(propertyImage);

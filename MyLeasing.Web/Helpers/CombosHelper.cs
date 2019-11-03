@@ -26,7 +26,7 @@ namespace MyLeasing.Web.Helpers
 
             list.Insert(0, new SelectListItem
             {
-                Text = "(Select a lessee...)",
+                Text = "(اختر مستأجر ...)",
                 Value = "0"
             });
 
@@ -45,7 +45,7 @@ namespace MyLeasing.Web.Helpers
 
             list.Insert(0, new SelectListItem
             {
-                Text = "(Select a property type...)",
+                Text = "(اختر نوع العقار ...)",
                 Value = "0"
             });
 
@@ -56,9 +56,9 @@ namespace MyLeasing.Web.Helpers
         {
             var list = new List<SelectListItem>
             {
-                new SelectListItem { Value = "0", Text = "(Select a role...)" },
-                new SelectListItem { Value = "1", Text = "Lessee" },
-                new SelectListItem { Value = "2", Text = "Owner" }
+                new SelectListItem { Value = "0", Text = "(حدد صلاحية ...)" },
+                new SelectListItem { Value = "1", Text = "مستاجر" },
+                new SelectListItem { Value = "2", Text = "مالك" }
             };
 
             return list;

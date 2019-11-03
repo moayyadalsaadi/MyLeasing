@@ -1,4 +1,7 @@
-﻿@{
+﻿@model ReflectionIT.Mvc.Paging.PagingList<MyLeasing.Web.Data.Entities.Property>
+@using ReflectionIT.Mvc.Paging;
+@addTagHelper *,ReflectionIT.Mvc.Paging
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -73,21 +76,29 @@
     </a>
 </div>
 
-<hr />
+<br />
+
 <div class="row">
-    <div class="col-md-2">
-        <a asp-action="SearchProperties" class="btn btn-primary">Search Properties</a>
+    <div class="col-md-12">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-3 col-sm-5 col-xs-11  thumbnail" style=" border-color:black;border-width:2px ;margin-right:10px;">
+                    @if (!string.IsNullOrEmpty(item.FirstImage))
+                    {
+                        <img src="@Url.Content(item.FirstImage)" alt="Image" style="width:300px;height:300px;max-width: 100%; height: auto;" />
+                    }
+                    <a asp-action="DetailsProperty" class="btn btn-default" asp-route-id="@item.Id">التفاصيل</a>
+                </div>
+            }
+        </div>
     </div>
-    @if (User.IsInRole("Owner") || User.IsInRole("Lessee"))
-    {
-        <div class="col-md-2">
-            <a asp-action="MyContracts" class="btn btn-warning">My Contracts</a>
-        </div>
-    }
-    @if (User.IsInRole("Owner"))
-    {
-        <div class="col-md-2">
-            <a asp-action="MyProperties" class="btn btn-success">My Properties</a>
-        </div>
-    }
 </div>
+<nav aria-label="Emploee paging">
+    @await this.Component.InvokeAsync("Pager", new { PagingList = this.Model })
+</nav>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+}

@@ -32,6 +32,7 @@ namespace MyLeasing.Common.Models
         public bool IsAvailable { get; set; }
 
         public string Remarks { get; set; }
+
         public double Latitude { get; set; }
 
         public double Longitude { get; set; }

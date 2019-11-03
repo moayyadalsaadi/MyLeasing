@@ -25,7 +25,8 @@ namespace MyLeasing.Web.Controllers
                 .Include(p => p.PropertyImages)
                 .Include(p => p.Contracts)
                 .Include(p => p.Owner)
-                .ThenInclude(o => o.User));
+                .ThenInclude(o => o.User)
+                .OrderByDescending(p=>p.Id));
         }
 
         public async Task<IActionResult> Details(int? id)

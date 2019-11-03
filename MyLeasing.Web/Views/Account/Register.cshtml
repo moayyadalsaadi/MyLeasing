@@ -14,11 +14,6 @@ function resetCaptchaImage() {
     $("#img-captcha").attr("src", "/get-captcha-image?" + d.getTime());
 }
 </script>
-<h2>Register</h2>
-
-<h4>Owner</h4>
-<hr />
-
 <div class="text-success">
     <p>
         @ViewBag.Message
@@ -29,55 +24,145 @@ function resetCaptchaImage() {
         @ViewBag.danger
     </p>
 </div>
-<hr />
 
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Register">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<style>
 
-            <div class="form-group">
-                <label asp-for="Username" class="control-label"></label>
-                <input asp-for="Username" class="form-control" />
-                <span asp-validation-for="Username" class="text-danger"></span>
-            </div>
+.box{
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 800px;
+    padding:50px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    background-color:#fff;
+    border-radius:5px;
+    margin-top: 30px;
+}
+.box input{
+padding: 10px 0;
+margin-bottom:30px ;
+width:200px;
+box-sizing: border-box;
+box-shadow: none;
+outline: none;
+border: none;
+border-bottom:2px solid #f2f2f2;
 
-            <partial name="_User" />
+}
+.box form div{
+    position: relative;
+}
+.box form div label{
+position: absolute;
+top: 10px;
+right: 0px;
+pointer-events: none;
+transition: .5s;
+}
+.box input:focus ~ label,
+.box input:valid ~ label
+{
+top:-12px;
+right: 0;
 
-            <div class="form-group">
-                <label asp-for="RoleId" class="control-label"></label>
-                <select asp-for="RoleId" asp-items="Model.Roles" class="form-control"></select>
-                <span asp-validation-for="RoleId" class="text-danger"></span>
-            </div>
+}
+.box input:focus,
+.box input:valid
+    border-bottom:2px solid #f2f2f2;
+}
 
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
+</style>
 
-            <div class="form-group">
-                <label asp-for="PasswordConfirm" class="control-label"></label>
-                <input asp-for="PasswordConfirm" class="form-control" />
-                <span asp-validation-for="PasswordConfirm" class="text-danger"></span>
-            </div>
+<div class="box">
+<div style="margin-top:-30px;">
+<form asp-action="Register" >
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            <div class="input-group">
+  <div>
+        <input type="text" asp-for="Username" required="">
+        <label asp-for="Username"></label>
+        <span style="margin-top:50px; right:0; position:absolute; " asp-validation-for="Username" class="text-danger"></span>
+
+  </div>
+   
+
+
+   <div style="margin-top:-70px ; margin-right: 250px;">
+        <input type="text"  asp-for="Document" required="">
+        <label asp-for="Document"></label>
+        <span style="margin-top:50px; right:0; position:absolute;" asp-validation-for="Document"  class="text-danger"></span>
+  </div>
+
+
+    <div style="margin-top:-70px ; margin-right: 500px;">
+        <input type="text" asp-for="FirstName"  required="">
+        <label asp-for="FirstName"></label>
+        <span style="margin-top:50px; right:0; position:absolute;" asp-validation-for="FirstName"  class="text-danger"></span>
+  </div>
+
+
+ <div style="margin-top: 20px;">
+        <input type="text" asp-for="LastName"  required="">
+        <label asp-for="LastName"></label>
+        <span style="margin-top:50px; right:0; position:absolute;" asp-validation-for="LastName"  class="text-danger"></span>
+
+  </div>
+
+  <div style="margin-top:-70px ; margin-right: 250px;">
+        <input type="text" asp-for="Address" required="">
+        <label asp-for="Address"></label>
+        <span style="margin-top:50px; right:0; position:absolute;" asp-validation-for="Address"  class="text-danger"></span>
+
+  </div>
+
+   <div style="margin-top:-70px ; margin-right: 500px;">
+        <input type="text"  asp-for="PhoneNumber" required="">
+        <label asp-for="PhoneNumber"></label>
+        <span style="margin-top:50px; right:0; position:absolute;" asp-validation-for="PhoneNumber"  class="text-danger"></span>
+
+  </div>
+
+ <div style="margin-top: 20px;">
+  <select asp-for="RoleId" asp-items="Model.Roles" class="form-control form-control-sm" style="width: 200px;">
+   <label asp-for="RoleId"></label>
+  
+</select>
+</div>
+
+
+ <div style="margin-top:-40px ; margin-right: 250px;">
+        <input type="password" name="password" required="">
+        <label>كلمة السر</label>
+  </div>
+
+ <div style="margin-top:-70px ; margin-right: 500px;">
+        <input type="password" name="c_password" required="">
+        <label>تأكيد كلمة السر</label>
+  </div>
+
+ 
+  <div class="input-group" style="margin-top: 20px;">
                  <label asp-for="CaptchaCode" class="control-label"></label>
                 <div class="input-group-prepend">
-                    <img id="img-captcha" src="~/get-captcha-image" style="width:70%" />
+                    <img id="img-captcha" src="~/get-captcha-image" style="width:170px;" />
                 </div>
                 <br />
-                <input type="text" class="form-control" placeholder="كود التحقق" asp-for="CaptchaCode" maxlength="6" />
+                <input type="text" class="" placeholder="كود التحقق" asp-for="CaptchaCode" maxlength="6" />
                 <span asp-validation-for="CaptchaCode" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
-                <input type="submit" value="Register" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
+<div class="form-group" style="margin-bottom:-50px;">
+<input type="submit"  value="تسجيل" class="btn btn-info" style="width: 60px; border:none; background-color:#31B0D5; color: #fff;" />
 </div>
+</div>
+ </form>
+</div>
+
+
+       
+
 
 
 
@@ -86,3 +171,6 @@ function resetCaptchaImage() {
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
+
+

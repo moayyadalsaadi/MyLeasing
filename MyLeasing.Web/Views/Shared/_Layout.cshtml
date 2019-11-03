@@ -1,24 +1,47 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Leasing.net</title>
 
     <environment include="Development">
+        
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
         <link rel="stylesheet" href="~/css/site.css" />
+        
+        
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+       <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-rtl.css" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
 </head>
+<style>
+.btn {
+
+  background-color:#ededed;
+  color: black;
+  cursor: pointer;
+}
+.info {
+  border-color: #484F61;
+  color: black;
+}
+.info:hover {
+  background: #2196F3;
+  color: white;
+}
+</style>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    
+    <nav class="navbar navbar-inverse navbar-fixed-top" style="height:65px; background-color:#484F61;">
+       
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -27,30 +50,37 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">العقارات</a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand"><img src="~/lib/logo.jpg"height="50" width="50" style="margin-top:-7px;border-radius:5px;"></a>
             </div>
-            <div class="navbar-collapse collapse">
+            <div class="navbar-collapse collapse" >
                 <ul class="nav navbar-nav">
+                                        <li><a asp-area="" asp-controller="Home" asp-action="Index" >الرئيسية</a></li>
+
                     @if (User.Identity.IsAuthenticated && User.IsInRole("Manager"))
                     {
                         <li><a asp-area="" asp-controller="Lessees" asp-action="Index">مستاجر</a></li>
                         <li><a asp-area="" asp-controller="Managers" asp-action="Index">مدير</a></li>
                         <li><a asp-area="" asp-controller="Owners" asp-action="Index">مالك</a></li>
-                        <li><a asp-area="" asp-controller="Properties" asp-action="Index">العقار</a></li>
+                        <li><a asp-area="" asp-controller="Properties" asp-action="Index">العقارات</a></li>
                         <li><a asp-area="" asp-controller="PropertyTypes" asp-action="Index">نوع العقار</a></li>
                     }
                 </ul>
                 <ul class="nav navbar-nav">
                     @if (!User.IsInRole("Manager"))
                     {
-                        <li><a asp-area="" asp-controller="Home" asp-action="SalePage">بيع</a></li>
-                        <li><a asp-area="" asp-controller="Home" asp-action="RentPage">استئجار</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="SalePage"><button type="button" class="btn info" style="">بيع</button></a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="RentPage"><button type="button" class="btn info" style=" margin-right:-25px;">استئجار</button></a></li>                 
                     }
                 </ul>
                 <ul class="nav navbar-nav">
                     @if (User.Identity.IsAuthenticated && User.IsInRole("Owner"))
                     {
                         <li><a asp-area="" asp-controller="Home" asp-action="SearchProperties">عقاراتي</a></li>
+                    }
+                    @if(!User.IsInRole("Manager"))
+                    {
+                        <li><a asp-area="" asp-controller="Home" asp-action="About" >من نحن</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="contact" >اتصل بنا</a></li>
                     }
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -61,7 +91,7 @@
                     }
                     else
                     {
-                        <li><a asp-area="" asp-controller="Account" asp-action="Login">تسجيل الدخول</a></li>
+                        <li><a asp-area="" asp-controller="Account" asp-action="Login"><button type="button" class="btn info" style="background-color:#2196F3; border:none; color:#fff;">تسجيل الدخول</button></a></li>
                     }
                 </ul>
             </div>
@@ -72,10 +102,7 @@
 
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; 2019</p>
-        </footer>
+       
     </div>
 
     <environment include="Development">
@@ -100,5 +127,6 @@
     </environment>
 
     @RenderSection("Scripts", required: false)
+   
 </body>
 </html>
