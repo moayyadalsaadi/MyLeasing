@@ -14,16 +14,6 @@ function resetCaptchaImage() {
     $("#img-captcha").attr("src", "/get-captcha-image?" + d.getTime());
 }
 </script>
-<div class="text-success">
-    <p>
-        @ViewBag.Message
-    </p>
-</div>
-<div class="text-danger">
-    <p>
-        @ViewBag.danger
-    </p>
-</div>
 
 <style>
 
@@ -81,7 +71,7 @@ right: 0;
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
   <div>
-        <input type="text" asp-for="Username" required="">
+        <input  asp-for="Username" required="">
         <label asp-for="Username"></label>
         <span style="margin-top:50px; right:0; position:absolute; " asp-validation-for="Username" class="text-danger"></span>
 
@@ -90,56 +80,59 @@ right: 0;
 
 
    <div style="margin-top:-70px ; margin-right: 250px;">
-        <input type="text"  asp-for="Document" required="">
+        <input   asp-for="Document" required="">
         <label asp-for="Document"></label>
         <span style="margin-top:50px; right:0; position:absolute;" asp-validation-for="Document"  class="text-danger"></span>
   </div>
 
 
     <div style="margin-top:-70px ; margin-right: 500px;">
-        <input type="text" asp-for="FirstName"  required="">
+        <input asp-for="FirstName"  required="">
         <label asp-for="FirstName"></label>
-        <span style="margin-top:50px; right:0; position:absolute;" asp-validation-for="FirstName"  class="text-danger"></span>
+        <span style="margin-top:-23px; right:0; position:absolute;" asp-validation-for="FirstName"  class="text-danger"></span>
   </div>
 
 
  <div style="margin-top: 20px;">
-        <input type="text" asp-for="LastName"  required="">
+        <input  asp-for="LastName"  required="">
         <label asp-for="LastName"></label>
         <span style="margin-top:50px; right:0; position:absolute;" asp-validation-for="LastName"  class="text-danger"></span>
 
   </div>
 
   <div style="margin-top:-70px ; margin-right: 250px;">
-        <input type="text" asp-for="Address" required="">
+        <input  asp-for="Address" required="">
         <label asp-for="Address"></label>
         <span style="margin-top:50px; right:0; position:absolute;" asp-validation-for="Address"  class="text-danger"></span>
 
   </div>
 
    <div style="margin-top:-70px ; margin-right: 500px;">
-        <input type="text"  asp-for="PhoneNumber" required="">
+        <input   asp-for="PhoneNumber" required="">
         <label asp-for="PhoneNumber"></label>
-        <span style="margin-top:50px; right:0; position:absolute;" asp-validation-for="PhoneNumber"  class="text-danger"></span>
+        <span style="margin-top:-25px; right:0; position:absolute;" asp-validation-for="PhoneNumber"  class="text-danger"></span>
 
   </div>
 
  <div style="margin-top: 20px;">
   <select asp-for="RoleId" asp-items="Model.Roles" class="form-control form-control-sm" style="width: 200px;">
-   <label asp-for="RoleId"></label>
-  
+   <label asp-for="RoleId"></label> 
 </select>
+ <span style="margin-top:10px; right:0; position:absolute;" asp-validation-for="RoleId"  class="text-danger"></span>
 </div>
 
 
  <div style="margin-top:-40px ; margin-right: 250px;">
-        <input type="password" name="password" required="">
-        <label>كلمة السر</label>
+        <input asp-for="Password" required="">
+        <label asp-for="Password"></label>
+         <span style="margin-top:50px; right:0; position:absolute;" asp-validation-for="Password"  class="text-danger"></span>
   </div>
 
  <div style="margin-top:-70px ; margin-right: 500px;">
-        <input type="password" name="c_password" required="">
-        <label>تأكيد كلمة السر</label>
+        <input asp-for="PasswordConfirm" required="">
+        <label asp-for="PasswordConfirm"></label>
+         <span style="margin-top:-20px; right:0; position:absolute;" asp-validation-for="PasswordConfirm"  class="text-danger"></span>
+
   </div>
 
  
@@ -155,10 +148,21 @@ right: 0;
 
 <div class="form-group" style="margin-bottom:-50px;">
 <input type="submit"  value="تسجيل" class="btn btn-info" style="width: 60px; border:none; background-color:#31B0D5; color: #fff;" />
+<span class="text-success">
+    <p>
+        @ViewBag.Message
+    </p>
+</span>
+<span class="text-danger">
+    <p>
+        @ViewBag.danger
+    </p>
+</span>
 </div>
 </div>
  </form>
 </div>
+
 
 
        

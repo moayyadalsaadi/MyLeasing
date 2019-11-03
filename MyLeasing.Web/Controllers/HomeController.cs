@@ -73,16 +73,6 @@ namespace MyLeasing.Web.Controllers
             return View();
         }
 
-        public async Task<IActionResult> SearchProperties(int page =1)
-        {
-            var query = _dataContext.Properties
-                .Include(p => p.PropertyType)
-                .Include(p => p.PropertyImages)
-                .Where(p => p.IsAvailable)
-                .OrderByDescending(p => p.Id);
-            var model = await PagingList.CreateAsync(query,2, page);
-            return View(model);
-        }
 
         public IActionResult SalePage()
         {

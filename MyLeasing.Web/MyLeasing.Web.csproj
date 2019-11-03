@@ -29,7 +29,6 @@
     <None Include="Views\Home\Privacy.cshtml" />
     <None Include="Views\Home\RentPage.cshtml" />
     <None Include="Views\Home\SalePage.cshtml" />
-    <None Include="Views\Home\SearchProperties.cshtml" />
     <None Include="Views\Lessees\Create.cshtml" />
     <None Include="Views\Lessees\Details.cshtml" />
     <None Include="Views\Lessees\Edit.cshtml" />

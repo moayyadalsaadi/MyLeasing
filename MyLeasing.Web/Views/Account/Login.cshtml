@@ -6,87 +6,82 @@
 
 <style>
 
-.box{
-    position: absolute;
-    top:50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    width: 400px;
-    padding:50px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    background-color:#fff;
-    border-radius:5px;
-}
-.box input{
-padding: 10px 0;
-margin-bottom:30px ;
-width: 100%;
-box-sizing: border-box;
-box-shadow: none;
-outline: none;
-border: none;
-border-bottom:1px solid #f2f2f2;
 
-}
-.box form div{
-    position: relative;
-}
-.box form div label{
-position: absolute;
-top: 10px;
-right: 0px;
-pointer-events: none;
-transition: .5s;
-}
-.box input:focus ~ label,
-.box input:valid ~ label
-{
-top:-12px;
-right: 0;
+    .box {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width: 400px;
+        padding: 50px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        background-color: #fff;
+        border-radius: 5px;
+    }
 
-}
-.box input:focus,
-.box input:valid
-    border-bottom:1px solid #f2f2f2;
-}
+        .box input {
+            padding: 10px 0;
+            margin-bottom: 30px;
+            width: 100%;
+            box-sizing: border-box;
+            box-shadow: none;
+            outline: none;
+            border: none;
+            border-bottom: 1px solid #f2f2f2;
+        }
 
+        .box form div {
+            position: relative;
+        }
+
+        .box form div label {
+                position: absolute;
+                top: 10px;
+                right: 0px;
+                pointer-events: none;
+                transition: .5s;
+            }
+
+        .box input:focus ~ label,
+        .box input:valid ~ label {
+            top: -12px;
+            right: 0;
+        }
+
+        .box input:focus,
+        .box input:valid{
+        border-bottom:1px solid #f2f2f2;
+    }
 </style>
 
-    
 
-<body  style="background-image:url('../images/Home/bg.jpg')">
+<body style="background-image:url('../images/Home/bg.jpg')">
+
+    <div class="box" style="margin-top:20px;">
+        <div style="height:90px; width: 80px;  border-radius:50%; box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2); margin-top:-90px ; margin-right:110px;">
+            <img src="~/lib/user.png" height="90" width="80">
+        </div>
 
 
+        <form method="post">
 
+            <div style="margin-top:20px ;">
+                <input type="text" asp-for="Username" required="">
+                <label> *البريد الالكتروني</label>
+                <span asp-validation-for="Username" class="text-warning"></span>
 
+            </div>
+            <div>
+                <input type="password" asp-for="Password" required="">
+                <label>كلمة السر</label>
+                <span asp-validation-for="Password" class="text-warning"></span>
+            </div>
 
-
-
-<div class="box" style="margin-top:20px;">
-<div style="height:90px; width: 80px;  border-radius:50%; box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2); margin-top:-90px ; margin-right:110px;">
-<img src="~/lib/user.png" height="90" width="80">
-</div>
-
-            
-<form method="post">
-    
-    <div style="margin-top:20px ;">
-        <input type="text" asp-for="Username"  required="">
-        <label> *البريد الالكتروني</label>
-        <span asp-validation-for="Username" class="text-warning"></span>
-
-    </div>
-     <div>
-        <input type="password" asp-for="Password"  required="">
-        <label>كلمة السر</label>
-        <span asp-validation-for="Password" class="text-warning"></span>
-    </div>
-
-<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
-<div asp-validation-summary="ModelOnly">
-</div>
- <div>
+            <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+            <div asp-validation-summary="ModelOnly">
+            </div>
+            <div>
                 <div>
                     <input asp-for="RememberMe" type="checkbox" style="margin-right:-145px; margin-top:20px ;" />
                     <label asp-for="RememberMe" class="form-check-label"></label>
@@ -94,29 +89,16 @@ right: 0;
                 <span asp-validation-for="RememberMe" class="text-warning"></span>
             </div>
 
+            <div>
+                <input type="submit" value="تسجيل الدخول" class="btn btn-info" style="width:80px; background-color:#31B0D5; border:none; color:#fff;" />
+                <a asp-action="Register" class="btn btn-info" style="width:120px; margin-top:-30px ; border: none; padding:11px; margin-right:10px;">تسجيل حساب جديد</a>
 
+            </div>
 
-
- <div>
-         <input type="submit" value="تسجيل الدخول" class="btn btn-info" style="width:80px; background-color:#31B0D5; border:none; color:#fff;" />
-         <a asp-action="Register" class="btn btn-info" style="width:120px; margin-top:-30px ; border: none; padding:11px; margin-right:10px;">تسجيل حساب جديد</a>
-                
-</div>
-
- <a asp-action="RecoverPassword">هل نسيت كلمة السر ؟ </a>
-
-
-</form>
-
-</div>
-
+            <a asp-action="RecoverPassword">هل نسيت كلمة السر ؟ </a>
+        </form>
+    </div>
 </body>
-
-
-
-
-
-
 
 
 @section Scripts {
