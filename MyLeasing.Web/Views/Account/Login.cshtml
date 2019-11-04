@@ -58,7 +58,7 @@
 
 <body style="background-image:url('../images/Home/bg.jpg')">
 
-    <div class="box" style="margin-top:20px;">
+    <div class="box" style="margin-top:50px;">
         <div style="height:90px; width: 80px;  border-radius:50%; box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2); margin-top:-90px ; margin-right:110px;">
             <img src="~/lib/user.png" height="90" width="80">
         </div>
@@ -66,21 +66,22 @@
 
         <form method="post">
 
-            <div style="margin-top:20px ;">
+  <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+            <div asp-validation-summary="ModelOnly" style="margin-top:30px ;"  class="text-danger">
+            </div>
+            <div style="margin-top:30px ;margin-bottom:20px;">
                 <input type="text" asp-for="Username" required="">
-                <label> *البريد الالكتروني</label>
-                <span asp-validation-for="Username" class="text-warning"></span>
+                <label asp-for="Username"> </label>
+              <span style="margin-top:50px; right:0; position:absolute; " asp-validation-for="Username" class="text-danger"></span>
 
             </div>
-            <div>
+            <div style="margin-top:20px ;margin-bottom:20px;">
                 <input type="password" asp-for="Password" required="">
-                <label>كلمة السر</label>
-                <span asp-validation-for="Password" class="text-warning"></span>
+                <label asp-for="Password"> </label>
+              <span style="margin-top:50px; right:0; position:absolute; " asp-validation-for="Password" class="text-danger"></span>
             </div>
 
-            <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
-            <div asp-validation-summary="ModelOnly">
-            </div>
+          
             <div>
                 <div>
                     <input asp-for="RememberMe" type="checkbox" style="margin-right:-145px; margin-top:20px ;" />
