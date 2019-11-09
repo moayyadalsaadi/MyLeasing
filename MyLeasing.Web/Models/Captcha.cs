@@ -10,7 +10,7 @@ namespace MyLeasing.Web.Models
 {
     public static class Captcha
     {
-        const string Letters = "2346789ABCDEFGHJKLMNPRTUVWXYZ";
+        const string Letters = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
         public static string GenerateCaptchaCode()
         {

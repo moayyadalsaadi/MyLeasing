@@ -60,10 +60,15 @@ namespace MyLeasing.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (!Captcha.ValidateCaptchaCode(view.CaptchaCode, HttpContext))
+                {
+                    ViewBag.danger = "خطا كلمة التحقق غير صحيحة";
+                    return View(view);
+                }
                 var user = await _userHelper.AddUser(view, "Manager");
                 if (user == null)
                 {
-                    ModelState.AddModelError(string.Empty, "This email is already used.");
+                    ModelState.AddModelError(string.Empty, "هذا البريد الإلكتروني مستخدم.");
                     return View(view);
                 }
 

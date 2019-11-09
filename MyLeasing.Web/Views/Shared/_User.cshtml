@@ -1,31 +1,53 @@
 ﻿@model MyLeasing.Web.Models.EditUserViewModel
 
-<div class="form-group">
-    <label asp-for="Document" class="control-label"></label>
-    <input asp-for="Document" class="form-control" />
-    <span asp-validation-for="Document" class="text-danger"></span>
+<style>
+ .box input {
+            padding: 5px 0;
+            margin-bottom: 30px;
+            width: 230px;
+            box-sizing: border-box;
+            box-shadow: none;
+            outline: none;
+            border: none;
+            border-bottom: 1px solid #f2f2f2;
+        }
+</style>
+<div class="box">
+    <label asp-for="Document" style="color:#929384;" class="control-label"></label>
+    <br>
+    <input asp-for="Document">
+    <span asp-validation-for="Document" style="margin-right:-230px; padding-top:40px; position:absolute;" class="text-danger"></span>
+
 </div>
 
-<div class="form-group">
-    <label asp-for="FirstName" class="control-label"></label>
-    <input asp-for="FirstName" class="form-control" />
-    <span asp-validation-for="FirstName" class="text-danger"></span>
+
+<div class="box" style="margin-top:-85px; margin-right:290px; width:300px;">
+    <label asp-for="FirstName" style="color:#929384;" class="control-label"></label>
+    <br>
+    <input asp-for="FirstName" >
+    <span asp-validation-for="FirstName" class="text-danger" style="margin-top:40px; margin-right:-230px; position:absolute; width:210px;"></span>
 </div>
 
-<div class="form-group">
-    <label asp-for="LastName" class="control-label"></label>
-    <input asp-for="LastName" class="form-control" />
-    <span asp-validation-for="LastName" class="text-danger"></span>
+
+
+<div class="box" style="margin-top:-85px; margin-right:580px; width:300px;">
+    <label asp-for="LastName" style="color:#929384;" class="control-label"></label>
+    <br>
+    <input asp-for="LastName">
+    <span asp-validation-for="LastName" class="text-danger" style="margin-top:40px; margin-right:-230px; position:absolute; width:210px;"></span>
 </div>
 
-<div class="form-group">
-    <label asp-for="Address" class="control-label"></label>
-    <input asp-for="Address" class="form-control" />
-    <span asp-validation-for="Address" class="text-danger"></span>
+<div class="box" style="margin-top:15px;">
+    <label asp-for="Address" style="color:#929384;" class="control-label"></label>
+    <br>
+    <input asp-for="Address">
+    <span asp-validation-for="Address" class="text-danger" style="margin-top:40px; margin-right:-230px; position:absolute; width:210px;"></span>
 </div>
 
-<div class="form-group">
-    <label asp-for="PhoneNumber" class="control-label"></label>
-    <input asp-for="PhoneNumber" class="form-control" />
-    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+
+<div class="box" style="margin-top:-85px; margin-right:290px; width:300px;">
+    <label asp-for="PhoneNumber" style="color:#929384;" class="control-label"></label>
+    <br>
+    <input asp-for="PhoneNumber">
+    <span asp-validation-for="PhoneNumber" class="text-danger" style="margin-top:40px; margin-right:-230px; position:absolute; width:210px;"></span>
 </div>

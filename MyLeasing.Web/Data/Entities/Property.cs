@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-
 namespace MyLeasing.Web.Data.Entities
 {
     public class Property
@@ -9,7 +8,7 @@ namespace MyLeasing.Web.Data.Entities
         public int Id { get; set; }
 
         [Display(Name = "الحي*")]
-        [MaxLength(50, ErrorMessage = "لا يمكن أن يحتوي الحقل {0} على أكثر من {1} حرف.")] 
+        [MaxLength(50, ErrorMessage = "لا يمكن أن يحتوي الحقل {0} على أكثر من {1} حرف.")]
         [Required(ErrorMessage = "هذا الحقل مطلوب")]
         public string Neighborhood { get; set; }
 
