@@ -4,14 +4,17 @@
     ViewData["Title"] = "Index";
 }
 
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
-<br />
+<style>
+    body {
+        background-color: #f5f5f5;
+    }
+</style>
 
-<div class="row">
+<div class="row" style="outline:none; border:none; margin-top:50px;">
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">العقارات</h3>
+                <h1 class="panel-title" style="text-align:center;">العقارات</h1>
             </div>
             <div class="panel-body">
                 <table class="table table-hover table-responsive table-striped" id="MyTable">
@@ -24,60 +27,67 @@
                                 المالك
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.Neighborhood)
+                                الحي
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.Address)
+                                العنوان
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.Price)
+                                طبيعة العقار
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.SquareMeters)
+                                السعر
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.IsAvailable)
+                                المساحة
+                            </th>
+                            <th>
+                                متوفر
                             </th>
                             <th>
                                 الصور
                             </th>
-                            
-                            <th></th>
+                            <th>
+                                التفاصيل
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.PropertyType.Name)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Owner.User.FullNameWithDocument)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Neighborhood)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Address)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Price)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.SquareMeters)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.IsAvailable)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.PropertyImages.Count)
-                                </td>
-                               
-                                <td>
-                                    <a asp-action="Details" class="btn btn-default" asp-route-id="@item.Id"><i class="glyphicon glyphicon-list"> </i> </a>
-                                </td>
-                            </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PropertyType.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Owner.User.FullNameWithDocument)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Neighborhood)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Address)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Typeprop)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Price) شيكل
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SquareMeters) متر
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IsAvailable)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PropertyImages.Count)
+                            </td>
+                            <td>
+                                <a asp-action="Details" class="btn btn-default" asp-route-id="@item.Id"><i class="glyphicon glyphicon-list"> </i> </a>
+                            </td>
+                        </tr>
                         }
                     </tbody>
                 </table>
@@ -89,10 +99,14 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-
     <script type="text/javascript">
         $(document).ready(function () {
             $('#MyTable').DataTable();
+        });
+         $('#MyTable').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Arabic.json"
+            }
         });
     </script>
 }

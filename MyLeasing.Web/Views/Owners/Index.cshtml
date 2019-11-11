@@ -3,49 +3,46 @@
 @{
     ViewData["Title"] = "Index";
 }
-
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
-<br />
-
-<p>
-    <a asp-action="Create" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> Create New</a>
+<style>
+    body {
+        background-color: #f5f5f5;
+    }
+</style>
+<p style="text-align:center;">
+    <a asp-action="Create" class="btn btn-info" style="outline:none; border:none; margin-top:50px;"><i class="glyphicon glyphicon-plus"></i> انشاء جديد</a>
 </p>
 
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">Owners</h3>
+                <h3 class="panel-title" style="text-align:center;">المالك</h3>
             </div>
             <div class="panel-body">
                 <table class="table table-hover table-responsive table-striped" id="MyTable">
                     <thead>
                         <tr>
                             <th>
-                                @Html.DisplayNameFor(model => model.User.Document)
+رقم الهوية
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.User.FirstName)
+الاسم الاول                    
+        </th>
+                            <th>
+الاسم الاخير
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.User.LastName)
+العنوان
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.User.Email)
+                                البريد الالكتروني
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.User.Address)
+                                رقم الهاتف
                             </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.User.PhoneNumber)
-                            </th>
-                            <th>
-                                Properties
-                            </th>
-                            <th>
-                                Contracts
-                            </th>
-                            <th></th>
+                            <th>تعديل</th>
+                            <th>تفاصيل</th>
+                            <th>حذف</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -62,23 +59,23 @@
                                     @Html.DisplayFor(modelItem => item.User.LastName)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.User.Email)
+                                    @Html.DisplayFor(modelItem => item.User.Address)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.User.Address)
+                                    @Html.DisplayFor(modelItem => item.User.Email)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.User.PhoneNumber)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.Properties.Count)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Contracts.Count)
-                                </td>
-                                <td>
                                     <a asp-action="Edit" class="btn btn-default" asp-route-id="@item.Id"><i class="glyphicon glyphicon-pencil"></i> </a>
+                                </td>
+
+                                <td>
                                     <a asp-action="Details" class="btn btn-default" asp-route-id="@item.Id"><i class="glyphicon glyphicon-list"> </i> </a>
+                                </td>
+
+                                <td>
                                     <button data-id="@item.Id" class="btn btn-danger deleteItem" data-toggle="modal" data-target="#deleteDialog"><i class="glyphicon glyphicon-trash"></i></button>
                                 </td>
                             </tr>
@@ -94,8 +91,7 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-
+     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             $('#MyTable').DataTable();
@@ -111,5 +107,10 @@
                 window.location.href = '/Owners/Delete/' + item_to_delete;
             });
         });
+       $('#MyTable').DataTable( {
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Arabic.json"
+        }
+    } );
     </script>
 }

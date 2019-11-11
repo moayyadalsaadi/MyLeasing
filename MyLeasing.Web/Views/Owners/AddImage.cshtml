@@ -4,26 +4,65 @@
     ViewData["Title"] = "Create";
 }
 
-<h2>Add Image</h2>
+<style>
+    body {
+        background-color: #fff;
+    }
 
-<h4>Property</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="AddImage" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
+    .box {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width: auto;
+        background-color: #fff;
+        border-radius: 5px;
+    }
 
-            <div class="form-group">
-                <label asp-for="ImageFile" class="control-label"></label>
-                <input asp-for="ImageFile" class="form-control" type="file" />
-                <span asp-validation-for="ImageFile" class="text-danger"></span>
-            </div>
+    .hide_file {
+        z-index: 1000;
+        opacity: 0;
+        cursor: pointer;
+        width: 200px;
+        height: 200px;
+    }
+</style>
 
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-                <a asp-action="DetailsProperty" asp-route-id="@Model.Id" class="btn btn-success">Back to Property</a>
-            </div>
-        </form>
+<div class="box">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <form asp-action="AddImage" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+
+                <div>
+                    <img id="target" style="width:200px; height:200px;" src="~/images/Home/add_image.png">
+                    <input asp-for="ImageFile" type="file" id="src" class="hide_file" style="margin-top:-110px; widows:98px; height:110px; font-size:13px;" />
+                    <span asp-validation-for="ImageFile" class="text-danger"></span>
+                </div>
+                <div class="panel-footer">
+                    <div style="margin-right:11px;">
+                        <input type="submit" value="اضافة" class="btn btn-info" style=" background-color:#31B0D5; outline:none; border:none; margin-right: 35px; color:#fff;">
+                        <a asp-action="DetailsPropertyOwner" asp-route-id="@Model.Id" class="btn btn-secondary" style="background-color:#D1D1D1; color:#000; margin-right:5px;">الغاء</a>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
+
+<script>
+    function showImage(src, target) {
+        var fr = new FileReader();
+        // when image is loaded, set the src of the image where you want to display it
+        fr.onload = function (e) { target.src = this.result; };
+        src.addEventListener("change", function () {
+            // fill fr with image data
+            fr.readAsDataURL(src.files[0]);
+        });
+    }
+
+    var src = document.getElementById("src");
+    var target = document.getElementById("target");
+    showImage(src, target);
+</script>

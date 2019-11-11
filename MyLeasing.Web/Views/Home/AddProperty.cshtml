@@ -4,90 +4,248 @@
     ViewData["Title"] = "Create";
 }
 
-<h2>Create</h2>
+<style>
+    body {
+        background-color: #F5F5F5;
+    }
 
-<h4>Property</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
+    #map {
+        height: 300px;
+        width: 600px;
+    }
+
+    .box {
+        position: absolute;
+        top: 62%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width: 800px;
+        padding: 50px;
+        background-color: #fff;
+        border-radius: 5px;
+    }
+
+        .box input {
+            padding: 10px 0;
+            margin-bottom: 30px;
+            width: 200px;
+            box-sizing: border-box;
+            box-shadow: none;
+            outline: none;
+            border: none;
+            background-color: #fff;
+            border-bottom: 0.9px solid #d8d9d8;
+            color: #959595;
+        }
+
+        .box select {
+            padding: 10px 0;
+            margin-bottom: 30px;
+            width: 200px;
+            box-sizing: border-box;
+            box-shadow: none;
+            outline: none;
+            border: none;
+            border-bottom: 1px solid #f2f2f2;
+            margin-top: 50px;
+        }
+
+        .box textarea {
+            padding: 10px 0;
+            margin-bottom: 30px;
+            width: 400px;
+            box-sizing: border-box;
+            box-shadow: none;
+            outline: none;
+            border: none;
+            border-bottom: 1px solid #f2f2f2;
+            margin-top: 50px;
+        }
+
+        .box form div {
+            position: relative;
+        }
+
+            .box form div label {
+                position: absolute;
+                top: 5px;
+                right: 0px;
+                pointer-events: none;
+                transition: .5s;
+                font-weight: normal;
+                color: #000029;
+            }
+
+        .box input:focus ~ label,
+        .box input:valid ~ label {
+            top: -12px;
+            right: 0;
+        }
+
+        .box input:focus,
+        .box input:valid{
+        border-bottom: 0.9px solid #97D7EA;
+        transition: .5s;
+    }
+
+    .box select:hover {
+        border-bottom: 0.9px solid #97D7EA;
+        transition: .5s;
+    }
+
+    .box input:hover {
+        border-bottom: 0.9px solid #97D7EA;
+        transition: .5s;
+    }
+
+    input:-webkit-autofill:focus {
+        -webkit-box-shadow: 0 0 0 30px white inset !important;
+        transition: background-color 5000s ease-in-out 0s;
+    }
+</style>
+
+<div class="box thumbnail" style="margin-top:-45px;">
+    <div>
         <form asp-action="AddProperty">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="OwnerId" />
 
-               <div class="form-group">
-                <label asp-for="PropertyTypeId" class="control-label"></label>
-                <select asp-for="PropertyTypeId" asp-items="Model.PropertyTypes" class="form-control"></select>
+            <div style="margin-top: -70px;">
+
+                <select asp-for="PropertyTypeId" asp-items="Model.PropertyTypes"></select>
                 <span asp-validation-for="PropertyTypeId" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
-                <label asp-for="Neighborhood" class="control-label"></label>
-                <input asp-for="Neighborhood" class="form-control" />
+            <div style="margin-right:250px; margin-top: -70px;">
+                <input class="name-input" asp-for="Neighborhood" required="">
+                <label asp-for="Neighborhood"></label>
                 <span asp-validation-for="Neighborhood" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
-                <label asp-for="Address" class="control-label"></label>
-                <input asp-for="Address" class="form-control" />
+            <div style="margin-right:490px; margin-top:-70px;">
+                <input asp-for="Address" required="">
+                <label asp-for="Address"></label>
                 <span asp-validation-for="Address" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
-                <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" />
+            <div style="margin-top:12px;">
+
+                <input asp-for="Price" required="">
+                <label asp-for="Price"></label>
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
-                <label asp-for="SquareMeters" class="control-label"></label>
-                <input asp-for="SquareMeters" class="form-control" />
+            <div style="margin-right:250px; margin-top: -70px;">
+
+                <input asp-for="SquareMeters" required="">
+                <label asp-for="SquareMeters"></label>
                 <span asp-validation-for="SquareMeters" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
-                <label asp-for="Rooms" class="control-label"></label>
-                <input asp-for="Rooms" class="form-control" />
+            <div style="margin-right:490px; margin-top:-70px;">
+
+                <input asp-for="Rooms" required="">
+                <label asp-for="Rooms"></label>
                 <span asp-validation-for="Rooms" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
-                <label asp-for="Stratum" class="control-label"></label>
-                <input asp-for="Stratum" class="form-control" />
+            <div style="margin-top:12px;">
+
+                <input asp-for="Stratum" required="">
+                <label asp-for="Stratum"></label>
                 <span asp-validation-for="Stratum" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
-                <label asp-for="Typeprop" class="control-label"></label>
-                <div>
-                    @Html.DropDownList("Typeprop", null, new { @class = "form-control" })
-                </div>
-            </div>
-            
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="HasParkingLot" /> @Html.DisplayNameFor(model => model.HasParkingLot)
-                    </label>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="IsAvailable" /> @Html.DisplayNameFor(model => model.IsAvailable)
-                    </label>
+            <div style="margin-right:250px; margin-top: -120px;">
+                <label asp-for="Typeprop" style="margin-top:30px;"></label>
+                <div style="">
+                    @Html.DropDownList("Typeprop", null, new { })
                 </div>
             </div>
 
-            <div class="form-group">
-                <label asp-for="Remarks" class="control-label"></label>
-                <textarea asp-for="Remarks" class="form-control"></textarea>
+            <div style="margin-top:-10px;">
+                <div class="checkbox">
+
+                    • لديها موقف سيارات ؟<input asp-for="HasParkingLot" style="width:70px;">
+
+                </div>
+            </div>
+            <div>
+                <div class="checkbox">
+
+                    • متوفر ؟<input asp-for="IsAvailable" style="width:70px">
+
+                </div>
+            </div>
+
+            <div style="margin-top:-15px;">
+
+                <textarea asp-for="Remarks" style="resize: none;"></textarea>
+                <label asp-for="Remarks" style="margin-top:20px;"></label>
                 <span asp-validation-for="Remarks" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-                <a asp-action="MyProperties" class="btn btn-success">Back to My Properties</a>
+                <div style="padding:10px">
+                    <div id="map"></div>
+                </div>
+
+                <input id="latclicked" />
+                <input id="longclicked" />
             </div>
+
+            <div style="margin-bottom: -60px;">
+                <input type="submit" value="حفظ" class="btn" style="border:none; outline:none; width:50px; background-color: #31B0D5; color:#fff;">
+                <a asp-action="MyProperties" class="btn btn-default" style="margin-top:-30px; border: none; padding:11px; background-color:#E6E6E6;">الغاء</a>
+            </div>
+
+            <span class="text-danger" style="margin-right:100px;">
+                @ViewBag.danger
+            </span>
         </form>
     </div>
 </div>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#map").click(function () {
+            var Latitude = document.getElementById('latclicked').value;
+            var Longitude = document.getElementById('longclicked').value;
+            $.ajax({
+                type: "post",
+                url: "/Home/GetPlace?Latitude=" + Latitude + "&Longitude=" + Longitude,
+                contentType: "html",
+            });
+        });
+    });
+</script>
+<script type="text/javascript">
+    var map;
+    function initMap() {
+        var latitude = 32.4589138; // YOUR LATITUDE VALUE
+        var longitude = 35.2898115; // YOUR LONGITUDE VALUE
+        var myLatLng = { lat: latitude, lng: longitude };
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: myLatLng,
+            zoom: 10,
+        });
+        // Update lat/long value of div when anywhere in the map is clicked
+        google.maps.event.addListener(map, 'click', function (event) {
+            document.getElementById('latclicked').innerHTML = event.latLng.lat();
+            document.getElementById('longclicked').innerHTML = event.latLng.lng();
+        });
+        google.maps.event.addListener(map, 'click', function (event) {
+            var marker = new google.maps.Marker({
+                position: event.latLng,
+                map: map,
+                title: event.latLng.lat() + ', ' + event.latLng.lng()
+            });
+            var lat = marker.getPosition().lat();
+            var long = marker.getPosition().lng();
+            latclicked.value = lat;
+            longclicked.value = long;
+        });
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDzxxQKGH86uDAJ-cKS3ZbrYm360vOqLI&callback=initMap"
+        async defer></script>

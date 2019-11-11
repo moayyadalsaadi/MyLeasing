@@ -1,17 +1,94 @@
 ﻿@{
-    ViewData["Title"] = "Contact";
+    ViewData["Title"] = "اتصل بنا";
 }
-<h2>@ViewData["Title"]</h2>
-<h3>@ViewData["Message"]</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+<style>
 
-<address>
-    <strong>Support:</strong> <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+    .flex-container {
+        display: flex;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    body {
+        overflow: hidden;
+        background-color: #F5F5F5;
+    }
+</style>
+
+<div class="flex-container">
+    <div class="wow bounceInUp thumbnail" data-wow-duration="2s" style="border-color:#e4e4e4; background-color:#fff;border-radius:.2px; padding:20px;">
+
+        <div><img style="border-radius:50%; border: 5px solid rgba(0, 0, 0, 0.1);" src="~/images/Home/user1.jpg" width="130" height="150"></div>
+
+        <div style="margin-top:30px;">
+            <h4 style="font-weight:bold; text-align:center;">أمير مقالدة</h4>
+        </div>
+
+        <div style="margin-top:20px;">
+            <h5 style="text-align:center;">أنظمة معلومات حاسوبية</h5>
+        </div>
+
+        <div style="margin-top:20px;">
+            <h5 style="text-align:center;">ameer@gmail.com</h5>
+        </div>
+
+        <div style="margin-top:20px;">
+            <h5 style="text-align:center;">0599-000000</h5>
+        </div>
+
+    </div>
+
+    <div class="wow bounceInUp thumbnail" data-wow-duration="2s" data-wow-delay="1s" style="border-color:#e4e4e4; margin-right:50px; background-color:#fff;border-radius:.2px; padding:20px;">
+
+        <div><img style="border-radius:50%; border: 5px solid rgba(0, 0, 0, 0.1);" src="~/images/Home/user2.png" width="130" height="150"></div>
+
+        <div style="margin-top:30px;">
+            <h4 style="font-weight:bold; text-align:center;">مرح</h4>
+        </div>
+
+        <div style="margin-top:20px;">
+            <h5 style="text-align:center;">أنظمة معلومات حاسوبية</h5>
+        </div>
+
+        <div style="margin-top:20px;">
+            <h5 style="text-align:center;">ameer@gmail.com</h5>
+        </div>
+
+        <div style="margin-top:20px;">
+            <h5 style="text-align:center;">0599-000000</h5>
+        </div>
+
+    </div>
+
+    <div class="wow bounceInUp thumbnail" data-wow-duration="2s" data-wow-delay="2s" style="border-color:#e4e4e4; margin-right:50px; background-color:#fff; border-radius:0.2px; padding:20px;">
+
+        <div><img style="border-radius:50%; border: 5px solid rgba(0, 0, 0, 0.1);" src="~/images/Home/user2.png" width="130" height="150"></div>
+
+        <div style="margin-top:30px;">
+            <h4 style="font-weight:bold; text-align:center;">يمامة</h4>
+        </div>
+
+        <div style="margin-top:20px;">
+            <h5 style="text-align:center;">أنظمة معلومات حاسوبية</h5>
+        </div>
+
+        <div style="margin-top:20px;">
+            <h5 style="text-align:center;">ameer@gmail.com</h5>
+        </div>
+
+        <div style="margin-top:20px;">
+            <h5 style="text-align:center;">0599-000000</h5>
+        </div>
+
+    </div>
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+<script src="~/js/wow.min.js"></script>
+<link rel="stylesheet" href="~/css/animate.css" />
+<script>
+    new WOW().init();
+</script>

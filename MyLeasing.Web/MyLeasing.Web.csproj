@@ -50,7 +50,6 @@
     <None Include="Views\Owners\EditProperty.cshtml" />
     <None Include="Views\Owners\Index.cshtml" />
     <None Include="Views\Owners\_Contract.cshtml" />
-    <None Include="Views\Owners\_Property.cshtml" />
     <None Include="Views\Properties\Details.cshtml" />
     <None Include="Views\Properties\Index.cshtml" />
     <None Include="Views\PropertyTypes\Create.cshtml" />

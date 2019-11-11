@@ -3,43 +3,46 @@
 @{
     ViewData["Title"] = "Index";
 }
-
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
-<br />
-
-<p>
-    <a asp-action="Create" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> انشاء جديد</a>
+<style>
+    body {
+        background-color: #f5f5f5;
+    }
+</style>
+<p style="text-align:center;">
+    <a asp-action="Create" class="btn btn-info" style="outline:none; border:none; margin-top:50px;"><i class="glyphicon glyphicon-plus"></i> انشاء جديد</a>
 </p>
 
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">المدير</h3>
+             <div class="panel-heading">
+                <h3 class="panel-title" style="text-align:center;">المدير</h3>
             </div>
             <div class="panel-body">
                 <table class="table table-hover table-responsive table-striped" id="MyTable">
                     <thead>
                         <tr>
                             <th>
-                                @Html.DisplayNameFor(model => model.FirstOrDefault().User.Document)
+رقم الهوية
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.FirstOrDefault().User.FirstName)
+الاسم الاول                    
+        </th>
+                            <th>
+الاسم الاخير
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.FirstOrDefault().User.LastName)
+العنوان
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.FirstOrDefault().User.Address)
+                                البريد الالكتروني
                             </th>
                             <th>
-                              البريد الالكتروني
+                                رقم الهاتف
                             </th>
-                            <th>
-                              رقم الهاتف
-                            </th>
-                            <th></th>
+                            <th>تعديل</th>
+                            <th>تفاصيل</th>
+                            <th>حذف</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -66,7 +69,13 @@
                                 </td>
                                 <td>
                                     <a asp-action="Edit" class="btn btn-default" asp-route-id="@item.Id"><i class="glyphicon glyphicon-pencil"></i> </a>
+                                </td>
+
+                                <td>
                                     <a asp-action="Details" class="btn btn-default" asp-route-id="@item.Id"><i class="glyphicon glyphicon-list"> </i> </a>
+                                </td>
+
+                                <td>
                                     <button data-id="@item.Id" class="btn btn-danger deleteItem" data-toggle="modal" data-target="#deleteDialog"><i class="glyphicon glyphicon-trash"></i></button>
                                 </td>
                             </tr>
@@ -83,21 +92,23 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-
     <script type="text/javascript">
         $(document).ready(function () {
             $('#MyTable').DataTable();
-
             // Delete item
             var item_to_delete;
-
             $('.deleteItem').click((e) => {
                 item_to_delete = e.currentTarget.dataset.id;
             });
-
             $("#btnYesDelete").click(function () {
                 window.location.href = '/Managers/Delete/' + item_to_delete;
             });
         });
+
+         $('#MyTable').DataTable( {
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Arabic.json"
+        }
+    } );
     </script>
 }

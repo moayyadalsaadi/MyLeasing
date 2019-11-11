@@ -1,23 +1,29 @@
 ﻿@model MyLeasing.Web.Models.EditUserViewModel
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "تعديل";
 }
+<style>
 
-<h2>Edit</h2>
+    body {
+        background-color: #F5F5F5;
+    }
+</style>
 
-<h4>Owner</h4>
-<hr />
-<div class="row">
+<div style="margin-top:50px;">
+    <button type="button" class="btn btn-light" style="border:none; outline: none;">البيانات الشخصية / تعديل</button>
+</div>
+
+<div class="row thumbnail" style="margin-top:20px;
+        background-color: #fff;padding: 50px;border-radius: 5px;">
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
 
-            <partial name="_User"/>
+            <partial name="_User" />
 
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-                <a asp-action="Index" class="btn btn-success">Back to List</a>
+            <div class="form-group" style="margin-top:15px; margin-bottom:-10px;">
+                <input type="submit" value="حفظ" class="btn btn-info" style="border:none; outline: none;" />
             </div>
         </form>
     </div>
@@ -26,3 +32,4 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+

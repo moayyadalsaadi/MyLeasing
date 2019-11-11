@@ -1,11 +1,13 @@
 ﻿@model MyLeasing.Web.Models.LoginViewModel
 @{
-    ViewData["Title"] = "Login";
+    ViewData["Title"] = "تسجيل الدخول";
 }
-
 
 <style>
 
+    body, html {
+        height: 100%;
+    }
 
     .box {
         position: absolute;
@@ -35,7 +37,7 @@
             position: relative;
         }
 
-        .box form div label {
+            .box form div label {
                 position: absolute;
                 top: 10px;
                 right: 0px;
@@ -50,49 +52,55 @@
         }
 
         .box input:focus,
-        .box input:valid{
-        border-bottom:1px solid #f2f2f2;
+        .box input:valid {
+            border-bottom: 1px solid #f2f2f2;
+        }
+
+    .bg-img {
+        background-image: url('../images/Home/bg.jpg');
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
     }
 </style>
 
 
-<body style="background-image:url('../images/Home/bg.jpg')">
+<body class="bg-img">
 
     <div class="box" style="margin-top:50px;">
         <div style="height:90px; width: 80px;  border-radius:50%; box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2); margin-top:-90px ; margin-right:110px;">
             <img src="~/lib/user.png" height="90" width="80">
         </div>
 
-
         <form method="post">
 
-  <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
-            <div asp-validation-summary="ModelOnly" style="margin-top:30px ;"  class="text-danger">
+            <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+            <div asp-validation-summary="ModelOnly" style="margin-top:30px ;" class="text-danger">
             </div>
             <div style="margin-top:30px ;margin-bottom:20px;">
                 <input type="text" asp-for="Username" required="">
-                <label asp-for="Username"> </label>
-              <span style="margin-top:50px; right:0; position:absolute; " asp-validation-for="Username" class="text-danger"></span>
+                <label asp-for="Username" style="color:#929384;"> </label>
+                <span style="margin-top:50px; right:0; position:absolute; " asp-validation-for="Username" class="text-danger"></span>
 
             </div>
             <div style="margin-top:20px ;margin-bottom:20px;">
                 <input type="password" asp-for="Password" required="">
-                <label asp-for="Password"> </label>
-              <span style="margin-top:50px; right:0; position:absolute; " asp-validation-for="Password" class="text-danger"></span>
+                <label asp-for="Password" style="color:#929384;"> </label>
+                <span style="margin-top:50px; right:0; position:absolute; " asp-validation-for="Password" class="text-danger"></span>
             </div>
 
-          
             <div>
                 <div>
                     <input asp-for="RememberMe" type="checkbox" style="margin-right:-145px; margin-top:20px ;" />
-                    <label asp-for="RememberMe" class="form-check-label"></label>
+                    <label asp-for="RememberMe" style="color:#929384;" class="form-check-label"></label>
                 </div>
                 <span asp-validation-for="RememberMe" class="text-warning"></span>
             </div>
 
             <div>
                 <input type="submit" value="تسجيل الدخول" class="btn btn-info" style="width:80px; background-color:#31B0D5; border:none; color:#fff;" />
-                <a asp-action="Register" class="btn btn-info" style="width:120px; margin-top:-30px ; border: none; padding:11px; margin-right:10px;">تسجيل حساب جديد</a>
+                <a asp-action="Register" class="btn btn-default" style="width:120px; margin-top:-30px ; border: none; padding:11px; margin-right:10px; background-color:#E6E6E6;">تسجيل حساب جديد</a>
 
             </div>
 
@@ -100,7 +108,6 @@
         </form>
     </div>
 </body>
-
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

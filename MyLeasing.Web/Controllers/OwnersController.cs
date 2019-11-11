@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Plugin.Settings;
+using Plugin.Settings.Abstractions;
 using MyLeasing.Web.Data;
 using MyLeasing.Web.Data.Entities;
 using MyLeasing.Web.Helpers;
@@ -22,6 +24,31 @@ namespace MyLeasing.Web.Controllers
         private readonly IConverterHelper _converterHelper;
         private readonly IImageHelper _imageHelper;
         private readonly IMailHelper _mailHelper;
+
+        private static ISettings AppSettings => CrossSettings.Current;
+
+        public static string Latt
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault("Latt", "");
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue("Latt", value);
+            }
+        }
+        public static string Lngt
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault("Lngt", "");
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue("Lngt", value);
+            }
+        }
 
         public OwnersController(
             DataContext dataContext,
@@ -57,10 +84,9 @@ namespace MyLeasing.Web.Controllers
             var owner = await _dataContext.Owners
                 .Include(o => o.User)
                 .Include(o => o.Properties)
+                .ThenInclude(p => p.PropertyType)
+                .Include(o => o.Properties)
                 .ThenInclude(p => p.PropertyImages)
-                .Include(o => o.Contracts)
-                .ThenInclude(c => c.Lessee)
-                .ThenInclude(l => l.User)
                 .FirstOrDefaultAsync(o => o.Id == id);
             if (owner == null)
             {
@@ -82,6 +108,11 @@ namespace MyLeasing.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (!Captcha.ValidateCaptchaCode(model.CaptchaCode, HttpContext))
+                {
+                    ViewBag.danger = "خطا كلمة التحقق غير صحيحة";
+                    return View(model);
+                }
                 var user = await CreateUserAsync(model);
                 if (user != null)
                 {
@@ -102,47 +133,10 @@ namespace MyLeasing.Web.Controllers
                         token = myToken
                     }, protocol: HttpContext.Request.Scheme);
 
-                    _mailHelper.SendMail(model.Username, "Email confirmation",
-                          $"<table style = 'max-width: 600px; padding: 10px; margin:0 auto; border-collapse: collapse;'>" +
-                          $"  <tr>" +
-                          $"    <td style = 'background-color: #34495e; text-align: center; padding: 0'>" +
-                          $"       <a href = 'https://www.facebook.com/NuskeCIV/' >" +
-                          $"         <img width = '20%' style = 'display:block; margin: 1.5% 3%' src= 'https://veterinarianuske.com/wp-content/uploads/2016/10/line_separator.png'>" +
-                          $"       </a>" +
-                          $"  </td>" +
-                          $"  </tr>" +
-                          $"  <tr>" +
-                          $"  <td style = 'padding: 0'>" +
-                          $"     <img style = 'padding: 0; display: block' src = 'https://veterinarianuske.com/wp-content/uploads/2018/07/logo-nnske-blanck.jpg' width = '100%'>" +
-                          $"  </td>" +
-                          $"</tr>" +
-                          $"<tr>" +
-                          $" <td style = 'background-color: #ecf0f1'>" +
-                          $"      <div style = 'color: #34495e; margin: 4% 10% 2%; text-align: justify;font-family: sans-serif'>" +
-                          $"            <h1 style = 'color: #e67e22; margin: 0 0 7px' > Hola </h1>" +
-                          $"                    <p style = 'margin: 2px; font-size: 15px'>" +
-                          $"                      El mejor Hospital Veterinario Especializado de la Ciudad de Morelia enfocado a brindar servicios médicos y quirúrgicos<br>" +
-                          $"                      aplicando las técnicas más actuales y equipo de vanguardia para diagnósticos precisos y tratamientos oportunos..<br>" +
-                          $"                      Entre los servicios tenemos:</p>" +
-                          $"      <ul style = 'font-size: 15px;  margin: 10px 0'>" +
-                          $"        <li> Urgencias.</li>" +
-                          $"        <li> Medicina Interna.</li>" +
-                          $"        <li> Imagenologia.</li>" +
-                          $"        <li> Pruebas de laboratorio y gabinete.</li>" +
-                          $"        <li> Estetica canina.</li>" +
-                          $"      </ul>" +
-                          $"  <div style = 'width: 100%;margin:20px 0; display: inline-block;text-align: center'>" +
-                          $"    <img style = 'padding: 0; width: 200px; margin: 5px' src = 'https://veterinarianuske.com/wp-content/uploads/2018/07/tarjetas.png'>" +
-                          $"  </div>" +
-                          $"  <div style = 'width: 100%; text-align: center'>" +
-                          $"    <h2 style = 'color: #e67e22; margin: 0 0 7px' >Email Confirmation </h2>" +
-                          $"    To allow the user,plase click in this link:</ br ></ br > " +
-                          $"    <a style ='text-decoration: none; border-radius: 5px; padding: 11px 23px; color: white; background-color: #3498db' href = \"{tokenLink}\">Confirm Email</a>" +
-                          $"    <p style = 'color: #b3b3b3; font-size: 12px; text-align: center;margin: 30px 0 0' > Nuskë Clinica Integral Veterinaria 2019 </p>" +
-                          $"  </div>" +
-                          $" </td >" +
-                          $"</tr>" +
-                          $"</table>");
+                    _mailHelper.SendMail(model.Username, "Email confirmation", $"<h1>Email Confirmation</h1>" +
+                        $"To allow the user, " +
+                        $"plase click in this link:</br></br><a href = \"{tokenLink}\">Confirm Email</a>");
+
 
                     return RedirectToAction("Index");
                 }
@@ -283,6 +277,8 @@ namespace MyLeasing.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                model.Latitude = Convert.ToDouble(Latt);
+                model.Longitude = Convert.ToDouble(Lngt);
                 ViewBag.Typeprop = new SelectList(new[] { "بيع", "استئجار" });
                 var property = await _converterHelper.ToPropertyAsync(model, true);
                 _dataContext.Properties.Add(property);
@@ -320,7 +316,9 @@ namespace MyLeasing.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                 ViewBag.Typeprop = new SelectList(new[] { "بيع", "استئجار" });
+                model.Latitude = Convert.ToDouble(Latt);
+                model.Longitude = Convert.ToDouble(Lngt);
+                ViewBag.Typeprop = new SelectList(new[] { "بيع", "استئجار" });
                 var property = await _converterHelper.ToPropertyAsync(model, false);
                 _dataContext.Properties.Update(property);
                 await _dataContext.SaveChangesAsync();
@@ -330,6 +328,21 @@ namespace MyLeasing.Web.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        public JsonResult GetPlae(string Latitude, string Longitude)
+        {
+            Latt = null;
+            Lngt = null;
+            try {
+                Latt = Latitude;
+                Lngt = Longitude;             
+            }
+            catch(Exception e)
+            {
+                ViewBag.danger = e.Message;
+            }
+            return Json(Latt);
+        }
         public async Task<IActionResult> DetailsProperty(int? id)
         {
             if (id == null)

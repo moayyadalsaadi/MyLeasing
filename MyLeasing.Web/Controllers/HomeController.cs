@@ -6,6 +6,8 @@ using MyLeasing.Web.Data;
 using MyLeasing.Web.Data.Entities;
 using MyLeasing.Web.Helpers;
 using MyLeasing.Web.Models;
+using Plugin.Settings;
+using Plugin.Settings.Abstractions;
 using ReflectionIT.Mvc.Paging;
 using System;
 using System.Diagnostics;
@@ -20,6 +22,31 @@ namespace MyLeasing.Web.Controllers
         private readonly DataContext _dataContext;
         private readonly ICombosHelper _combosHelper;
         private readonly IConverterHelper _converterHelper;
+   
+        private static ISettings AppSettings => CrossSettings.Current;
+        
+        public static string Lat
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault("Lat", "");
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue("Lat", value);
+            }
+        }
+        public static string Lng
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault("lng", "");
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue("lng", value);
+            }
+        }
 
         public HomeController(
             DataContext dataContext,
@@ -38,21 +65,18 @@ namespace MyLeasing.Web.Controllers
                 .Include(p => p.PropertyImages)
                 .Where(p => p.IsAvailable)
                 .OrderBy(p => p.Id);
-            var model = await PagingList.CreateAsync(query, 3, page);
+            var model = await PagingList.CreateAsync(query, 5, page);
             return View(model);
         }
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
 
             return View();
         }
 
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Your contact page.";
-
             return View();
         }
 
@@ -74,22 +98,26 @@ namespace MyLeasing.Web.Controllers
         }
 
 
-        public IActionResult SalePage()
+        public async Task<IActionResult> SalePage(int page = 1)
         {
-            return View(_dataContext.Properties
+            var query = _dataContext.Properties
                 .Include(p => p.PropertyType)
                 .Include(p => p.PropertyImages)
-                .Where(p => p.Typeprop=="بيع")
-                .OrderByDescending(p => p.Id));
+                .Where(p => p.Typeprop == "بيع")
+                .OrderByDescending(p => p.Id);
+            var model = await PagingList.CreateAsync(query, 15, page);
+            return View(model);
         }
 
-        public IActionResult RentPage()
+        public async Task<IActionResult> RentPage(int page = 1)
         {
-            return View(_dataContext.Properties
+            var query = _dataContext.Properties
                 .Include(p => p.PropertyType)
                 .Include(p => p.PropertyImages)
                 .Where(p => p.Typeprop == "استئجار")
-                .OrderByDescending(p => p.Id));
+                .OrderByDescending(p => p.Id);
+            var model = await PagingList.CreateAsync(query, 15, page);
+            return View(model);
         }
 
         public async Task<IActionResult> DetailsProperty(int? id)
@@ -127,7 +155,6 @@ namespace MyLeasing.Web.Controllers
             {
                 return NotFound();
             }
-
             return View(owner);
         }
 
@@ -160,6 +187,8 @@ namespace MyLeasing.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                model.Latitude = Convert.ToDouble(Lat);
+                model.Longitude = Convert.ToDouble(Lng);
                 ViewBag.Typeprop = new SelectList(new[] { "بيع", "استئجار" });
                 var property = await _converterHelper.ToPropertyAsync(model, true);
                 _dataContext.Properties.Add(property);
@@ -198,6 +227,8 @@ namespace MyLeasing.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                model.Latitude = Convert.ToDouble(Lat);
+                model.Longitude = Convert.ToDouble(Lng);
                 ViewBag.Typeprop = new SelectList(new[] { "بيع", "استئجار" });
                 var property = await _converterHelper.ToPropertyAsync(model, false);
                 _dataContext.Properties.Update(property);
@@ -207,6 +238,23 @@ namespace MyLeasing.Web.Controllers
 
             model.PropertyTypes = _combosHelper.GetComboPropertyTypes();
             return View(model);
+        }
+
+        [HttpPost]
+        public JsonResult GetPlace(string Latitude, string Longitude)
+        {
+            Lat = null;
+            Lng = null;
+            try
+            {
+                Lat = Latitude;
+                Lng = Longitude;
+            }
+            catch (Exception e)
+            {
+                ViewBag.danger = e.Message;
+            }
+            return Json(Lat);
         }
 
         [Authorize(Roles = "Owner")]
