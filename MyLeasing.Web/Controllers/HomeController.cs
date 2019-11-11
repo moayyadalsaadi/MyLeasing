@@ -11,8 +11,8 @@ using Plugin.Settings.Abstractions;
 using ReflectionIT.Mvc.Paging;
 using System;
 using System.Diagnostics;
-using System.IO;
 using System.Linq;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace MyLeasing.Web.Controllers
@@ -22,9 +22,9 @@ namespace MyLeasing.Web.Controllers
         private readonly DataContext _dataContext;
         private readonly ICombosHelper _combosHelper;
         private readonly IConverterHelper _converterHelper;
-   
+
         private static ISettings AppSettings => CrossSettings.Current;
-        
+
         public static string Lat
         {
             get
@@ -64,7 +64,7 @@ namespace MyLeasing.Web.Controllers
                 .Include(p => p.PropertyType)
                 .Include(p => p.PropertyImages)
                 .Where(p => p.IsAvailable)
-                .OrderBy(p => p.Id);
+                .OrderByDescending(p => p.Id);
             var model = await PagingList.CreateAsync(query, 5, page);
             return View(model);
         }
