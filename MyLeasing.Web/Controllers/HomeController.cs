@@ -64,19 +64,22 @@ namespace MyLeasing.Web.Controllers
                 .Include(p => p.PropertyType)
                 .Include(p => p.PropertyImages)
                 .Where(p => p.IsAvailable)
-                .OrderByDescending(p => p.Id);
-            var model = await PagingList.CreateAsync(query, 5, page);
+                .OrderBy(p => p.Id);
+            var model = await PagingList.CreateAsync(query, 3, page);
             return View(model);
         }
 
         public IActionResult About()
         {
+            ViewData["Message"] = "Your application description page.";
 
             return View();
         }
 
         public IActionResult Contact()
         {
+            ViewData["Message"] = "Your contact page.";
+
             return View();
         }
 
@@ -100,7 +103,7 @@ namespace MyLeasing.Web.Controllers
 
         public async Task<IActionResult> SalePage(int page = 1)
         {
-            var query = _dataContext.Properties
+            return View(_dataContext.Properties
                 .Include(p => p.PropertyType)
                 .Include(p => p.PropertyImages)
                 .Where(p => p.Typeprop == "بيع")
@@ -111,7 +114,7 @@ namespace MyLeasing.Web.Controllers
 
         public async Task<IActionResult> RentPage(int page = 1)
         {
-            var query = _dataContext.Properties
+            return View(_dataContext.Properties
                 .Include(p => p.PropertyType)
                 .Include(p => p.PropertyImages)
                 .Where(p => p.Typeprop == "استئجار")
@@ -157,7 +160,7 @@ namespace MyLeasing.Web.Controllers
             }
             return View(owner);
         }
-
+        
         [Authorize(Roles = "Owner")]
         public async Task<IActionResult> AddProperty(int? id)
         {
