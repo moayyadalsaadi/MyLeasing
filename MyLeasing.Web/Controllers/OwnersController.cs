@@ -12,7 +12,7 @@ using MyLeasing.Web.Data;
 using MyLeasing.Web.Data.Entities;
 using MyLeasing.Web.Helpers;
 using MyLeasing.Web.Models;
-
+ 
 namespace MyLeasing.Web.Controllers
 {
     [Authorize(Roles = "Manager")]
