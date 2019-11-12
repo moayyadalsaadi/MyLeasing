@@ -277,6 +277,11 @@ namespace MyLeasing.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (string.IsNullOrEmpty(Latt) && string.IsNullOrEmpty(Lngt))
+                {
+                    Latt = "32.4589138";
+                    Lngt = "35.2898115";
+                }
                 model.Latitude = Convert.ToDouble(Latt);
                 model.Longitude = Convert.ToDouble(Lngt);
                 ViewBag.Typeprop = new SelectList(new[] { "بيع", "استئجار" });
