@@ -14,7 +14,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
- 
+
 namespace MyLeasing.Web.Controllers
 {
     public class HomeController : Controller
@@ -98,23 +98,53 @@ namespace MyLeasing.Web.Controllers
         }
 
 
-        public async Task<IActionResult> SalePage(int page = 1)
+        public async Task<IActionResult> SalePage(string search = null, int page = 1)
         {
+            if (!string.IsNullOrEmpty(search))
+            {
+                var quer = _dataContext.Properties
+                .Include(p => p.PropertyType)
+                .Include(p => p.PropertyImages)
+                .Where(p => (p.Neighborhood.Contains(search) ||
+                 p.Price.ToString().Contains(search) ||
+                p.PropertyType.Name.Contains(search)) &&
+                p.Typeprop == "بيع" &&
+                 p.IsAvailable)
+                .OrderByDescending(p => p.Id);
+                var mode = await PagingList.CreateAsync(quer, 15, page);
+                return View(mode);
+            }
             var query = _dataContext.Properties
                 .Include(p => p.PropertyType)
                 .Include(p => p.PropertyImages)
-                .Where(p => p.Typeprop == "بيع")
+                .Where(p => p.Typeprop == "بيع" &&
+                p.IsAvailable)
                 .OrderByDescending(p => p.Id);
             var model = await PagingList.CreateAsync(query, 15, page);
             return View(model);
         }
 
-        public async Task<IActionResult> RentPage(int page = 1)
+        public async Task<IActionResult> RentPage(string search = null, int page = 1)
         {
+            if (!string.IsNullOrEmpty(search))
+            {
+                var quer = _dataContext.Properties
+                .Include(p => p.PropertyType)
+                .Include(p => p.PropertyImages)
+                .Where(p => (p.Neighborhood.Contains(search) ||
+                 p.Price.ToString().Contains(search) ||
+                p.PropertyType.Name.Contains(search)) &&
+                p.Typeprop == "استئجار" &&
+                 p.IsAvailable)
+                .OrderByDescending(p => p.Id);
+                var mode = await PagingList.CreateAsync(quer, 15, page);
+                return View(mode);
+            }
             var query = _dataContext.Properties
                 .Include(p => p.PropertyType)
                 .Include(p => p.PropertyImages)
-                .Where(p => p.Typeprop == "استئجار")
+                .Where(p => p.Typeprop == "استئجار" &&
+                p.IsAvailable)
                 .OrderByDescending(p => p.Id);
             var model = await PagingList.CreateAsync(query, 15, page);
             return View(model);
@@ -222,7 +252,7 @@ namespace MyLeasing.Web.Controllers
                 return NotFound();
             }
 
-            var model = _converterHelper.ToPropertyViewModel(property); 
+            var model = _converterHelper.ToPropertyViewModel(property);
             ViewBag.Typeprop = new SelectList(new[] { "بيع", "استئجار" });
             return View(model);
         }

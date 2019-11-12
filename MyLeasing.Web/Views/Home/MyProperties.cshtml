@@ -4,10 +4,28 @@
     ViewData["Title"] = "عقاراتي";
 }
 
+
 <style>
 
     body {
         background-color: #f5f5f5;
+    }
+
+    #MyTable_length {
+        direction: ltr;
+        margin-left: -101%;
+        margin-bottom: 3%;
+    }
+
+    #MyTable_filter {
+        position: absolute;
+        margin-right: -98%;
+        margin-bottom: 3%;
+    }
+
+    #MyTable_paginate {
+        margin-top: 40px;
+        margin-right: -75%;
     }
 </style>
 <p style="text-align:center;">
@@ -96,7 +114,8 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/jquery.dataTables.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/dataTables.bootstrap.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             $('#MyTable').DataTable();
@@ -115,7 +134,7 @@
 
         $('#MyTable').DataTable({
             "language": {
-                "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Arabic.json"
+                "url": "../lib/Arabic.json"
             }
         });
     </script>
