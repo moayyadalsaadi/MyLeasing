@@ -110,11 +110,9 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="OwnerId" />
             <input type="hidden" asp-for="Id" />
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="OwnerId" />
 
             <div style="margin-top: -70px;">
-
+                <label asp-for="PropertyTypeId" style="margin-top:30px;"></label>
                 <select asp-for="PropertyTypeId" asp-items="Model.PropertyTypes"></select>
                 <span asp-validation-for="PropertyTypeId" class="text-danger"></span>
             </div>
@@ -162,7 +160,7 @@
             <div style="margin-right:250px; margin-top: -120px;">
                 <label asp-for="Typeprop" style="margin-top:30px;"></label>
                 <div style="">
-                    @Html.DropDownList("Typeprop", null, new { })
+                    @Html.DropDownListFor(m => m.Typeprop, null, new { })
                 </div>
             </div>
 

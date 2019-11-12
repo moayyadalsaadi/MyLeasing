@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -103,7 +103,7 @@ namespace MyLeasing.Web.Controllers
             var query = _dataContext.Properties
                 .Include(p => p.PropertyType)
                 .Include(p => p.PropertyImages)
-                .Where(p => p.Typeprop == "???")
+                .Where(p => p.Typeprop == "بيع")
                 .OrderByDescending(p => p.Id);
             var model = await PagingList.CreateAsync(query, 15, page);
             return View(model);
@@ -114,7 +114,7 @@ namespace MyLeasing.Web.Controllers
             var query = _dataContext.Properties
                 .Include(p => p.PropertyType)
                 .Include(p => p.PropertyImages)
-                .Where(p => p.Typeprop == "???????")
+                .Where(p => p.Typeprop == "استئجار")
                 .OrderByDescending(p => p.Id);
             var model = await PagingList.CreateAsync(query, 15, page);
             return View(model);
@@ -127,7 +127,13 @@ namespace MyLeasing.Web.Controllers
                 return NotFound();
             }
 
-            var property = await _dataContext.Properties
+            var property = await
+                _dataContext.Properties
+                .Include(o => o.Owner)
+                .ThenInclude(o => o.User)
+                .Include(o => o.Contracts)
+                .ThenInclude(c => c.Lessee)
+                .ThenInclude(l => l.User)
                 .Include(o => o.PropertyType)
                 .Include(p => p.PropertyImages)
                 .FirstOrDefaultAsync(m => m.Id == id);
@@ -177,8 +183,7 @@ namespace MyLeasing.Web.Controllers
                 OwnerId = owner.Id,
                 PropertyTypes = _combosHelper.GetComboPropertyTypes()
             };
-
-            ViewBag.Typeprop = new SelectList(new[] { "???", "???????" });
+            ViewBag.Typeprop = new SelectList(new[] { "بيع", "استئجار" });
             return View(model);
         }
 
@@ -189,7 +194,7 @@ namespace MyLeasing.Web.Controllers
             {
                 model.Latitude = Convert.ToDouble(Lat);
                 model.Longitude = Convert.ToDouble(Lng);
-                ViewBag.Typeprop = new SelectList(new[] { "???", "???????" });
+                ViewBag.Typeprop = new SelectList(new[] { "بيع", "استئجار" });
                 var property = await _converterHelper.ToPropertyAsync(model, true);
                 _dataContext.Properties.Add(property);
                 await _dataContext.SaveChangesAsync();
@@ -217,8 +222,8 @@ namespace MyLeasing.Web.Controllers
                 return NotFound();
             }
 
-            var model = _converterHelper.ToPropertyViewModel(property);
-            ViewBag.Typeprop = new SelectList(new[] { "???", "???????" });
+            var model = _converterHelper.ToPropertyViewModel(property); 
+            ViewBag.Typeprop = new SelectList(new[] { "بيع", "استئجار" });
             return View(model);
         }
 
@@ -229,7 +234,7 @@ namespace MyLeasing.Web.Controllers
             {
                 model.Latitude = Convert.ToDouble(Lat);
                 model.Longitude = Convert.ToDouble(Lng);
-                ViewBag.Typeprop = new SelectList(new[] { "???", "???????" });
+                ViewBag.Typeprop = new SelectList(new[] { "بيع", "استئجار" });
                 var property = await _converterHelper.ToPropertyAsync(model, false);
                 _dataContext.Properties.Update(property);
                 await _dataContext.SaveChangesAsync();

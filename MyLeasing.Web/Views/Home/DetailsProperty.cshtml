@@ -80,6 +80,21 @@
     </dd>
 </dl>
 <dl>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <dt>
+            اسم المالك :
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Owner.User.FullName)
+        </dd>
+        <dt>
+            رقم الجوال :
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Owner.User.PhoneNumber)
+        </dd>
+    }
     <dt>
         طبيعة العقار :
     </dt>

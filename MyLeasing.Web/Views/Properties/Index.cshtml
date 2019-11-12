@@ -21,6 +21,9 @@
                     <thead>
                         <tr>
                             <th>
+                                رقم العقار
+                            </th>
+                            <th>
                                 نوع العقار
                             </th>
                             <th>
@@ -57,10 +60,13 @@
                         {
                         <tr>
                             <td>
+                                @Html.DisplayFor(modelItem => item.Id)
+                            </td>
+                            <td>
                                 @Html.DisplayFor(modelItem => item.PropertyType.Name)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Owner.User.FullNameWithDocument)
+                                @Html.DisplayFor(modelItem => item.Owner.User.FullName)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Neighborhood)

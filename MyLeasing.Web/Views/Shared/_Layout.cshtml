@@ -53,16 +53,16 @@ body::-webkit-scrollbar {
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand"><img src="~/lib/logo.jpg"height="50" width="50" style="margin-top:-8px;border-radius:5px;"></a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand"><img src="~/images/Home/logo.jpg" height="50" width="50" style="margin-top:-8px;border-radius:5px;"></a>
             </div>
-            
-            <div class="navbar-collapse collapse" style="height:64px; background-color:#484F61; box-shadow: 0 1px 0px 0 rgba(0, 0, 0, 0.2)" >
+
+            <div class="navbar-collapse collapse" style="height:64px; background-color:#484F61; box-shadow: 0 1px 0px 0 rgba(0, 0, 0, 0.2)">
                 <ul class="nav navbar-nav">
-                 <li class="btn_info"><a asp-area="" asp-controller="Home" asp-action="Index" >الرئيسية</a></li>
-                <li style="margin-top: 20px;">|</li>
+                    <li class="btn_info"><a asp-area="" asp-controller="Home" asp-action="Index">الرئيسية</a></li>
+                    <li style="margin-top: 20px;">|</li>
                     @if (User.Identity.IsAuthenticated && User.IsInRole("Manager"))
                     {
-                        
+
                         <li class="btn_info"><a asp-area="" asp-controller="Lessees" asp-action="Index">مستاجر</a></li>
                         <li style="margin-top: 20px;">|</li>
                         <li class="btn_info"><a asp-area="" asp-controller="Managers" asp-action="Index">مدير</a></li>
@@ -79,7 +79,8 @@ body::-webkit-scrollbar {
                     {
                         <li class="btn_info"><a asp-area="" asp-controller="Home" asp-action="SalePage">بيع</a></li>
                         <li style="margin-top: 20px;">|</li>
-                        <li class="btn_info"><a asp-area="" asp-controller="Home" asp-action="RentPage">استئجار</a></li>                 
+                        <li class="btn_info"><a asp-area="" asp-controller="Home" asp-action="RentPage">استئجار</a></li>
+
                     }
                 </ul>
                 <ul class="nav navbar-nav">
@@ -88,12 +89,12 @@ body::-webkit-scrollbar {
                         <li style="margin-top: 20px;">|</li>
                         <li class="btn_info"><a asp-area="" asp-controller="Home" asp-action="MyProperties">عقاراتي</a></li>
                     }
-                    @if(!User.IsInRole("Manager"))
+                    @if (!User.IsInRole("Manager"))
                     {
                         <li style="margin-top: 20px;">|</li>
-                        <li class="btn_info"><a asp-area="" asp-controller="Home" asp-action="About" >حول الموقع</a></li>
-                       <li style="margin-top: 20px;">|</li>
-                        <li class="btn_info"><a asp-area="" asp-controller="Home" asp-action="contact" >اتصل بنا</a></li>
+                        <li class="btn_info"><a asp-area="" asp-controller="Home" asp-action="About">حول الموقع</a></li>
+                        <li style="margin-top: 20px;">|</li>
+                        <li class="btn_info"><a asp-area="" asp-controller="Home" asp-action="contact">اتصل بنا</a></li>
                     }
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
