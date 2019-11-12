@@ -17,6 +17,7 @@
 
 <style>
 
+
     body {
         background-color: #F5F5F5;
     }
@@ -135,7 +136,7 @@
                     <img id="img-captcha" src="~/get-captcha-image" style="width:250px;" />
                 </div>
                 <br />
-                <input style=" padding: 0px;" type="text"  placeholder="كود التحقق" asp-for="CaptchaCode" maxlength="6" />
+                <input style=" padding: 0px;" type="text" placeholder="كود التحقق" asp-for="CaptchaCode" maxlength="6" />
                 <span asp-validation-for="CaptchaCode" class="text-danger"></span>
             </div>
 
