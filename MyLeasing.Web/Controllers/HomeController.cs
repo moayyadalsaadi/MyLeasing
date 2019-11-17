@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -228,8 +228,9 @@ namespace MyLeasing.Web.Controllers
                     Lng ="35.2898115";
                 }
                 model.Latitude = Convert.ToDouble(Lat);
-                model.Longitude = Convert.ToDouble(Lng);
-                ViewBag.Typeprop = new SelectList(new[] { "بيع", "استئجار" });
+                model.Longitude = Convert.ToDouble(Lng);           
+            ViewBag.Typeprop = new SelectList(new[] { "بيع", "استئجار" });
+
                 var property = await _converterHelper.ToPropertyAsync(model, true);
                 _dataContext.Properties.Add(property);
                 await _dataContext.SaveChangesAsync();
@@ -267,8 +268,11 @@ namespace MyLeasing.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                model.Latitude = Convert.ToDouble(Lat);
-                model.Longitude = Convert.ToDouble(Lng);
+                if (!string.IsNullOrEmpty(Lat) && !string.IsNullOrEmpty(Lng))
+                {
+                    model.Latitude = Convert.ToDouble(Lat);
+                    model.Longitude = Convert.ToDouble(Lng);
+                }
                 ViewBag.Typeprop = new SelectList(new[] { "بيع", "استئجار" });
                 var property = await _converterHelper.ToPropertyAsync(model, false);
                 _dataContext.Properties.Update(property);
@@ -415,6 +419,7 @@ namespace MyLeasing.Web.Controllers
             var property = await _dataContext.Properties
                 .Include(p => p.Owner)
                 .Include(p => p.Contracts)
+                .Include(p => p.PropertyImages)
                 .FirstOrDefaultAsync(pi => pi.Id == id.Value);
             if (property == null)
             {
@@ -425,7 +430,10 @@ namespace MyLeasing.Web.Controllers
             {
                 return RedirectToAction(nameof(MyProperties));
             }
-
+            if (property.PropertyImages?.Count > 0)
+            {
+                 _dataContext.PropertyImages.RemoveRange(property.PropertyImages);
+            }          
             _dataContext.Properties.Remove(property);
             await _dataContext.SaveChangesAsync();
             return RedirectToAction(nameof(MyProperties));

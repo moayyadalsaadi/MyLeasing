@@ -321,8 +321,11 @@ namespace MyLeasing.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                model.Latitude = Convert.ToDouble(Latt);
-                model.Longitude = Convert.ToDouble(Lngt);
+                if (!string.IsNullOrEmpty(Latt) && !string.IsNullOrEmpty(Lngt))
+                {
+                    model.Latitude = Convert.ToDouble(Latt);
+                    model.Longitude = Convert.ToDouble(Lngt);
+                }
                 ViewBag.Typeprop = new SelectList(new[] { "بيع", "استئجار" });
                 var property = await _converterHelper.ToPropertyAsync(model, false);
                 _dataContext.Properties.Update(property);

@@ -9,10 +9,14 @@
     body {
         background-color: #F5F5F5;
     }
+
 </style>
-<div class="row">
-    <div class="row">
-        <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000" style="margin-top: 25px; width:100%;">
+
+
+
+<div style="width: 99%; margin:.5%; margin-top:25px;  height:300px;">
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000" style="margin-top: 25px; width:100%;">
             <ol class="carousel-indicators">
                 <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                 <li data-target="#myCarousel" data-slide-to="1"></li>
@@ -46,20 +50,23 @@
                 <span class="sr-only">Next</span>
             </a>
         </div>
-    </div>
+
 </div>
 
-<div class="row">
-    <div class="row">
-        <h2 style="text-align:center;">العقارات المتاحة</h2>
-        @foreach (var item in Model)
+
+
+
+<div style="width: 100%;  margin-top:15px; height:390px; ">
+<h3 style="font-weight: bold; padding-top:7px; margin-right:6px;">اخر العقارات</h3>
+@foreach (var item in Model)
         {
-            <div class="col-md-3 col-sm-5 col-xs-11  thumbnail " style="border-color:#e4e4e4; width: 229px;  border-radius:.2px; margin-right:10px;">
+            <div class="col-md-3 col-sm-5 col-xs-11  thumbnail " style="border-color:#e4e4e4; width:19%; margin:.5%;    border-radius:.2px;">
                 @if (!string.IsNullOrEmpty(item.FirstImage))
                 {
                     <img src="@Url.Content(item.FirstImage)" alt="Image" style="width:300px;height:300px;max-width: 100%; height:150px; margin-top:10px;" />
                 }
-                <br>
+                
+               <br>
                 <div>
                     نوع العقار :
                     @Html.DisplayFor(model => item.PropertyType.Name)
@@ -73,13 +80,19 @@
                     @Html.DisplayFor(modelItem => item.Price) شيكل
                 </div>
                 <hr>
-                <a asp-action="DetailsProperty" class="btn btn-default" asp-route-id="@item.Id" style="margin-bottom:10px;">التفاصيل</a>
+                <a asp-action="DetailsProperty" class="btn btn-info" asp-route-id="@item.Id" style="margin-bottom:12px; outline:none; border:none;">التفاصيل</a>
             </div>
         }
-    </div>
-    <nav aria-label="Emploee paging">
+
+</div>
+
+
+<div style="width:99%;  position:relative; margin:.5%;  height:50px; ">
+
+ <nav aria-label="Emploee paging" style="margin-top:-12px; position:absolute;">
         @await this.Component.InvokeAsync("Pager", new { PagingList = this.Model })
     </nav>
+
 </div>
 
 @section Scripts {

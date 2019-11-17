@@ -8,24 +8,21 @@
     body, html {
         height: 100%;
     }
-
-    body, html {
-        height: 100%;
-    }
-
-    .box {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%,-50%);
-        width: 400px;
-        padding: 50px;
-        border: 1px solid rgba(0, 0, 0, 0.1);
+  .box
+    {
+   height:437px;
+    width: 400px;
+    position: absolute;
+    top: 57%;
+    left:50%;
+    -webkit-transform:translate(-50%,-50%);
+    transform:translate(-50%,-50%);
+    background-color: #fff;
+    padding:30px;
+     border: 1px solid rgba(0, 0, 0, 0.1);
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-        background-color: #fff;
         border-radius: 5px;
     }
-
         .box input {
             padding: 10px 0;
             margin-bottom: 30px;
@@ -43,21 +40,29 @@
 
             .box form div label {
                 position: absolute;
-                top: 10px;
+                top: 5px;
                 right: 0px;
                 pointer-events: none;
                 transition: .5s;
+                font-weight: normal;
+                color:#000029;
             }
 
         .box input:focus ~ label,
         .box input:valid ~ label {
             top: -12px;
             right: 0;
+            transition: .5s;
+            font-size: 13px;
+            
         }
 
         .box input:focus,
         .box input:valid {
-            border-bottom: 1px solid #f2f2f2;
+        border-bottom:1px solid #97D7EA;
+        transition: .5s;
+        
+         
         }
 
     .bg-img {
@@ -67,39 +72,65 @@
         background-repeat: no-repeat;
         background-size: cover;
     }
+    input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+    transition: background-color 5000s ease-in-out 0s;
+} 
+input:-webkit-autofill {
+border: $border-style !important;
+-webkit-text-fill-color: $c-white !important;
+background-color: $c-blue !important;
+-webkit-box-shadow: 0 0 0px 10px $c-blue inset;
+transition: background-color 5000s ease-in-out 0s;
+}
+
+*{
+ -webkit-user-select: none; /* Safari 3.1+ */
+    -moz-user-select: none; /* Firefox 2+ */
+    -ms-user-select: none; /* IE 10+ */
+    user-select: none; /* Standard syntax */	
+}
+
 </style>
 
 
 <body class="bg-img">
 
-    <div class="box" style="margin-top:50px;">
-        <div style="height:90px; width: 80px;  border-radius:50%; box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2); margin-top:-90px ; margin-right:110px;">
-            <img src="~/images/Home/user.png" height="90" width="80">
-        </div>
 
-        <form method="post">
+<div class="box">
+
+<center> 
+<div style="height:90px; width: 80px;  border-radius:50%; box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2); margin-top:-70px;">
+<img src="~/images/Home/user.png" height="90" width="80">
+</div></center>
+
+
+<form method="post">
 
             <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
-            <div asp-validation-summary="ModelOnly" style="margin-top:30px ;" class="text-danger">
-            </div>
-            <div style="margin-top:30px ;margin-bottom:20px;">
+            
+            <div style="margin-top:25px ;margin-bottom:5px;">
                 <input type="text" asp-for="Username" required="">
-                <label asp-for="Username" style="color:#929384;"> </label>
+                <label>البريد الالكتروني</label>
                 <span style="margin-top:50px; right:0; position:absolute; " asp-validation-for="Username" class="text-danger"></span>
 
             </div>
-            <div style="margin-top:20px ;margin-bottom:20px;">
+            <div style="margin-top:10px ;margin-bottom:20px;">
                 <input type="password" asp-for="Password" required="">
-                <label asp-for="Password" style="color:#929384;"> </label>
+                <label>كلمة السر</label>
                 <span style="margin-top:50px; right:0; position:absolute; " asp-validation-for="Password" class="text-danger"></span>
             </div>
 
             <div>
-                <div>
-                    <input asp-for="RememberMe" type="checkbox" style="margin-right:-145px; margin-top:20px ;" />
-                    <label asp-for="RememberMe" style="color:#929384;" class="form-check-label"></label>
+                <div> 
+                    <input asp-for="RememberMe" type="checkbox" style=" margin-right:-49%; margin-top:25px ;" />
+                    <label  style="color:#000029;" class="form-check-label">تذكرني ؟ </label>
                 </div>
                 <span asp-validation-for="RememberMe" class="text-warning"></span>
+            </div>
+
+            <div asp-validation-summary="ModelOnly" style="margin-right:-25px; margin-top:-17px; margin-bottom:17px;" class="text-danger">
+            
             </div>
 
             <div>
@@ -110,7 +141,8 @@
 
             <a asp-action="RecoverPassword">هل نسيت كلمة السر ؟ </a>
         </form>
-    </div>
+
+</div>
 </body>
 
 @section Scripts {
