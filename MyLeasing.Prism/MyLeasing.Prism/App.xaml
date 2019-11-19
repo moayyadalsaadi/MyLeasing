@@ -3,12 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.DryIoc;assembly=Prism.DryIoc.Forms"
              x:Class="MyLeasing.Prism.App">
-	<Application.Resources>
-
+    <Application.Resources>
         <ResourceDictionary>
 
             <!-- Parameters -->
-            <x:String x:Key="UrlAPI">http://myleasing-001-site1.gtempurl.com/</x:String>
+            <x:String x:Key="UrlAPI">http://localhost:50000/</x:String>
 
             <!-- Colors -->
             <Color x:Key="colorBackgroud">#F2F2F2</Color>
@@ -33,12 +32,11 @@
             <Style x:Key="dangerButton" TargetType="Button">
                 <Setter Property="BackgroundColor" Value="{StaticResource colorDanger}" />
             </Style>
-            
+
             <Style TargetType="Label">
                 <Setter Property="TextColor" Value="{StaticResource colorFont}" />
             </Style>
 
         </ResourceDictionary>
-        
-	</Application.Resources>
+    </Application.Resources>
 </prism:PrismApplication>

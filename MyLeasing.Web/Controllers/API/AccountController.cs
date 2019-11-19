@@ -36,7 +36,7 @@ namespace MyLeasing.Web.Controllers.API
                 return BadRequest(new Response<object>
                 {
                     IsSuccess = false,
-                    Message = "اتصال  غير جيد"
+                    Message = "اتصال غير جيد"
                 });
             }
 

@@ -4,15 +4,13 @@
 @{
     ViewData["Title"] = "الصفحة الرئيسية";
 }
-
+ 
 <style>
     body {
         background-color: #F5F5F5;
     }
 
 </style>
-
-
 
 <div style="width: 99%; margin:.5%; margin-top:25px;  height:300px;">
 
@@ -57,7 +55,7 @@
 
 
 <div style="width: 100%;  margin-top:15px; height:390px; ">
-<h3 style="font-weight: bold; padding-top:7px; margin-right:6px;">اخر العقارات</h3>
+<h4 style="font-weight: bold; padding-top:7px; margin-right:6px;">العقارات المتاحة</h4>
 @foreach (var item in Model)
         {
             <div class="col-md-3 col-sm-5 col-xs-11  thumbnail " style="border-color:#e4e4e4; width:19%; margin:.5%;    border-radius:.2px;">
@@ -68,15 +66,15 @@
                 
                <br>
                 <div>
-                    نوع العقار :
+                    <label>نوع العقار :</label>
                     @Html.DisplayFor(model => item.PropertyType.Name)
                 </div>
                 <div>
-                    الحي :
+                   <label> الحي :</label>
                     @Html.DisplayFor(model => item.Neighborhood)
                 </div>
                 <div>
-                    السعر :
+                    <label>السعر :</label>
                     @Html.DisplayFor(modelItem => item.Price) شيكل
                 </div>
                 <hr>

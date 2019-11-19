@@ -313,7 +313,7 @@
     <value>Enter the property neighborhood.</value>
   </data>
   <data name="Price" xml:space="preserve">
-    <value>Price</value>
+    <value>Price (NIS)</value>
   </data>
   <data name="PriceError" xml:space="preserve">
     <value>You must enter a price.</value>
@@ -322,7 +322,7 @@
     <value>Enter property price...</value>
   </data>
   <data name="SquareMeters" xml:space="preserve">
-    <value>Square Meters</value>
+    <value>Square Meters (meter)</value>
   </data>
   <data name="SquareMetersError" xml:space="preserve">
     <value>You must enter the property square meters.</value>
@@ -492,13 +492,19 @@
   <data name="Choose" xml:space="preserve">
     <value>Choose Pickup</value>
   </data>
-  <data name="Typeprop" xml:space="preserve">
+  <data name="TypeProp" xml:space="preserve">
     <value>Nature of the property</value>
   </data>
-  <data name="TypepropError" xml:space="preserve">
-    <value>You must enter the Nature of the property</value>
+  <data name="TypePropError" xml:space="preserve">
+    <value>You must select a Nature of the property</value>
   </data>
-  <data name="TypepropPlaceHolder" xml:space="preserve">
-    <value>enter the Nature of the property</value>
+  <data name="TypePropPlaceHolder" xml:space="preserve">
+    <value>Select a Nature of the property</value>
+  </data>
+  <data name="Rent" xml:space="preserve">
+    <value>Rent</value>
+  </data>
+  <data name="Sale" xml:space="preserve">
+    <value>Sale</value>
   </data>
 </root>

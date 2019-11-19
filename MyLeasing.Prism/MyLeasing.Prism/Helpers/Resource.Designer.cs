@@ -889,7 +889,7 @@ namespace MyLeasing.Prism.Helpers {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Price.
+        ///   Looks up a localized string similar to Price (NIS).
         /// </summary>
         public static string Price {
             get {
@@ -1051,6 +1051,15 @@ namespace MyLeasing.Prism.Helpers {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Rent.
+        /// </summary>
+        public static string Rent {
+            get {
+                return ResourceManager.GetString("Rent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Rooms.
         /// </summary>
         public static string Rooms {
@@ -1078,6 +1087,15 @@ namespace MyLeasing.Prism.Helpers {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sale.
+        /// </summary>
+        public static string Sale {
+            get {
+                return ResourceManager.GetString("Sale", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Save.
         /// </summary>
         public static string Save {
@@ -1096,7 +1114,7 @@ namespace MyLeasing.Prism.Helpers {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Square Meters.
+        ///   Looks up a localized string similar to Square Meters (meter).
         /// </summary>
         public static string SquareMeters {
             get {
@@ -1170,27 +1188,27 @@ namespace MyLeasing.Prism.Helpers {
         /// <summary>
         ///   Looks up a localized string similar to Nature of the property.
         /// </summary>
-        public static string Typeprop {
+        public static string TypeProp {
             get {
-                return ResourceManager.GetString("Typeprop", resourceCulture);
+                return ResourceManager.GetString("TypeProp", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You must enter the Nature of the property.
+        ///   Looks up a localized string similar to You must select a Nature of the property.
         /// </summary>
-        public static string TypepropError {
+        public static string TypePropError {
             get {
-                return ResourceManager.GetString("TypepropError", resourceCulture);
+                return ResourceManager.GetString("TypePropError", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to enter the Nature of the property.
+        ///   Looks up a localized string similar to Select a Nature of the property.
         /// </summary>
-        public static string TypepropPlaceHolder {
+        public static string TypePropPlaceHolder {
             get {
-                return ResourceManager.GetString("TypepropPlaceHolder", resourceCulture);
+                return ResourceManager.GetString("TypePropPlaceHolder", resourceCulture);
             }
         }
         

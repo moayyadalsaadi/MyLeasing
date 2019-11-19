@@ -8,6 +8,7 @@
 <style>
     body {
         background-color: #F5F5F5;
+       
     }
     input:-webkit-autofill {
 border: $border-style !important;
@@ -50,15 +51,15 @@ transition: background-color 5000s ease-in-out 0s;
                 
                <br>
                 <div>
-                    نوع العقار :
+                    <label>نوع العقار :</label>
                     @Html.DisplayFor(model => item.PropertyType.Name)
                 </div>
                 <div>
-                    الحي :
+                   <label> الحي :</label>
                     @Html.DisplayFor(model => item.Neighborhood)
                 </div>
                 <div>
-                    السعر :
+                    <label>السعر :</label>
                     @Html.DisplayFor(modelItem => item.Price) شيكل
                 </div>
                 <hr>
@@ -71,7 +72,7 @@ transition: background-color 5000s ease-in-out 0s;
 
 <div style="width:99%;  position:relative; margin:.5%;  height:50px; ">
 
-<nav aria-label="Emploee paging" style="margin-top:-12px; position:absolute;">
+<nav aria-label="Emploee paging" style="margin-top:25px; position:absolute;">
     @await this.Component.InvokeAsync("Pager", new { PagingList = this.Model })
 </nav>
 </div>

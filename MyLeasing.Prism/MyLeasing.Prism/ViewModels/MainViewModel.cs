@@ -18,19 +18,18 @@ namespace MyLeasing.Prism.ViewModels
     public class MainViewModel : INotifyPropertyChanged
     {
         private readonly INavigationService _navigationService;
-         public ICommand CalculateRouteCommand { get; set; }
+        public ICommand CalculateRouteCommand { get; set; }
         public ICommand UpdatePositionCommand { get; set; }
-
         public ICommand LoadRouteCommand { get; set; }
         public ICommand StopRouteCommand { get; set; }
-       
         public bool HasRouteRunning { get; set; }
-        
+
         GooglePlaceAutoCompletePrediction _placeSelected;
 
         public event PropertyChangedEventHandler PropertyChanged;
-
-        public GooglePlaceAutoCompletePrediction PlaceSelected { get
+        public GooglePlaceAutoCompletePrediction PlaceSelected
+        {
+            get
             {
                 return _placeSelected;
             }
@@ -44,18 +43,20 @@ namespace MyLeasing.Prism.ViewModels
         public ICommand FocusOriginCommand { get; set; }
         public ICommand GetPlacesCommand { get; set; }
         public ICommand GetPlaceDetailCommand { get; set; }
- 
+
         public ObservableCollection<GooglePlaceAutoCompletePrediction> Places { get; set; }
         public ObservableCollection<GooglePlaceAutoCompletePrediction> RecentPlaces { get; set; } = new ObservableCollection<GooglePlaceAutoCompletePrediction>();
 
         public bool ShowRecentPlaces { get; set; }
-      
 
         public ICommand GetLocationNameCommand { get; set; }
-        public bool IsRouteNotRunning { get {
-            return !HasRouteRunning; 
-         } 
-         }
+        public bool IsRouteNotRunning
+        {
+            get
+            {
+                return !HasRouteRunning;
+            }
+        }
 
         public MainViewModel(INavigationService navigationService)
         {

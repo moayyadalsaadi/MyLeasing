@@ -24,7 +24,7 @@ namespace MyLeasing.Prism.ViewModels
         private PropertyResponse _property;
         private ImageSource _imageSource;
         private bool _isRunning;
-        private bool _isEnabled;                  
+        private bool _isEnabled;
         private bool _isEdit;
         private bool _isVisible;
         private ObservableCollection<PropertyTypeResponse> _propertyTypes;
@@ -57,7 +57,7 @@ namespace MyLeasing.Prism.ViewModels
         public DelegateCommand DeleteImageCommand => _deleteImageCommand ?? (_deleteImageCommand = new DelegateCommand(DeleteImage));
 
         public DelegateCommand PreviousImageCommand => _previousImageCommand ?? (_previousImageCommand = new DelegateCommand(MovePreviousImage));
-        
+
         public DelegateCommand NextImageCommand => _nextImageCommand ?? (_nextImageCommand = new DelegateCommand(MoveNextImage));
 
         public DelegateCommand AddImageCommand => _addImageCommand ?? (_addImageCommand = new DelegateCommand(AddImage));
@@ -123,7 +123,7 @@ namespace MyLeasing.Prism.ViewModels
             get => _property;
             set => SetProperty(ref _property, value);
         }
-       
+
         public ImageSource ImageSource
         {
             get => _imageSource;
@@ -175,8 +175,8 @@ namespace MyLeasing.Prism.ViewModels
         {
             TypeProps = new ObservableCollection<TypeProp>
             {
-                new TypeProp { Name = "بيع" },
-                new TypeProp { Name = "استئجار" }
+                new TypeProp { Name = Languages.Sale },
+                new TypeProp { Name = Languages.Rent }
             };
         }
 
@@ -283,7 +283,7 @@ namespace MyLeasing.Prism.ViewModels
                 Stratum = Stratum.Id,
                 Latitude = Property.Latitude,
                 Longitude = Property.Longitude,
-                Typeprop=Property.Typeprop
+                Typeprop = TypeProp.Name
             };
 
             Response<object> response;
@@ -397,6 +397,14 @@ namespace MyLeasing.Prism.ViewModels
                 await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.PropertyTypeError, Languages.Ok);
                 return false;
             }
+            if (TypeProp.Name == "Sale")
+            {
+                TypeProp.Name = "بيع";
+            }
+            else if (TypeProp.Name == "Rent")
+            {
+                TypeProp.Name = "استئجار";
+            }
             if (Property.Latitude == 0 && Property.Longitude == 0)
             {
                 if (Settings.Latitude != "" && Settings.Longitude != "")
@@ -412,10 +420,10 @@ namespace MyLeasing.Prism.ViewModels
                         return false;
                     }
                     var locator = CrossGeolocator.Current;
-                        locator.DesiredAccuracy = 50;
-                        var location = await locator.GetPositionAsync();
-                        Property.Latitude = location.Latitude;
-                        Property.Longitude = location.Longitude;                  
+                    locator.DesiredAccuracy = 50;
+                    var location = await locator.GetPositionAsync();
+                    Property.Latitude = location.Latitude;
+                    Property.Longitude = location.Longitude;
                 }
             }
 

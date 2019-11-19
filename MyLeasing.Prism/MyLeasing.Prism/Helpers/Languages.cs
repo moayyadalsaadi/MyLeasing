@@ -136,6 +136,9 @@ namespace MyLeasing.Prism.Helpers
 
         public static string GPS => Resource.GPS;
 
-        public static string TypepropError => Resource.TypepropError;
+        public static string TypepropError => Resource.TypePropError;
+
+        public static string Sale => Resource.Sale;
+        public static string Rent => Resource.Rent;
     }
 }

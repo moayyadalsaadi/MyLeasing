@@ -313,7 +313,7 @@
     <value>أدخل الحي الذي يقع فيه العقار</value>
   </data>
   <data name="Price" xml:space="preserve">
-    <value>السعر:</value>
+    <value>السعر (شيكل):</value>
   </data>
   <data name="PriceError" xml:space="preserve">
     <value>يجب عليك إدخال سعر!</value>
@@ -492,13 +492,19 @@
   <data name="Choose" xml:space="preserve">
     <value>اختيار نقطة</value>
   </data>
-  <data name="Typeprop" xml:space="preserve">
+  <data name="TypeProp" xml:space="preserve">
     <value>طبيعة العقار</value>
   </data>
-  <data name="TypepropError" xml:space="preserve">
-    <value>يجب إدخال طبيعة العقار.!</value>
+  <data name="TypePropError" xml:space="preserve">
+    <value>يجب عليك تحديد طبيعة العقار.!</value>
   </data>
-  <data name="TypepropPlaceHolder" xml:space="preserve">
-    <value>أدخل طبيعة العقار</value>
+  <data name="TypePropPlaceHolder" xml:space="preserve">
+    <value>اختر طبيعة العقار</value>
+  </data>
+  <data name="Rent" xml:space="preserve">
+    <value>استئجار</value>
+  </data>
+  <data name="Sale" xml:space="preserve">
+    <value>بيع</value>
   </data>
 </root>

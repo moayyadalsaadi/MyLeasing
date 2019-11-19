@@ -157,7 +157,10 @@ namespace MyLeasing.Prism.ViewModels
                 Remarks = p.Remarks,
                 Rooms = p.Rooms,
                 SquareMeters = p.SquareMeters,
-                Stratum = p.Stratum
+                Stratum = p.Stratum,
+                Latitude = p.Latitude,
+                Longitude = p.Longitude,
+                Typeprop = p.Typeprop
             }).ToList());
         }
         public static HomePageViewModel GetInstance()

@@ -7,6 +7,7 @@
 <style>
     body {
         background-color: #F5F5F5;
+        
     }
 
     #map {
@@ -48,6 +49,7 @@
             border: none;
             border-bottom: 1px solid #f2f2f2;
             margin-top: 50px;
+            
         }
 
         .box textarea {
@@ -72,8 +74,9 @@
                 right: 0px;
                 pointer-events: none;
                 transition: .5s;
-                 font-weight: normal;
+                
                 color:#000029;
+                font-weight: bold;
             }
 
         .box input:focus ~ label,
@@ -82,6 +85,7 @@
             right: 0;
              transition: .5s;
             font-size: 13px;
+            
         }
 
         .box input:focus,
@@ -136,7 +140,7 @@ transition: background-color 5000s ease-in-out 0s;
 }
 </style>
 
-<div class="box thumbnail" style="margin-top:200px;">
+<div class="box thumbnail" style="margin-top:20%; margin-bottom:15%;">
     <div>
         <form asp-action="AddProperty">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -162,14 +166,14 @@ transition: background-color 5000s ease-in-out 0s;
             <div style="margin-top:12px;">
 
                 <input asp-for="Price" required="">
-                <label asp-for="Price"></label>
+                <label asp-for="Price">السعر * (شيكل)</label>
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
 
             <div style="margin-right:250px; margin-top: -70px;">
 
                 <input asp-for="SquareMeters" required="">
-                <label asp-for="SquareMeters"></label>
+                <label asp-for="SquareMeters">المساحة * (متر)</label>
                 <span asp-validation-for="SquareMeters" class="text-danger"></span>
             </div>
 
@@ -186,7 +190,7 @@ transition: background-color 5000s ease-in-out 0s;
                 <label asp-for="Stratum"></label>
                 <span asp-validation-for="Stratum" class="text-danger"></span>
             </div>
-
+            
             <div style="margin-right:250px; margin-top: -120px;">
                
                 <div style="">
@@ -198,14 +202,14 @@ transition: background-color 5000s ease-in-out 0s;
             <div style="margin-top:-10px;">
                 <div class="checkbox">
 
-                    • لديها موقف سيارات ؟<input asp-for="HasParkingLot" style="width:70px;">
+                   <span style="font-weight: bold;"> • لديها موقف سيارات ؟</span><input  asp-for="HasParkingLot" style="width:70px; ">
 
                 </div>
             </div>
             <div>
                 <div class="checkbox">
 
-                    • متوفر ؟<input asp-for="IsAvailable" style="width:70px">
+                  <span style="font-weight: bold;">• متوفر ؟</span><input asp-for="IsAvailable" style="width:70px;">
 
                 </div>
             </div>
@@ -216,18 +220,14 @@ transition: background-color 5000s ease-in-out 0s;
                 <label asp-for="Remarks" style="margin-top:20px;"></label>
                 <span asp-validation-for="Remarks" class="text-danger"></span>
             </div>
-
+                <label style="font-weight: blod; color:#000029; ">انقر لتحديد موقع العقار</label>
             <div class="form-group" style="margin-right:-15px;">
                 <div style="padding:10px">
-                   <h4> انقر لتحديد موقع العقار</h4>
                     <div id="map"></div>
                 </div>
-                    خط العرض:
-           
-                <input disabled id="latclicked" style="margin-right:12px; padding-right:5px;" />
-            
-                    خط الطول:
-                <input disabled id="longclicked" style="margin-right:12px; padding-right:5px;" />
+
+                <input id="latclicked" style="margin-right:12px; padding-right:5px;" />
+                <input id="longclicked" style="margin-right:12px; padding-right:5px;" />
             </div>
 
             <div style="margin-bottom: -60px;">

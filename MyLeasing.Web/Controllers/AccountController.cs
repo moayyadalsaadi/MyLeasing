@@ -203,9 +203,9 @@ namespace MyLeasing.Web.Controllers
                     token = myToken
                 }, protocol: HttpContext.Request.Scheme);
 
-                _mailHelper.SendMail(model.Username, "Email confirmation", $"<h1>Email Confirmation</h1>" +
-                    $"To allow the user, " +
-                    $"plase click in this link:</br></br><a href = \"{tokenLink}\">Confirm Email</a>");
+                _mailHelper.SendMail(model.Username, "تاكيد البريد", $"<h1>تاكيد بريدك الالكتروني</h1>" +
+                    $"لتفعيل حسابك, " +
+                    $"الرجاء الضغط على الرابط التالي:</br></br><a href = \"{tokenLink}\">رابط تاكيد الحساب</a>");
 
                 ViewBag.Message = "تم إرسال تاكيد البريد الالكتروني للمستخدم الى البريد الإلكتروني.";
                 model.Roles = _combosHelper.GetComboRoles();
@@ -334,9 +334,10 @@ namespace MyLeasing.Web.Controllers
                     "Account",
                     new { token = myToken }, protocol: HttpContext.Request.Scheme);
 
-                _mailHelper.SendMail(model.Email, "MyLeasing Password Reset", $"<h1>MyLeasing Password Reset</h1>" +
-                    $"To reset the password click in this link:</br></br>" +
-                    $"<a href = \"{link}\">Reset Password</a>");
+                _mailHelper.SendMail(model.Email, "استعادة كلمة المرور",
+                    $"<h1>استعادة كلمة المرور</h1>" +
+                    $"لاستعادة كلمة المرور اضغط على الرابط التالي:</br></br>" +
+                    $"<a href = \"{link}\">الرابط</a>");
                 ViewBag.Message = "تم إرسال التعليمات لاسترداد كلمة المرور الخاصة بك إلى البريد الإلكتروني.";
                 return View();
 

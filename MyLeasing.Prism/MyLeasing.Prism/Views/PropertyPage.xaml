@@ -43,7 +43,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="25"/>
-                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -88,7 +88,7 @@
                 <Label
                     Grid.Row="3"
                     Grid.Column="0"
-                    Text="{Binding Property.Price, StringFormat='{0:C2}'}"/>
+                    Text="{Binding Property.Price}"/>
                 <Label
                     Grid.Row="2"
                     Grid.Column="2"
@@ -99,25 +99,25 @@
                     Grid.Column="2"
                     Text="{Binding Property.PropertyType}"/>
                 <Label
-                    Grid.Row="4"
+                    Grid.Row="9"
                     Grid.Column="0"
                     FontAttributes="Bold"
                     Text="{i18n:Translate IsAvailable}"
                     VerticalOptions="Center"/>
                 <CheckBox
-                    Grid.Row="4"
+                    Grid.Row="9"
                     Grid.Column="1"
                     HorizontalOptions="Start"
                     IsEnabled="False"
                     IsChecked="{Binding Property.IsAvailable}"/>
                 <Label
-                    Grid.Row="5"
+                    Grid.Row="10"
                     Grid.Column="0"
                     FontAttributes="Bold"
                     Text="{i18n:Translate HasParkingLot}"
                     VerticalOptions="Center"/>
                 <CheckBox
-                    Grid.Row="5"
+                    Grid.Row="10"
                     Grid.Column="1"
                     HorizontalOptions="Start"
                     IsEnabled="False"
@@ -130,7 +130,7 @@
                 <Label
                     Grid.Row="7"
                     Grid.Column="2"
-                    Text="{Binding Property.SquareMeters, StringFormat='{0:N0}'}"/>
+                    Text="{Binding Property.SquareMeters}"/>
                 <Label
                     Grid.Row="4"
                     Grid.Column="2"
@@ -150,12 +150,12 @@
                     Grid.Column="0"
                     Text="{Binding Property.Stratum}"/>
                 <Label
-                    Grid.Row="6"
+                    Grid.Row="4"
                     Grid.Column="0"
                     FontAttributes="Bold"
-                    Text="{i18n:Translate Typeprop}"/>
+                    Text="{i18n:Translate TypeProp}"/>
                 <Label
-                    Grid.Row="7"
+                    Grid.Row="5"
                     Grid.Column="0"
                     Text="{Binding Property.Typeprop}"/>
             </Grid>

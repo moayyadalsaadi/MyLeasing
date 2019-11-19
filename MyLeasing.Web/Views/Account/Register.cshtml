@@ -43,6 +43,7 @@
             outline: none;
             border: none;
             border-bottom: 1px solid #f2f2f2;
+             color:#000029;
         }
 .box select{
 width:250px;
@@ -51,7 +52,7 @@ box-shadow: none;
 outline: none;
 border: none;
 border-bottom: 1px solid #d8d9d8;
-color:#959595;
+color:#000029;
 }
         .box form div {
             position: relative;
@@ -59,11 +60,11 @@ color:#959595;
 
             .box form div label {
                 position: absolute;
-                top: 10px;
+                top: 5px;
                 right: 0px;
                 pointer-events: none;
                 transition: .5s ;
-                  font-weight: normal;
+                  font-weight: blod;
                 color:#000029;
             }
 
@@ -98,7 +99,7 @@ transition: background-color 5000s ease-in-out 0s;
 </style>
 
 
-<div class="box thumbnail">
+<div class="box thumbnail" style="margin-top:5%;">
     <div style="margin-top:-40px;">
         <form asp-action="Register">
             <div>
@@ -169,7 +170,7 @@ transition: background-color 5000s ease-in-out 0s;
                     <img id="img-captcha" src="~/get-captcha-image" style="width:250px;" />
                 </div>
                 <br />
-                <input style=" padding: 0px;" type="text" placeholder="كود التحقق" asp-for="CaptchaCode" maxlength="6" />
+                <input style=" padding: 0px;" type="text" placeholder="كود التحقق" asp-for="CaptchaCode" maxlength="6"  />
                 <span asp-validation-for="CaptchaCode" class="text-danger" style="margin-top:30px; right:0; position:absolute;"></span>
             </div>
 
@@ -177,10 +178,10 @@ transition: background-color 5000s ease-in-out 0s;
                 <input type="submit" value="تسجيل" class="btn btn-info" style="width: 60px; text-align:center ; margin-bottom: 10px; border:none; background-color:#31B0D5; color: #fff;">
                 <div asp-validation-summary="ModelOnly" style="padding-right: 250px; margin-top: -30px;" class="text-danger">
                 </div>
-                <span class="text-success " style="margin-right:190px;">
+                <span class="text-success" style="margin-right:150px;">
                     @ViewBag.Message
                 </span>
-                <span class="text-danger" style=" width: 200px; margin-right:-210px; margin-top:-25px; position:absolute;">
+                <span class="text-danger" style="margin-right:100px;">
                     @ViewBag.danger
                 </span>
             </div>

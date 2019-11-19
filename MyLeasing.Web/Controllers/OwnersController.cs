@@ -133,9 +133,9 @@ namespace MyLeasing.Web.Controllers
                         token = myToken
                     }, protocol: HttpContext.Request.Scheme);
 
-                    _mailHelper.SendMail(model.Username, "Email confirmation", $"<h1>Email Confirmation</h1>" +
-                        $"To allow the user, " +
-                        $"plase click in this link:</br></br><a href = \"{tokenLink}\">Confirm Email</a>");
+                    _mailHelper.SendMail(model.Username, "تاكيد البريد", $"<h1>تاكيد بريدك الالكتروني</h1>" +
+                     $"لتفعيل حسابك, " +
+                     $"الرجاء الضغط على الرابط التالي:</br></br><a href = \"{tokenLink}\">رابط تاكيد الحساب</a>");
 
 
                     return RedirectToAction("Index");
