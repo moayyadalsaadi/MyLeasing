@@ -26,19 +26,19 @@ namespace MyLeasing.Web.Data.Entities
         public int SquareMeters { get; set; }
 
         [Display(Name = "الغرف")]
-        [StringLength(10, MinimumLength = 0, ErrorMessage = "يجب أن يحتوي الحقل {0} بين {2} و {1} حرفًا.")]
+        [Range(1, 10, ErrorMessage = "يجب أن يحتوي الحقل {0} بين {1} و {2}.")]
         public int? Rooms { get; set; }
 
         [Display(Name = "الحمامات")]
-        [StringLength(10, MinimumLength = 0, ErrorMessage = "يجب أن يحتوي الحقل {0} بين {2} و {1} حرفًا.")]
+        [Range(1,10, ErrorMessage = "يجب أن يحتوي الحقل {0} بين {1} و {2} .")]
         public int? Bathrooms { get; set; }
 
         [Display(Name = "الشرفات")]
-        [StringLength(10, MinimumLength = 0, ErrorMessage = "يجب أن يحتوي الحقل {0} بين {2} و {1} حرفًا.")]
+        [Range(1, 10, ErrorMessage = "يجب أن يحتوي الحقل {0} بين {1} و {2}.")]
         public int? Balconies { get; set; }
 
-        [Display(Name = "الطابق")]  
-        [StringLength(10, MinimumLength = 0, ErrorMessage = "يجب أن يحتوي الحقل {0} بين {2} و {1} حرفًا.")]
+        [Display(Name = "الطابق")]
+        [Range(1, 10, ErrorMessage = "يجب أن يحتوي الحقل {0} بين {2} و {1} حرفًا.")]
         public int? Stratum { get; set; }
 
         [Display(Name = "لديها موقف سيارات?")]
