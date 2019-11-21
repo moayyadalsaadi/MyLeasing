@@ -98,7 +98,7 @@ namespace MyLeasing.Web.Data
             var propertyType = _context.PropertyTypes.FirstOrDefault();
             if (!_context.Properties.Any())
             {
-                AddProperty("جنين", "الجابريات", owner, propertyType, 800000M, 2, 72, 4,"بيع");
+                AddProperty("جنين", "الجابريات", owner, propertyType, 800000, 5, 3, 2, 72, 4,"بيع");
                 await _context.SaveChangesAsync();
             }
         }
@@ -124,7 +124,7 @@ namespace MyLeasing.Web.Data
             }
         }
 
-        private void AddProperty(string address, string neighborhood, Owner owner, PropertyType propertyType, decimal price, int rooms, int squareMeters, int stratum, string typeprop)
+        private void AddProperty(string address, string neighborhood, Owner owner, PropertyType propertyType, decimal price, int? rooms, int? bathrooms, int? balconies, int squareMeters, int stratum, string typeprop)
         {
             _context.Properties.Add(new Property
             {
@@ -136,6 +136,8 @@ namespace MyLeasing.Web.Data
                 Price = price,
                 PropertyType = propertyType,
                 Rooms = rooms,
+                Bathrooms= bathrooms,
+                Balconies= balconies,
                 SquareMeters = squareMeters,
                 Stratum = stratum,
                 Typeprop= typeprop,

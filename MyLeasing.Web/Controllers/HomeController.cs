@@ -98,20 +98,43 @@ namespace MyLeasing.Web.Controllers
         }
 
 
-        public async Task<IActionResult> SalePage(string search = null, int page = 1)
+        public async Task<IActionResult> SalePage(string searchty = null,
+            string searchho = null, string searchsc = null,
+            string searchro = null, string searchpr = null, int page = 1)
         {
-            if (!string.IsNullOrEmpty(search))
+            if (!string.IsNullOrEmpty(searchty) || !string.IsNullOrEmpty(searchho)
+                || !string.IsNullOrEmpty(searchsc) || !string.IsNullOrEmpty(searchro)
+                || !string.IsNullOrEmpty(searchpr))
             {
                 var quer = _dataContext.Properties
-                .Include(p => p.PropertyType)
-                .Include(p => p.PropertyImages)
-                .Where(p => (p.Neighborhood.Contains(search) ||
-                 p.Price.ToString().Contains(search) ||
-                p.PropertyType.Name.Contains(search)) &&
-                p.Typeprop == "بيع" &&
-                 p.IsAvailable)
-                .OrderByDescending(p => p.Id);
-                var mode = await PagingList.CreateAsync(quer, 15, page);
+               .Include(p => p.PropertyType)
+               .Include(p => p.PropertyImages)
+               .Where(p => p.Typeprop == "بيع" &&
+                  p.IsAvailable)
+               .AsQueryable();
+               
+                if (!string.IsNullOrEmpty(searchty))
+                {
+                    quer = quer.Where(p => p.PropertyType.Name.Contains(searchty));
+                }
+                if (!string.IsNullOrEmpty(searchho))
+                {
+                    quer = quer.Where(p => p.Neighborhood.Contains(searchho));
+                }
+                if (!string.IsNullOrEmpty(searchsc))
+                {
+                    quer = quer.Where(p => p.SquareMeters.ToString().Contains(searchsc));
+                }
+                if (!string.IsNullOrEmpty(searchro))
+                {
+                    quer = quer.Where(p => p.Rooms.ToString().Contains(searchro));
+                }
+                if (!string.IsNullOrEmpty(searchpr))
+                {
+                    quer = quer.Where(p => p.Price.ToString().Contains(searchpr));
+                }
+                var f = quer.OrderByDescending(p => p.Id);
+                var mode = await PagingList.CreateAsync(f, 15, page);
                 return View(mode);
             }
             var query = _dataContext.Properties
@@ -124,20 +147,43 @@ namespace MyLeasing.Web.Controllers
             return View(model);
         }
 
-        public async Task<IActionResult> RentPage(string search = null, int page = 1)
+        public async Task<IActionResult> RentPage(string searchty = null,
+          string searchho = null, string searchsc = null,
+          string searchro = null, string searchpr = null, int page = 1)
         {
-            if (!string.IsNullOrEmpty(search))
+            if (!string.IsNullOrEmpty(searchty) || !string.IsNullOrEmpty(searchho)
+                || !string.IsNullOrEmpty(searchsc) || !string.IsNullOrEmpty(searchro)
+                || !string.IsNullOrEmpty(searchpr))
             {
                 var quer = _dataContext.Properties
-                .Include(p => p.PropertyType)
-                .Include(p => p.PropertyImages)
-                .Where(p => (p.Neighborhood.Contains(search) ||
-                 p.Price.ToString().Contains(search) ||
-                p.PropertyType.Name.Contains(search)) &&
-                p.Typeprop == "استئجار" &&
-                 p.IsAvailable)
-                .OrderByDescending(p => p.Id);
-                var mode = await PagingList.CreateAsync(quer, 15, page);
+               .Include(p => p.PropertyType)
+               .Include(p => p.PropertyImages)
+               .Where(p => p.Typeprop == "استئجار" &&
+                  p.IsAvailable)
+               .AsQueryable();
+
+                if (!string.IsNullOrEmpty(searchty))
+                {
+                    quer = quer.Where(p => p.PropertyType.Name.Contains(searchty));
+                }
+                if (!string.IsNullOrEmpty(searchho))
+                {
+                    quer = quer.Where(p => p.Neighborhood.Contains(searchho));
+                }
+                if (!string.IsNullOrEmpty(searchsc))
+                {
+                    quer = quer.Where(p => p.SquareMeters.ToString().Contains(searchsc));
+                }
+                if (!string.IsNullOrEmpty(searchro))
+                {
+                    quer = quer.Where(p => p.Rooms.ToString().Contains(searchro));
+                }
+                if (!string.IsNullOrEmpty(searchpr))
+                {
+                    quer = quer.Where(p => p.Price.ToString().Contains(searchpr));
+                }
+                var f = quer.OrderByDescending(p => p.Id);
+                var mode = await PagingList.CreateAsync(f, 15, page);
                 return View(mode);
             }
             var query = _dataContext.Properties
@@ -149,7 +195,7 @@ namespace MyLeasing.Web.Controllers
             var model = await PagingList.CreateAsync(query, 15, page);
             return View(model);
         }
-
+     
         public async Task<IActionResult> DetailsProperty(int? id)
         {
             if (id == null)
@@ -225,11 +271,11 @@ namespace MyLeasing.Web.Controllers
                 if (string.IsNullOrEmpty(Lat) && string.IsNullOrEmpty(Lng))
                 {
                     Lat = "32.4589138";
-                    Lng ="35.2898115";
+                    Lng = "35.2898115";
                 }
                 model.Latitude = Convert.ToDouble(Lat);
-                model.Longitude = Convert.ToDouble(Lng);           
-            ViewBag.Typeprop = new SelectList(new[] { "بيع", "استئجار" });
+                model.Longitude = Convert.ToDouble(Lng);
+                ViewBag.Typeprop = new SelectList(new[] { "بيع", "استئجار" });
 
                 var property = await _converterHelper.ToPropertyAsync(model, true);
                 _dataContext.Properties.Add(property);
@@ -432,8 +478,8 @@ namespace MyLeasing.Web.Controllers
             }
             if (property.PropertyImages?.Count > 0)
             {
-                 _dataContext.PropertyImages.RemoveRange(property.PropertyImages);
-            }          
+                _dataContext.PropertyImages.RemoveRange(property.PropertyImages);
+            }
             _dataContext.Properties.Remove(property);
             await _dataContext.SaveChangesAsync();
             return RedirectToAction(nameof(MyProperties));

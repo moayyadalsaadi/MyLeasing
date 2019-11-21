@@ -25,13 +25,21 @@ namespace MyLeasing.Web.Data.Entities
         [Required(ErrorMessage = "هذا الحقل مطلوب")]
         public int SquareMeters { get; set; }
 
-        [Required(ErrorMessage = "هذا الحقل مطلوب")]
-        [Display(Name = "الغرف*")]
-        public int Rooms { get; set; }
+        [Display(Name = "الغرف")]
+        [StringLength(10, MinimumLength = 0, ErrorMessage = "يجب أن يحتوي الحقل {0} بين {2} و {1} حرفًا.")]
+        public int? Rooms { get; set; }
 
-        [Display(Name = "الطوابق*")]
-        [Required(ErrorMessage = "هذا الحقل مطلوب")]
-        public int Stratum { get; set; }
+        [Display(Name = "الحمامات")]
+        [StringLength(10, MinimumLength = 0, ErrorMessage = "يجب أن يحتوي الحقل {0} بين {2} و {1} حرفًا.")]
+        public int? Bathrooms { get; set; }
+
+        [Display(Name = "الشرفات")]
+        [StringLength(10, MinimumLength = 0, ErrorMessage = "يجب أن يحتوي الحقل {0} بين {2} و {1} حرفًا.")]
+        public int? Balconies { get; set; }
+
+        [Display(Name = "الطابق")]  
+        [StringLength(10, MinimumLength = 0, ErrorMessage = "يجب أن يحتوي الحقل {0} بين {2} و {1} حرفًا.")]
+        public int? Stratum { get; set; }
 
         [Display(Name = "لديها موقف سيارات?")]
         public bool HasParkingLot { get; set; }
@@ -39,8 +47,8 @@ namespace MyLeasing.Web.Data.Entities
         [Display(Name = "متوفر?")]
         public bool IsAvailable { get; set; }
 
-        [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [Display(Name = "طبيعة العقار*")]
+        [Required(ErrorMessage = "هذا الحقل مطلوب")]
         public string Typeprop { get; set; }
 
         [Display(Name = "ملاحظات")]

@@ -130,7 +130,23 @@
                 	Keyboard="Numeric"
                 	Placeholder="{i18n:Translate RoomsPlaceHolder}"
                 	Text="{Binding Property.Rooms}"/>
+                
+                <Label
+                	Text="{i18n:Translate Bathrooms}"
+                	VerticalOptions="Center"/>
+                <Entry
+                	Keyboard="Numeric"
+                	Placeholder="{i18n:Translate BathroomsPlaceHolder}"
+                	Text="{Binding Property.Bathrooms}"/>
 
+                <Label
+                	Text="{i18n:Translate Balconies}"
+                	VerticalOptions="Center"/>
+                <Entry
+                	Keyboard="Numeric"
+                	Placeholder="{i18n:Translate BalconiesPlaceHolder}"
+                	Text="{Binding Property.Balconies}"/>
+                
                 <Label
                 	Text="{i18n:Translate Stratum}"
                 	VerticalOptions="Center"/>

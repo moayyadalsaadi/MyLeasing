@@ -57,9 +57,11 @@ namespace MyLeasing.Web.Controllers.API
                 PropertyType = p.PropertyType.Name,
                 Remarks = p.Remarks,
                 Rooms = p.Rooms,
+                Bathrooms = p.Bathrooms,
+                Balconies = p.Balconies,
                 SquareMeters = p.SquareMeters,
                 Stratum = p.Stratum,
-                Typeprop=p.Typeprop
+                Typeprop = p.Typeprop
             }).ToList());
 
             return Ok(response);
@@ -134,11 +136,13 @@ namespace MyLeasing.Web.Controllers.API
                     PropertyType = p.PropertyType.Name,
                     Remarks = p.Remarks,
                     Rooms = p.Rooms,
+                    Bathrooms = p.Bathrooms,
+                    Balconies = p.Balconies,
                     SquareMeters = p.SquareMeters,
                     Stratum = p.Stratum,
                     Latitude = p.Latitude,
                     Longitude = p.Longitude,
-                    Typeprop=p.Typeprop
+                    Typeprop = p.Typeprop
                 }).ToList(),
                 Contracts = lessee.Contracts?.Select(c => new ContractResponse
                 {
@@ -195,7 +199,7 @@ namespace MyLeasing.Web.Controllers.API
                     Id = p.Id,
                     IsAvailable = p.IsAvailable,
                     Neighborhood = p.Neighborhood,
-                    Price = p.Price,                   
+                    Price = p.Price,
                     PropertyImages = p.PropertyImages?.Select(pi => new PropertyImageResponse
                     {
                         Id = pi.Id,
@@ -204,11 +208,13 @@ namespace MyLeasing.Web.Controllers.API
                     PropertyType = p.PropertyType.Name,
                     Remarks = p.Remarks,
                     Rooms = p.Rooms,
+                    Bathrooms = p.Bathrooms,
+                    Balconies = p.Balconies,
                     SquareMeters = p.SquareMeters,
                     Stratum = p.Stratum,
                     Latitude = p.Latitude,
                     Longitude = p.Longitude,
-                    Typeprop=p.Typeprop
+                    Typeprop = p.Typeprop
                 }).ToList(),
                 Contracts = owner.Contracts?.Select(c => new ContractResponse
                 {

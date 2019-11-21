@@ -10,8 +10,8 @@ using MyLeasing.Web.Data;
 namespace MyLeasing.Web.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20191029124700_complateDb")]
-    partial class complateDb
+    [Migration("20191121151952_comblateDb")]
+    partial class comblateDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -220,6 +220,10 @@ namespace MyLeasing.Web.Migrations
                         .IsRequired()
                         .HasMaxLength(50);
 
+                    b.Property<int?>("Balconies");
+
+                    b.Property<int?>("Bathrooms");
+
                     b.Property<bool>("HasParkingLot");
 
                     b.Property<bool>("IsAvailable");
@@ -240,13 +244,14 @@ namespace MyLeasing.Web.Migrations
 
                     b.Property<string>("Remarks");
 
-                    b.Property<int>("Rooms");
+                    b.Property<int?>("Rooms");
 
                     b.Property<int>("SquareMeters");
 
-                    b.Property<int>("Stratum");
+                    b.Property<int?>("Stratum");
 
-                    b.Property<string>("Typeprop");
+                    b.Property<string>("Typeprop")
+                        .IsRequired();
 
                     b.HasKey("Id");
 

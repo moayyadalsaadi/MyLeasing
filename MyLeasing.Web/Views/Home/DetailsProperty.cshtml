@@ -6,6 +6,7 @@
 
 
 <style>
+
     body {
         background-color: #F5F5F5;
     }
@@ -19,12 +20,13 @@
         display: table-cell;
         padding: 10px;
     }
-    *{
- -webkit-user-select: none; /* Safari 3.1+ */
-    -moz-user-select: none; /* Firefox 2+ */
-    -ms-user-select: none; /* IE 10+ */
-    user-select: none; /* Standard syntax */	
-}
+
+    * {
+        -webkit-user-select: none; /* Safari 3.1+ */
+        -moz-user-select: none; /* Firefox 2+ */
+        -ms-user-select: none; /* IE 10+ */
+        user-select: none; /* Standard syntax */
+    }
 </style>
 
 <div style="margin-top:45px;">
@@ -71,20 +73,69 @@
         @Html.DisplayFor(model => model.SquareMeters) متر
     </dd>
 
+    <dt>
+        الطابق :
+    </dt>
+    <dd>
+        @if (Model.Stratum != null)
+        {
+            @Html.DisplayFor(model => model.Stratum)
+        }
+        else
+        {
+        <p>
+            لا يوجد
+        </p>
+        }
+    </dd>
 
     <dt>
         الغرف :
     </dt>
     <dd>
-        @Html.DisplayFor(model => model.Rooms)
+        @if (Model.Rooms != null)
+        {
+            @Html.DisplayFor(model => model.Rooms)
+        }
+        else
+        {
+            <p>
+                لا يوجد
+            </p>
+        }
     </dd>
 
     <dt>
-        متوفر :
+        الحمامات :
     </dt>
     <dd>
-        @Html.DisplayFor(model => model.IsAvailable)
+        @if (Model.Bathrooms != null)
+        {
+            @Html.DisplayFor(model => model.Bathrooms)
+        }
+        else
+        {
+            <p>
+                لا يوجد
+            </p>
+        }
     </dd>
+
+    <dt>
+        الشرفات :
+    </dt>
+    <dd>
+        @if (Model.Balconies != null)
+        {
+            @Html.DisplayFor(model => model.Balconies)
+        }
+        else
+        {
+            <p>
+                لا يوجد
+            </p>
+        }
+    </dd>   
 </dl>
 <dl>
     @if (User.Identity.IsAuthenticated)
@@ -116,7 +167,12 @@
         @Html.DisplayFor(model => model.HasParkingLot)
     </dd>
 
-
+    <dt>
+        متوفر :
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => model.IsAvailable)
+    </dd>
 
     <dt>
         ملاحظات :
@@ -140,28 +196,28 @@
 
 <div style="width: 100%;  margin-top:15px; height:auto; ">
 
-@if (Model.PropertyImages.Count == 0)
-{
-    <div class="alert alert-danger" role="alert">
-        لم يتم اضافة صور !
-    </div>
-}
-else
-{
+    @if (Model.PropertyImages.Count == 0)
+    {
+        <div class="alert alert-danger" role="alert">
+            لم يتم اضافة صور !
+        </div>
+    }
+    else
+    {
         @if (Model.PropertyImages.Count > 0)
         {
             @foreach (var item in Model.PropertyImages)
             {
                 <div class="col-md-3 col-sm-5 col-xs-11  thumbnail " style="border-color:#e4e4e4; width:19%; margin:.5%;   background-color:#f5f5f5;  border-radius:.2px;">
-                @if (!string.IsNullOrEmpty(item.ImageUrl))
-                {
-                    <a href="@Url.Content(item.ImageUrl)" target="_blank"><img src="@Url.Content(item.ImageUrl)" alt="Image" class="img-thumbnail" style="width:300px; height:150px; margin-top:10px; margin-bottom:10px;" /></a>
-                }
-                 </div>
+                    @if (!string.IsNullOrEmpty(item.ImageUrl))
+                    {
+                        <a href="@Url.Content(item.ImageUrl)" target="_blank"><img src="@Url.Content(item.ImageUrl)" alt="Image" class="img-thumbnail" style="width:300px; height:150px; margin-top:10px; margin-bottom:10px;" /></a>
+                    }
+                </div>
             }
         }
-  
-}
+
+    }
 
 
 
@@ -174,8 +230,8 @@ else
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-<script src="https://maps.googleapis.com/maps/api/js?"></script>
-<script type="text/javascript">
+    <script src="https://maps.googleapis.com/maps/api/js?"></script>
+    <script type="text/javascript">
 
             //Set the Latitude and Longitude of the Map
             var myAddress = new google.maps.LatLng(@Model.Latitude, @Model.Longitude);
@@ -196,5 +252,5 @@ else
                 animation: google.maps.Animation.BOUNCE,
             });
             marker.setMap(map);
-</script>
+    </script>
 }

@@ -6,77 +6,92 @@
 }
 
 <style>
+
     body {
         background-color: #F5F5F5;
-       
     }
+
     input:-webkit-autofill {
-border: $border-style !important;
--webkit-text-fill-color: $c-white !important;
-background-color: $c-blue !important;
--webkit-box-shadow: 0 0 0px 10px $c-blue inset;
-transition: background-color 5000s ease-in-out 0s;
-}
-    *{
- -webkit-user-select: none; /* Safari 3.1+ */
-    -moz-user-select: none; /* Firefox 2+ */
-    -ms-user-select: none; /* IE 10+ */
-    user-select: none; /* Standard syntax */	
-}
+        border: $border-style !important;
+        -webkit-text-fill-color: $c-white !important;
+        background-color: $c-blue !important;
+        -webkit-box-shadow: 0 0 0px 10px $c-blue inset;
+        transition: background-color 5000s ease-in-out 0s;
+    }
+
+    * {
+        -webkit-user-select: none; /* Safari 3.1+ */
+        -moz-user-select: none; /* Firefox 2+ */
+        -ms-user-select: none; /* IE 10+ */
+        user-select: none; /* Standard syntax */
+    }
 </style>
 
 <div style="width:99%; margin:.5%;  padding-top:25px; padding-bottom:15px; padding-left:15px; margin-top:25px; height:auto; ">
-
-
-<form asp-action="SalePage" method="post" class="form-inline">
-    <center><div class=" form-group">
-      <input type="text" placeholder="ابحث بواسطة نوع العقار او الحي او السعر" id="search" name="search" class="form-control" style="width:290px; height:40px; padding-right:20px; position: relative; border-radius: 25px;">
-        <button type="submit" id="btn_search" style="position:absolute; margin-right:-35px; margin-top:11px; background-color:#fff; border:none; outline:none;"><i class="glyphicon glyphicon-search"></i></button>
-    </div></center>
-</form>
+    <form asp-action="SalePage" method="post" class="form-inline">
+        <center>
+            <div class=" form-group">
+                <select id="searchty" name="searchty" class="form-control" style="width:150px; height:40px; padding-right:20px; position: relative;">
+                    <option value="">نوع العقار</option>
+                    <option>أرض</option>
+                    <option>فيلا</option>
+                    <option>شقة</option>
+                    <option>منزل</option>
+                </select>
+                <input type="text" placeholder="ابحث بواسطة الحي" id="searchho" name="searchho" class="form-control" style="width:150px; height:40px; padding-right:20px; position: relative;">
+                <input type="text" placeholder="ابحث بواسطة المساحة" id="searchsc" name="searchsc" class="form-control" style="width:150px; height:40px; padding-right:20px; position: relative;">
+                <select class="form-control" name="searchro" id="searchro" style="width:150px; height:40px;">
+                    <option value="">عدد الغرف</option>
+                    <option value="1">غرفة واحدة - ستوديو</option>
+                    <option value="2">غرفتين</option>
+                    <option value="3">ثلاث غرف</option>
+                    <option value="4">اربع غرف</option>
+                    <option value="5">خمس غرف</option>
+                    <option value="6">أكثر من خمس غرف</option>
+                </select>
+                <input type="text" placeholder="ابحث بواسطة السعر" id="searchpr" name="searchpr" class="form-control" style="width:150px; height:40px; padding-right:20px; position: relative;">
+                <button type="submit" class="btn btn-info" id="btn_search" style=" margin-right:15px; border:none; outline:none; width:70px; height:40px;">ابحث</button>
+            </div>
+        </center>
+    </form>
 
 </div>
-
-
-
 
 <div style="width: 100%; margin-top:15px; height:1045px; ">
-@foreach (var item in Model)
-        {
-            <div class="col-md-3 col-sm-5 col-xs-11  thumbnail " style="border-color:#e4e4e4; width:19%; margin:.5%;    border-radius:.2px;">
-                @if (!string.IsNullOrEmpty(item.FirstImage))
-                {
-                    <img src="@Url.Content(item.FirstImage)" alt="Image" style="width:300px;height:300px;max-width: 100%; height:150px; margin-top:10px;" />
-                }
-                
-               <br>
-                <div>
-                    <label>نوع العقار :</label>
-                    @Html.DisplayFor(model => item.PropertyType.Name)
-                </div>
-                <div>
-                   <label> الحي :</label>
-                    @Html.DisplayFor(model => item.Neighborhood)
-                </div>
-                <div>
-                    <label>السعر :</label>
-                    @Html.DisplayFor(modelItem => item.Price) شيكل
-                </div>
-                <hr>
-                <a asp-action="DetailsProperty" class="btn btn-info" asp-route-id="@item.Id" style="margin-bottom:12px; outline:none; border:none;">التفاصيل</a>
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3 col-sm-5 col-xs-11  thumbnail " style="border-color:#e4e4e4; width:19%; margin:.5%;    border-radius:.2px;">
+            @if (!string.IsNullOrEmpty(item.FirstImage))
+            {
+                <img src="@Url.Content(item.FirstImage)" alt="Image" style="width:300px;height:300px;max-width: 100%; height:150px; margin-top:10px;" />
+            }
+
+            <br>
+            <div>
+                <label>نوع العقار :</label>
+                @Html.DisplayFor(model => item.PropertyType.Name)
             </div>
-        }
+            <div>
+                <label> الحي :</label>
+                @Html.DisplayFor(model => item.Neighborhood)
+            </div>
+            <div>
+                <label>السعر :</label>
+                @Html.DisplayFor(modelItem => item.Price) شيكل
+            </div>
+            <hr>
+            <a asp-action="DetailsProperty" class="btn btn-info" asp-route-id="@item.Id" style="margin-bottom:12px; outline:none; border:none;">التفاصيل</a>
+        </div>
+    }
 
 </div>
 
+<div style="width:99%; margin:.5%;  height:50px; ">
 
-<div style="width:99%;  position:relative; margin:.5%;  height:50px; ">
-
-<nav aria-label="Emploee paging" style="margin-top:25px; position:absolute;">
-    @await this.Component.InvokeAsync("Pager", new { PagingList = this.Model })
-</nav>
+    <nav aria-label="Emploee paging" style="margin-top:25px;">
+        @await this.Component.InvokeAsync("Pager", new { PagingList = this.Model })
+    </nav>
 </div>
-
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

@@ -133,6 +133,42 @@ namespace MyLeasing.Prism.Helpers {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Balconies.
+        /// </summary>
+        public static string Balconies {
+            get {
+                return ResourceManager.GetString("Balconies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter property Balconies....
+        /// </summary>
+        public static string BalconiesPlaceHolder {
+            get {
+                return ResourceManager.GetString("BalconiesPlaceHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bathrooms.
+        /// </summary>
+        public static string Bathrooms {
+            get {
+                return ResourceManager.GetString("Bathrooms", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter property Bathrooms....
+        /// </summary>
+        public static string BathroomsPlaceHolder {
+            get {
+                return ResourceManager.GetString("BathroomsPlaceHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         public static string Cancel {

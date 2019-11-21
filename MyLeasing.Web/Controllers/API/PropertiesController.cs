@@ -57,6 +57,8 @@ namespace MyLeasing.Web.Controllers.API
                 PropertyType = propertyType,
                 Remarks = request.Remarks,
                 Rooms = request.Rooms,
+                Bathrooms = request.Bathrooms,
+                Balconies = request.Balconies,
                 SquareMeters = request.SquareMeters,
                 Stratum = request.Stratum,
                 Latitude = request.Latitude,
@@ -145,6 +147,8 @@ namespace MyLeasing.Web.Controllers.API
             oldProperty.PropertyType = propertyType;
             oldProperty.Remarks = request.Remarks;
             oldProperty.Rooms = request.Rooms;
+            oldProperty.Bathrooms = request.Bathrooms;
+            oldProperty.Balconies = request.Balconies;
             oldProperty.SquareMeters = request.SquareMeters;
             oldProperty.Stratum = request.Stratum;
             oldProperty.Latitude = request.Latitude; 

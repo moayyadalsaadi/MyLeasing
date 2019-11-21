@@ -507,4 +507,16 @@
   <data name="Sale" xml:space="preserve">
     <value>بيع</value>
   </data>
+  <data name="Balconies" xml:space="preserve">
+    <value>الشرفات:</value>
+  </data>
+  <data name="BalconiesPlaceHolder" xml:space="preserve">
+    <value>أدخل عدد الشرفات ...!</value>
+  </data>
+  <data name="Bathrooms" xml:space="preserve">
+    <value>الحمامات:</value>
+  </data>
+  <data name="BathroomsPlaceHolder" xml:space="preserve">
+    <value>أدخل عدد الحمامات ...!</value>
+  </data>
 </root>

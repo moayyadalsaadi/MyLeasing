@@ -5,6 +5,7 @@
 }
 <style>
 
+
     body {
         background-color: #F5F5F5;
     }
@@ -64,20 +65,87 @@
     </dd>
 
     <dt>
-        الغرف :
+        الطابق :
     </dt>
     <dd>
-        @Html.DisplayFor(model => model.Rooms)
+        @if (Model.Stratum != null)
+        {
+            @Html.DisplayFor(model => model.Stratum)
+        }
+        else
+        {
+            <p>
+                لا يوجد
+            </p>
+        }
     </dd>
 
     <dt>
-        متوفر :
+        الغرف :
     </dt>
     <dd>
-        @Html.DisplayFor(model => model.IsAvailable)
+        @if (Model.Rooms != null)
+        {
+            @Html.DisplayFor(model => model.Rooms)
+        }
+        else
+        {
+            <p>
+                لا يوجد
+            </p>
+        }
+    </dd>
+
+    <dt>
+        الحمامات :
+    </dt>
+    <dd>
+        @if (Model.Bathrooms != null)
+        {
+            @Html.DisplayFor(model => model.Bathrooms)
+        }
+        else
+        {
+            <p>
+                لا يوجد
+            </p>
+        }
+    </dd>
+
+    <dt>
+        الشرفات :
+    </dt>
+    <dd>
+        @if (Model.Balconies != null)
+        {
+            @Html.DisplayFor(model => model.Balconies)
+        }
+        else
+        {
+            <p>
+                لا يوجد
+            </p>
+        }
     </dd>
 </dl>
 <dl>
+
+    @if (User.Identity.IsAuthenticated)
+    {
+        <dt>
+            اسم المالك :
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Owner.User.FullName)
+        </dd>
+        <dt>
+            رقم الجوال :
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Owner.User.PhoneNumber)
+        </dd>
+    }
+
     <dt>
         طبيعة العقار :
     </dt>
@@ -90,6 +158,13 @@
     </dt>
     <dd>
         @Html.DisplayFor(model => model.HasParkingLot)
+    </dd>
+
+    <dt>
+        متوفر :
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => model.IsAvailable)
     </dd>
 
     <dt>
@@ -114,31 +189,31 @@
 <div style="width: 100%;  margin-top:15px; height:auto; ">
 
 
-@if (Model.PropertyImages.Count == 0)
-{
-    <div class="alert alert-danger" role="alert">
-        لم يتم اضافة صور !
-    </div>
-}
-else
-{
-    
+    @if (Model.PropertyImages.Count == 0)
+    {
+        <div class="alert alert-danger" role="alert">
+            لم يتم اضافة صور !
+        </div>
+    }
+    else
+    {
+
         @if (Model.PropertyImages.Count > 0)
         {
             @foreach (var item in Model.PropertyImages)
             {
                 <div class="col-md-3 col-sm-5 col-xs-11  thumbnail " style="border-color:#e4e4e4; width:19%; margin:.5%;   background-color:#f5f5f5;  border-radius:.2px;">
-                @if (!string.IsNullOrEmpty(item.ImageUrl))
-                {
-                  <a href="@Url.Content(item.ImageUrl)" target="_blank"><img src="@Url.Content(item.ImageUrl)" alt="Image" class="img-thumbnail" style="width:300px; height:150px; margin-top:10px; margin-bottom:10px;" /></a>
-                 <center> <button data-id="@item.Id" class="btn btn-danger deleteImage" data-toggle="modal" data-target="#deleteDialog" style="outline:none; border:none; margin-bottom:10px;"><i class="glyphicon glyphicon-trash"></i></button></center>
-                }
-            </div>
+                    @if (!string.IsNullOrEmpty(item.ImageUrl))
+                    {
+                        <a href="@Url.Content(item.ImageUrl)" target="_blank"><img src="@Url.Content(item.ImageUrl)" alt="Image" class="img-thumbnail" style="width:300px; height:150px; margin-top:10px; margin-bottom:10px;" /></a>
+                        <center> <button data-id="@item.Id" class="btn btn-danger deleteImage" data-toggle="modal" data-target="#deleteDialog" style="outline:none; border:none; margin-bottom:10px;"><i class="glyphicon glyphicon-trash"></i></button></center>
+                    }
+                </div>
             }
-            
+
         }
-   
-}
+
+    }
 
 
 </div>

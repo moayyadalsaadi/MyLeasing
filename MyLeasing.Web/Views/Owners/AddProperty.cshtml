@@ -5,9 +5,9 @@
 }
 
 <style>
+
     body {
         background-color: #F5F5F5;
-        
     }
 
     #map {
@@ -36,7 +36,7 @@
             border: none;
             background-color: #fff;
             border-bottom: 0.9px solid #d8d9d8;
-            color:#000029;
+            color: #000029;
         }
 
         .box select {
@@ -49,7 +49,6 @@
             border: none;
             border-bottom: 1px solid #f2f2f2;
             margin-top: 50px;
-            
         }
 
         .box textarea {
@@ -74,8 +73,7 @@
                 right: 0px;
                 pointer-events: none;
                 transition: .5s;
-                
-                color:#000029;
+                color: #000029;
                 font-weight: bold;
             }
 
@@ -83,61 +81,62 @@
         .box input:valid ~ label {
             top: -12px;
             right: 0;
-             transition: .5s;
+            transition: .5s;
             font-size: 13px;
-            
         }
 
         .box input:focus,
-        .box input:valid{
-     border-bottom:1px solid #97D7EA;
-        transition: .5s;
-    }
+        .box input:valid {
+            border-bottom: 1px solid #97D7EA;
+            transition: .5s;
+        }
 
-    .box select:hover {
-        border-bottom: 1px solid #97D7EA;
-        transition: .5s;
-    }
-.box select:focus,
-  .box select:valid
-        {
-     border-bottom:1px solid #97D7EA;
-     transition: .5s;
-    }
-    .box input:hover {
-        border-bottom: 1px solid #97D7EA;
-        transition: .5s;
-    }
+        .box select:hover {
+            border-bottom: 1px solid #97D7EA;
+            transition: .5s;
+        }
 
-  .box textarea:hover {
-        border-bottom:1px solid #97D7EA;
-        transition: .5s;
-    }
- .box textarea:focus,
-  .box textarea:valid
-        {
-     border-bottom:1px solid #97D7EA;
-     transition: .5s;
-    }
+        .box select:focus,
+        .box select:valid {
+            border-bottom: 1px solid #97D7EA;
+            transition: .5s;
+        }
+
+        .box input:hover {
+            border-bottom: 1px solid #97D7EA;
+            transition: .5s;
+        }
+
+        .box textarea:hover {
+            border-bottom: 1px solid #97D7EA;
+            transition: .5s;
+        }
+
+        .box textarea:focus,
+        .box textarea:valid {
+            border-bottom: 1px solid #97D7EA;
+            transition: .5s;
+        }
 
     input:-webkit-autofill:focus {
         -webkit-box-shadow: 0 0 0 30px white inset !important;
         transition: background-color 5000s ease-in-out 0s;
     }
-    input:-webkit-autofill {
-border: $border-style !important;
--webkit-text-fill-color: $c-white !important;
-background-color: $c-blue !important;
--webkit-box-shadow: 0 0 0px 10px $c-blue inset;
-transition: background-color 5000s ease-in-out 0s;
-}
 
-*{
- -webkit-user-select: none; /* Safari 3.1+ */
-    -moz-user-select: none; /* Firefox 2+ */
-    -ms-user-select: none; /* IE 10+ */
-    user-select: none; /* Standard syntax */	
-}
+    input:-webkit-autofill {
+        border: $border-style !important;
+        -webkit-text-fill-color: $c-white !important;
+        background-color: $c-blue !important;
+        -webkit-box-shadow: 0 0 0px 10px $c-blue inset;
+        transition: background-color 5000s ease-in-out 0s;
+    }
+
+    * {
+        -webkit-user-select: none; /* Safari 3.1+ */
+        -moz-user-select: none; /* Firefox 2+ */
+        -ms-user-select: none; /* IE 10+ */
+        user-select: none; /* Standard syntax */
+    }
 </style>
 
 <div class="box thumbnail" style="margin-top:20%; margin-bottom:15%;">
@@ -148,68 +147,82 @@ transition: background-color 5000s ease-in-out 0s;
 
             <div style="margin-top:-50px;">
                 <select asp-for="PropertyTypeId" asp-items="Model.PropertyTypes"></select>
-                <span asp-validation-for="PropertyTypeId" class="text-danger"></span>
+                <span asp-validation-for="PropertyTypeId" class="text-danger" style="margin-top:90px; right:0; position:absolute;"></span>
             </div>
 
             <div style="margin-right:250px; margin-top: -70px;">
                 <input class="name-input" asp-for="Neighborhood" required="">
                 <label asp-for="Neighborhood"></label>
-                <span asp-validation-for="Neighborhood" class="text-danger"></span>
+                <span asp-validation-for="Neighborhood" class="text-danger" style="margin-top:45px; right:0; position:absolute;"></span>
             </div>
 
             <div style="margin-right:500px; margin-top:-70px;">
                 <input asp-for="Address" required="">
                 <label asp-for="Address"></label>
-                <span asp-validation-for="Address" class="text-danger"></span>
+                <span asp-validation-for="Address" class="text-danger" style="margin-top:-25px; right:0; position:absolute;"></span>
             </div>
 
             <div style="margin-top:12px;">
 
                 <input asp-for="Price" required="">
                 <label asp-for="Price">السعر * (شيكل)</label>
-                <span asp-validation-for="Price" class="text-danger"></span>
+                <span asp-validation-for="Price" class="text-danger" style="margin-top:52px; right:0; position:absolute;"></span>
             </div>
 
             <div style="margin-right:250px; margin-top: -70px;">
 
                 <input asp-for="SquareMeters" required="">
                 <label asp-for="SquareMeters">المساحة * (متر)</label>
-                <span asp-validation-for="SquareMeters" class="text-danger"></span>
+                <span asp-validation-for="SquareMeters" class="text-danger" style="margin-top:52px; right:0; position:absolute;"></span>
             </div>
 
             <div style="margin-right:500px; margin-top:-70px;">
 
-                <input asp-for="Rooms" required="">
+                <input asp-for="Rooms">
                 <label asp-for="Rooms"></label>
-                <span asp-validation-for="Rooms" class="text-danger"></span>
+                <span asp-validation-for="Rooms" class="text-danger" style="margin-top:-20px; right:0; position:absolute;"></span>
+            </div>
+            <div style="margin-right:500px; margin-top:-70px;">
+
+                <input asp-for="Rooms">
+                <label asp-for="Rooms"></label>
+                <span asp-validation-for="Rooms" class="text-danger" style="margin-top:-20px; right:0; position:absolute;"></span>
             </div>
 
             <div style="margin-top:12px;">
 
-                <input asp-for="Stratum" required="">
+                <input asp-for="Bathrooms">
+                <label asp-for="Bathrooms"></label>
+                <span asp-validation-for="Bathrooms" class="text-danger" style="margin-top:45px; right:0; position:absolute;"></span>
+            </div>
+
+            <div style="margin-right:250px; margin-top:-72px;">
+
+                <input asp-for="Balconies">
+                <label asp-for="Balconies"></label>
+                <span asp-validation-for="Balconies" class="text-danger" style="margin-top:45px; right:0; position:absolute;"></span>
+            </div>
+            <div style="margin-right:500px; margin-top:-72px;">
+
+                <input asp-for="Stratum">
                 <label asp-for="Stratum"></label>
-                <span asp-validation-for="Stratum" class="text-danger"></span>
+                <span asp-validation-for="Stratum" class="text-danger" style="margin-top:45px; right:0; position:absolute;"></span>
+            </div>
+            <div style="margin-top: -50px;">
+                @Html.DropDownList("Typeprop", null, "اختر طبيعة العقار")
+                <span asp-validation-for="Typeprop" class="text-danger" style="margin-top:52px; right:0; position:absolute;"></span>
             </div>
 
-            <div style="margin-right:250px; margin-top: -120px;">
-
-                <div style="">
-                    @Html.DropDownList("Typeprop", null, "اختر طبيعة العقار")
-                </div>
-                <span asp-validation-for="Typeprop" class="text-danger"></span>
-            </div>
-
-            <div style="margin-top:-10px;">
+            <div style="margin-right:250px; margin-top:-70px;">
                 <div class="checkbox">
-
-                    <span style="font-weight: bold;"> • لديها موقف سيارات ؟</span><input asp-for="HasParkingLot" style="width:70px; ">
-
+                    <span style="font-weight: bold;"> • لديها موقف سيارات ؟</span><input asp-for="HasParkingLot" style="width:70px;">
                 </div>
             </div>
-            <div>
+
+            <div style="margin-right:500px; margin-top: -30px;">
                 <div class="checkbox">
 
-                    <span style="font-weight: bold;">• متوفر ؟</span><input asp-for="IsAvailable" style="width:70px;">
+                    <span style="font-weight: bold;">• متوفر ؟</span><input asp-for="IsAvailable" style="width:70px">
 
                 </div>
             </div>
@@ -241,6 +254,10 @@ transition: background-color 5000s ease-in-out 0s;
         </form>
     </div>
 </div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
 <script src="~/lib/jquery/dist/jquery.js"></script>
 <script>
     $(document).ready(function () {
@@ -249,7 +266,7 @@ transition: background-color 5000s ease-in-out 0s;
             var Longitude = document.getElementById('longclicked').value;
             $.ajax({
                 type: "post",
-                url: "/Home/GetPlace?Latitude=" + Latitude + "&Longitude=" + Longitude,
+                url: "/Owners/GetPlae?Latitude=" + Latitude + "&Longitude=" + Longitude,
                 contentType: "html",
             });
         });

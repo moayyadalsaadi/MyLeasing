@@ -17,12 +17,14 @@ namespace MyLeasing.Common.Models
 
         [Required]
         public int SquareMeters { get; set; }
+       
+        public int? Rooms { get; set; }
+       
+        public int? Bathrooms { get; set; }
+    
+        public int? Balconies { get; set; }
 
-        [Required]
-        public int Rooms { get; set; }
-
-        [Required]
-        public int Stratum { get; set; }
+        public int? Stratum { get; set; }
 
         [Required]
         public string Typeprop { get; set; }

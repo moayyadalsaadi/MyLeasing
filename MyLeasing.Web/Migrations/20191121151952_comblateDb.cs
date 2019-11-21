@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MyLeasing.Web.Migrations
 {
-    public partial class complateDb : Migration
+    public partial class comblateDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -237,11 +237,13 @@ namespace MyLeasing.Web.Migrations
                     Address = table.Column<string>(maxLength: 50, nullable: false),
                     Price = table.Column<decimal>(nullable: false),
                     SquareMeters = table.Column<int>(nullable: false),
-                    Rooms = table.Column<int>(nullable: false),
-                    Stratum = table.Column<int>(nullable: false),
+                    Rooms = table.Column<int>(nullable: true),
+                    Bathrooms = table.Column<int>(nullable: true),
+                    Balconies = table.Column<int>(nullable: true),
+                    Stratum = table.Column<int>(nullable: true),
                     HasParkingLot = table.Column<bool>(nullable: false),
                     IsAvailable = table.Column<bool>(nullable: false),
-                    Typeprop = table.Column<string>(nullable: true),
+                    Typeprop = table.Column<string>(nullable: false),
                     Remarks = table.Column<string>(nullable: true),
                     Latitude = table.Column<double>(nullable: false),
                     Longitude = table.Column<double>(nullable: false),

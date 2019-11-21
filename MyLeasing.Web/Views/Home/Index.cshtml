@@ -4,17 +4,17 @@
 @{
     ViewData["Title"] = "الصفحة الرئيسية";
 }
- 
+
 <style>
+
     body {
         background-color: #F5F5F5;
     }
-
 </style>
-
 <div style="width: 99%; margin:.5%; margin-top:25px;  height:300px;">
+    <div >
 
-<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000" style="margin-top: 25px; width:100%;">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000" style="margin-top: 25px; width:100%;">
             <ol class="carousel-indicators">
                 <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                 <li data-target="#myCarousel" data-slide-to="1"></li>
@@ -49,49 +49,47 @@
             </a>
         </div>
 
-</div>
-
-
-
-
-<div style="width: 100%;  margin-top:15px; height:390px; ">
-<h4 style="font-weight: bold; padding-top:7px; margin-right:6px;">العقارات المتاحة</h4>
-@foreach (var item in Model)
+    </div>
+   <div style="width: 100%;  margin-top:15px; height:390px; ">
+        <h4 style="font-weight: bold; padding-top:7px; margin-right:6px;">العقارات المتاحة</h4>
+        @foreach (var item in Model)
         {
             <div class="col-md-3 col-sm-5 col-xs-11  thumbnail " style="border-color:#e4e4e4; width:19%; margin:.5%;    border-radius:.2px;">
                 @if (!string.IsNullOrEmpty(item.FirstImage))
                 {
                     <img src="@Url.Content(item.FirstImage)" alt="Image" style="width:300px;height:300px;max-width: 100%; height:150px; margin-top:10px;" />
                 }
-                
-               <br>
+
+                <br>
                 <div>
                     <label>نوع العقار :</label>
                     @Html.DisplayFor(model => item.PropertyType.Name)
                 </div>
                 <div>
-                   <label> الحي :</label>
+                    <label> الحي :</label>
                     @Html.DisplayFor(model => item.Neighborhood)
                 </div>
                 <div>
                     <label>السعر :</label>
                     @Html.DisplayFor(modelItem => item.Price) شيكل
                 </div>
+                <div>
+                    <label>طبيعة العقار :</label>
+                    @Html.DisplayFor(modelItem => item.Typeprop)
+                </div>
                 <hr>
                 <a asp-action="DetailsProperty" class="btn btn-info" asp-route-id="@item.Id" style="margin-bottom:12px; outline:none; border:none;">التفاصيل</a>
             </div>
         }
-
+    </div>
+    <br />
+    <div style="width:100%;  margin:.5%;  height:50px; ">
+        <nav aria-label="Emploee paging" style="margin-top:-12px;">
+            @await this.Component.InvokeAsync("Pager", new { PagingList = this.Model })
+        </nav>
+    </div>
 </div>
 
-
-<div style="width:99%;  position:relative; margin:.5%;  height:50px; ">
-
- <nav aria-label="Emploee paging" style="margin-top:-12px; position:absolute;">
-        @await this.Component.InvokeAsync("Pager", new { PagingList = this.Model })
-    </nav>
-
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

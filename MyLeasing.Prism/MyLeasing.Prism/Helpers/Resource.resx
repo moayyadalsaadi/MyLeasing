@@ -507,4 +507,16 @@
   <data name="Sale" xml:space="preserve">
     <value>Sale</value>
   </data>
+  <data name="Balconies" xml:space="preserve">
+    <value>Balconies</value>
+  </data>
+  <data name="BalconiesPlaceHolder" xml:space="preserve">
+    <value>Enter property Balconies...</value>
+  </data>
+  <data name="Bathrooms" xml:space="preserve">
+    <value>Bathrooms</value>
+  </data>
+  <data name="BathroomsPlaceHolder" xml:space="preserve">
+    <value>Enter property Bathrooms...</value>
+  </data>
 </root>

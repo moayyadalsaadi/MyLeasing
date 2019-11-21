@@ -279,6 +279,8 @@ namespace MyLeasing.Prism.ViewModels
                 PropertyTypeId = PropertyType.Id,
                 Remarks = Property.Remarks,
                 Rooms = Property.Rooms,
+                Bathrooms = Property.Bathrooms,
+                Balconies = Property.Balconies,
                 SquareMeters = Property.SquareMeters,
                 Stratum = Stratum.Id,
                 Latitude = Property.Latitude,

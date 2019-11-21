@@ -19,10 +19,14 @@ namespace MyLeasing.Common.Models
 
         public int SquareMeters { get; set; }
 
-        public int Rooms { get; set; }
+        public int? Rooms { get; set; }
 
-        public int Stratum { get; set; }
-      
+        public int? Bathrooms { get; set; }
+
+        public int? Balconies { get; set; }
+
+        public int? Stratum { get; set; }
+
         public string Typeprop { get; set; }
 
         public bool HasParkingLot { get; set; }
