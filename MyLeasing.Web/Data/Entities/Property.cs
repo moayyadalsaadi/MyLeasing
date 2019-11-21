@@ -38,7 +38,7 @@ namespace MyLeasing.Web.Data.Entities
         public int? Balconies { get; set; }
 
         [Display(Name = "الطابق")]
-        [Range(1, 10, ErrorMessage = "يجب أن يحتوي الحقل {0} بين {2} و {1} حرفًا.")]
+        [Range(1, 10, ErrorMessage = "يجب أن يحتوي الحقل {0} بين {1} و {2}.")]
         public int? Stratum { get; set; }
 
         [Display(Name = "لديها موقف سيارات?")]
