@@ -12,7 +12,7 @@ namespace MyLeasing.Web.Data.Entities
         [Required(ErrorMessage = "هذا الحقل مطلوب")]
         public string Neighborhood { get; set; }
 
-        [Display(Name = "العنوان*")]
+        [Display(Name = "المنطقة*")]
         [MaxLength(50, ErrorMessage = "لا يمكن أن يحتوي الحقل {0} على أكثر من {1} حرف.")]
         [Required(ErrorMessage = "هذا الحقل مطلوب")]
         public string Address { get; set; }
