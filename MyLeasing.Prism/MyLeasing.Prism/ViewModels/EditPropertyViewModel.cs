@@ -282,7 +282,7 @@ namespace MyLeasing.Prism.ViewModels
                 Bathrooms = Property.Bathrooms,
                 Balconies = Property.Balconies,
                 SquareMeters = Property.SquareMeters,
-                Stratum = Stratum.Id,
+                Stratum = Property.Stratum,
                 Latitude = Property.Latitude,
                 Longitude = Property.Longitude,
                 Typeprop = TypeProp.Name
@@ -375,18 +375,11 @@ namespace MyLeasing.Prism.ViewModels
             {
                 await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.SquareMetersError, Languages.Ok);
                 return false;
-            }
+            }      
 
-            if (Property.Rooms <= 0)
+            if (Stratum != null)
             {
-                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.RoomsError, Languages.Ok);
-                return false;
-            }
-
-            if (Stratum == null)
-            {
-                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.StratumError, Languages.Ok);
-                return false;
+               Property.Stratum = Stratum.Id;              
             }
 
             if (PropertyType == null)
