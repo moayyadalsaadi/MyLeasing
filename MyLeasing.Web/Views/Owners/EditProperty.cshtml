@@ -139,7 +139,7 @@
     }
 </style>
 
-<div class="box thumbnail" style="margin-top:20%; margin-bottom:10%;">
+<div class="box thumbnail" style="margin-top:27%;">
     <div>
         <form asp-action="EditProperty">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -222,9 +222,8 @@
                 </div>
             </div>
 
-            <div style="margin-top:-15px;">
-
-                <textarea asp-for="Remarks" style="resize: none;"></textarea>
+            <div style="margin-top:40px;">
+                <textarea class="ckeditor" asp-for="Remarks"></textarea>
                 <label asp-for="Remarks" style="margin-top:20px;"></label>
                 <span asp-validation-for="Remarks" class="text-danger"></span>
             </div>

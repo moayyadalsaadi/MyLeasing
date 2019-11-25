@@ -4,6 +4,7 @@
     ViewData["Title"] = "تعديل";
 }
 
+
 <style>
 
     body {
@@ -26,97 +27,97 @@
         border-radius: 5px;
     }
 
-        .box input {
-            padding: 10px 0;
-            margin-bottom: 30px;
-            width: 230px;
-            box-sizing: border-box;
-            box-shadow: none;
-            outline: none;
-            border: none;
-            background-color: #fff;
-            border-bottom: 0.9px solid #d8d9d8;
-            color: #000029;
-        }
+    .box input {
+        padding: 10px 0;
+        margin-bottom: 30px;
+        width: 230px;
+        box-sizing: border-box;
+        box-shadow: none;
+        outline: none;
+        border: none;
+        background-color: #fff;
+        border-bottom: 0.9px solid #d8d9d8;
+        color: #000029;
+    }
 
-        .box select {
-            padding: 10px 0;
-            margin-bottom: 30px;
-            width: 230px;
-            box-sizing: border-box;
-            box-shadow: none;
-            outline: none;
-            border: none;
-            border-bottom: 1px solid #f2f2f2;
-            margin-top: 50px;
-        }
+    .box select {
+        padding: 10px 0;
+        margin-bottom: 30px;
+        width: 230px;
+        box-sizing: border-box;
+        box-shadow: none;
+        outline: none;
+        border: none;
+        border-bottom: 1px solid #f2f2f2;
+        margin-top: 50px;
+    }
 
-        .box textarea {
-            padding: 10px 0;
-            margin-bottom: 30px;
-            width: 480px;
-            box-sizing: border-box;
-            box-shadow: none;
-            outline: none;
-            border: none;
-            border-bottom: 1px solid #f2f2f2;
-            margin-top: 50px;
-        }
+    .box textarea {
+        padding: 10px 0;
+        margin-bottom: 30px;
+        width: 480px;
+        box-sizing: border-box;
+        box-shadow: none;
+        outline: none;
+        border: none;
+        border-bottom: 1px solid #f2f2f2;
+        margin-top: 50px;
+    }
 
-        .box form div {
-            position: relative;
-        }
+    .box form div {
+        position: relative;
+    }
 
-            .box form div label {
-                position: absolute;
-                top: 5px;
-                right: 0px;
-                pointer-events: none;
-                transition: .5s;
-                font-weight: bold;
-                color: #000029;
-            }
+    .box form div label {
+        position: absolute;
+        top: 5px;
+        right: 0px;
+        pointer-events: none;
+        transition: .5s;
+        font-weight: bold;
+        color: #000029;
+    }
 
-        .box input:focus ~ label,
-        .box input:valid ~ label {
-            top: -12px;
-            right: 0;
-            transition: .5s;
-            font-size: 13px;
-        }
+    .box input:focus ~ label,
+    .box input:valid ~ label {
+        top: -12px;
+        right: 0;
+        transition: .5s;
+        font-size: 13px;
+    }
 
-        .box input:focus,
-        .box input:valid {
-            border-bottom: 1px solid #97D7EA;
-            transition: .5s;
-        }
+    .box input:focus,
+    .box input:valid {
+        border-bottom: 1px solid #97D7EA;
+        transition: .5s;
+    }
 
-        .box select:hover {
-            border-bottom: 1px solid #97D7EA;
-            transition: .5s;
-        }
+    .box select:hover {
+        border-bottom: 1px solid #97D7EA;
+        transition: .5s;
+    }
 
-        .box select:focus,
-        .box select:valid {
-            border-bottom: 1px solid #97D7EA;
-            transition: .5s;
-        }
+    .box select:focus,
+    .box select:valid {
+        border-bottom: 1px solid #97D7EA;
+        transition: .5s;
+    }
 
-        .box input:hover {
-            border-bottom: 1px solid #97D7EA;
-            transition: .5s;
-        }
+    .box input:hover {
+        border-bottom: 1px solid #97D7EA;
+        transition: .5s;
+    }
 
-        .box textarea:hover {
-            border-bottom: 1px solid #97D7EA;
-            transition: .5s;
-        }
+    .box textarea:hover {
+        border-bottom: 1px solid #97D7EA;
+        transition: .5s;
+    }
 
-        .box textarea:focus,
-        .box textarea:valid {
-            border-bottom: 1px solid #97D7EA;
-            transition: .5s;
-        }
+    .box textarea:focus,
+    .box textarea:valid {
+        border-bottom: 1px solid #97D7EA;
+        transition: .5s;
+    }
 
     input:-webkit-autofill:focus {
         -webkit-box-shadow: 0 0 0 30px white inset !important;
@@ -132,14 +133,14 @@
     }
 
     * {
-        -webkit-user-select: none; /* Safari 3.1+ */
-        -moz-user-select: none; /* Firefox 2+ */
-        -ms-user-select: none; /* IE 10+ */
-        user-select: none; /* Standard syntax */
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
     }
 </style>
-
-<div class="box thumbnail" style="margin-top:20%; margin-bottom:10%;">
+<script src="~/lib/ckeditor/ckeditor.js"></script>
+<div class="box thumbnail" style="margin-top:27%;">
     <div>
         <form asp-action="EditProperty">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -164,41 +165,36 @@
             </div>
 
             <div style="margin-top:12px;">
-
                 <input asp-for="Price" required="">
                 <label asp-for="Price">السعر * (شيكل)</label>
                 <span asp-validation-for="Price" class="text-danger" style="margin-top:52px; right:0; position:absolute;"></span>
             </div>
 
             <div style="margin-right:250px; margin-top: -70px;">
-
                 <input asp-for="SquareMeters" required="">
                 <label asp-for="SquareMeters">المساحة * (متر)</label>
                 <span asp-validation-for="SquareMeters" class="text-danger" style="margin-top:52px; right:0; position:absolute;"></span>
             </div>
 
             <div style="margin-right:500px; margin-top:-70px;">
-
                 <input asp-for="Rooms">
                 <label asp-for="Rooms"></label>
                 <span asp-validation-for="Rooms" class="text-danger" style="margin-top:-20px; right:0; position:absolute;"></span>
             </div>
 
             <div style="margin-top:12px;">
-
                 <input asp-for="Bathrooms">
                 <label asp-for="Bathrooms"></label>
                 <span asp-validation-for="Bathrooms" class="text-danger" style="margin-top:45px; right:0; position:absolute;"></span>
             </div>
 
             <div style="margin-right:250px; margin-top:-72px;">
-
                 <input asp-for="Balconies">
                 <label asp-for="Balconies"></label>
                 <span asp-validation-for="Balconies" class="text-danger" style="margin-top:45px; right:0; position:absolute;"></span>
             </div>
-            <div style="margin-right:500px; margin-top:-72px;">
 
+            <div style="margin-right:500px; margin-top:-72px;">
                 <input asp-for="Stratum">
                 <label asp-for="Stratum"></label>
                 <span asp-validation-for="Stratum" class="text-danger" style="margin-top:-25px; right:0; position:absolute;"></span>
@@ -221,19 +217,19 @@
 
                 </div>
             </div>
-
-            <div style="margin-top:-15px;">
-
-                <textarea asp-for="Remarks" style="resize: none;"></textarea>
+            
+            <div style="margin-top:40px;">
+                <textarea asp-for="Remarks" class="ckeditor" style="margin-top:20px;"></textarea>
                 <label asp-for="Remarks" style="margin-top:20px;"></label>
                 <span asp-validation-for="Remarks" class="text-danger"></span>
             </div>
-            <label style="font-weight: blod; color:#000029; ">انقر لتحديد موقع العقار</label>
+
+            <label style="color:#000029;">انقر لتحديد موقع العقار</label>
+
             <div class="form-group" style="margin-right:-15px;">
                 <div style="padding:10px">
                     <div id="map"></div>
                 </div>
-
                 <input id="latclicked" disabled asp-for="Latitude" style="margin-right:12px; padding-right:5px;" />
                 <input id="longclicked" disabled asp-for="Longitude" style="margin-right:12px; padding-right:5px;" />
             </div>
@@ -246,6 +242,7 @@
             <span class="text-danger" style="margin-right:100px;">
                 @ViewBag.danger
             </span>
+
         </form>
     </div>
 </div>
@@ -253,7 +250,9 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
 <script src="~/lib/jquery/dist/jquery.js"></script>
+
 <script>
     $(document).ready(function () {
         $("#map").click(function () {
@@ -267,7 +266,9 @@
         });
     });
 </script>
+
 <script type="text/javascript">
+
     var map;
     function initMap() {
         var latitude = @Model.Latitude; // YOUR LATITUDE VALUE
@@ -277,11 +278,12 @@
             center: myLatLng,
             zoom: 10,
         });
-        // Update lat/long value of div when anywhere in the map is clicked
+
         google.maps.event.addListener(map, 'click', function (event) {
             document.getElementById('latclicked').innerHTML = event.latLng.lat();
             document.getElementById('longclicked').innerHTML = event.latLng.lng();
         });
+
         google.maps.event.addListener(map, 'click', function (event) {
             var marker = new google.maps.Marker({
                 position: event.latLng,
@@ -295,5 +297,6 @@
         });
     }
 </script>
+
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDzxxQKGH86uDAJ-cKS3ZbrYm360vOqLI&callback=initMap"
         async defer></script>

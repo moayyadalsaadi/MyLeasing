@@ -26,97 +26,97 @@
         border-radius: 5px;
     }
 
-        .box input {
-            padding: 10px 0;
-            margin-bottom: 30px;
-            width: 230px;
-            box-sizing: border-box;
-            box-shadow: none;
-            outline: none;
-            border: none;
-            background-color: #fff;
-            border-bottom: 0.9px solid #d8d9d8;
-            color: #000029;
-        }
+    .box input {
+        padding: 10px 0;
+        margin-bottom: 30px;
+        width: 230px;
+        box-sizing: border-box;
+        box-shadow: none;
+        outline: none;
+        border: none;
+        background-color: #fff;
+        border-bottom: 0.9px solid #d8d9d8;
+        color: #000029;
+    }
 
-        .box select {
-            padding: 10px 0;
-            margin-bottom: 30px;
-            width: 230px;
-            box-sizing: border-box;
-            box-shadow: none;
-            outline: none;
-            border: none;
-            border-bottom: 1px solid #f2f2f2;
-            margin-top: 50px;
-        }
+    .box select {
+        padding: 10px 0;
+        margin-bottom: 30px;
+        width: 230px;
+        box-sizing: border-box;
+        box-shadow: none;
+        outline: none;
+        border: none;
+        border-bottom: 1px solid #f2f2f2;
+        margin-top: 50px;
+    }
 
-        .box textarea {
-            padding: 10px 0;
-            margin-bottom: 30px;
-            width: 480px;
-            box-sizing: border-box;
-            box-shadow: none;
-            outline: none;
-            border: none;
-            border-bottom: 1px solid #f2f2f2;
-            margin-top: 50px;
-        }
+    .box textarea {
+        padding: 10px 0;
+        margin-bottom: 30px;
+        width: 480px;
+        box-sizing: border-box;
+        box-shadow: none;
+        outline: none;
+        border: none;
+        border-bottom: 1px solid #f2f2f2;
+        margin-top: 50px;
+    }
 
-        .box form div {
-            position: relative;
-        }
+    .box form div {
+        position: relative;
+    }
 
-            .box form div label {
-                position: absolute;
-                top: 5px;
-                right: 0px;
-                pointer-events: none;
-                transition: .5s;
-                color: #000029;
-                font-weight: bold;
-            }
+    .box form div label {
+        position: absolute;
+        top: 5px;
+        right: 0px;
+        pointer-events: none;
+        transition: .5s;
+        color: #000029;
+        font-weight: bold;
+    }
 
-        .box input:focus ~ label,
-        .box input:valid ~ label {
-            top: -12px;
-            right: 0;
-            transition: .5s;
-            font-size: 13px;
-        }
+    .box input:focus ~ label,
+    .box input:valid ~ label {
+        top: -12px;
+        right: 0;
+        transition: .5s;
+        font-size: 13px;
+    }
 
-        .box input:focus,
-        .box input:valid {
-            border-bottom: 1px solid #97D7EA;
-            transition: .5s;
-        }
+    .box input:focus,
+    .box input:valid {
+        border-bottom: 1px solid #97D7EA;
+        transition: .5s;
+    }
 
-        .box select:hover {
-            border-bottom: 1px solid #97D7EA;
-            transition: .5s;
-        }
+    .box select:hover {
+        border-bottom: 1px solid #97D7EA;
+        transition: .5s;
+    }
 
-        .box select:focus,
-        .box select:valid {
-            border-bottom: 1px solid #97D7EA;
-            transition: .5s;
-        }
+    .box select:focus,
+    .box select:valid {
+        border-bottom: 1px solid #97D7EA;
+        transition: .5s;
+    }
 
-        .box input:hover {
-            border-bottom: 1px solid #97D7EA;
-            transition: .5s;
-        }
+    .box input:hover {
+        border-bottom: 1px solid #97D7EA;
+        transition: .5s;
+    }
 
-        .box textarea:hover {
-            border-bottom: 1px solid #97D7EA;
-            transition: .5s;
-        }
+    .box textarea:hover {
+        border-bottom: 1px solid #97D7EA;
+        transition: .5s;
+    }
 
-        .box textarea:focus,
-        .box textarea:valid {
-            border-bottom: 1px solid #97D7EA;
-            transition: .5s;
-        }
+    .box textarea:focus,
+    .box textarea:valid {
+        border-bottom: 1px solid #97D7EA;
+        transition: .5s;
+    }
 
     input:-webkit-autofill:focus {
         -webkit-box-shadow: 0 0 0 30px white inset !important;
@@ -138,8 +138,8 @@
         user-select: none; /* Standard syntax */
     }
 </style>
-
-<div class="box thumbnail" style="margin-top:20%; margin-bottom:15%;">
+<script src="~/lib/ckeditor/ckeditor.js"></script>
+<div class="box thumbnail" style="margin-top:27%;">
     <div>
         <form asp-action="AddProperty">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -222,13 +222,13 @@
                 </div>
             </div>
 
-            <div style="margin-top:-15px;">
+            <div style="margin-top:40px;">
 
-                <textarea asp-for="Remarks" style="resize: none;"></textarea>
+                <textarea class="ckeditor" asp-for="Remarks"></textarea>
                 <label asp-for="Remarks" style="margin-top:20px;"></label>
                 <span asp-validation-for="Remarks" class="text-danger"></span>
             </div>
-            <label style="font-weight: blod; color:#000029; ">انقر لتحديد موقع العقار</label>
+            <label style="color:#000029;">انقر لتحديد موقع العقار</label>
             <div class="form-group" style="margin-right:-15px;">
                 <div style="padding:10px">
                     <div id="map"></div>

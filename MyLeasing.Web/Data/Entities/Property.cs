@@ -51,7 +51,7 @@ namespace MyLeasing.Web.Data.Entities
         [Required(ErrorMessage = "هذا الحقل مطلوب")]
         public string Typeprop { get; set; }
 
-        [Display(Name = "ملاحظات")]
+        [Display(Name = "معلومات اضافية")]
         public string Remarks { get; set; }
 
         [Display(Name = "خط العرض")]

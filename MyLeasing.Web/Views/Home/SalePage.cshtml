@@ -30,17 +30,23 @@
 <div style="width:99%; margin:.5%;  padding-top:25px; padding-bottom:15px; padding-left:15px; margin-top:25px; height:auto; ">
     <form asp-action="SalePage" method="post" class="form-inline">
         <center>
-            <div class=" form-group">
-                <select id="searchty" name="searchty" class="form-control" style="width:150px; height:40px; padding-right:20px; position: relative;">
+            <div class=" form-group" style="margin-top:30px">
+                <select id="searchty" name="searchty" class="form-control" style="width:100px; height:40px; padding-right:20px; position: relative;">
                     <option value="">نوع العقار</option>
                     <option>أرض</option>
                     <option>فيلا</option>
                     <option>شقة</option>
                     <option>منزل</option>
                 </select>
-                <input type="text" placeholder="ابحث بواسطة الحي" id="searchho" name="searchho" class="form-control" style="width:150px; height:40px; padding-right:20px; position: relative;">
-                <input type="text" placeholder="ابحث بواسطة المساحة" id="searchsc" name="searchsc" class="form-control" style="width:150px; height:40px; padding-right:20px; position: relative;">
-                <select class="form-control" name="searchro" id="searchro" style="width:150px; height:40px;">
+                <input type="text" placeholder="الحي" id="searchho" name="searchho" class="form-control" style="width:100px; height:40px; padding-right:20px; position: relative;">
+                <div class="form-group" style="margin-top:-50px">
+                    <fieldset>
+                        <legend>حسب المساحة:</legend>
+                        <input type="text" placeholder="من" id="searchscf" name="searchscf" class="form-control" style="width:100px; height:40px; padding-right:20px; position: relative;">
+                        <input type="text" placeholder="الى" id="searchsct" name="searchsct" class="form-control" style="width:100px; height:40px; padding-right:20px; position: relative;">
+                    </fieldset>
+                </div>
+                <select class="form-control" name="searchro" id="searchro" style="width:100px; height:40px;">
                     <option value="">عدد الغرف</option>
                     <option value="1">غرفة واحدة - ستوديو</option>
                     <option value="2">غرفتين</option>
@@ -49,50 +55,63 @@
                     <option value="5">خمس غرف</option>
                     <option value="6">أكثر من خمس غرف</option>
                 </select>
-                <input type="text" placeholder="ابحث بواسطة السعر" id="searchpr" name="searchpr" class="form-control" style="width:150px; height:40px; padding-right:20px; position: relative;">
+                <div class="form-group" style="margin-top:-50px">
+                    <fieldset>
+                        <legend>حسب السعر:</legend>
+                        <input type="text" placeholder="من" id="searchprf" name="searchprf" class="form-control" style="width:100px; height:40px; padding-right:20px; position: relative;">
+                        <input type="text" placeholder="الى" id="searchprt" name="searchprt" class="form-control" style="width:100px; height:40px; padding-right:20px; position: relative;">
+                    </fieldset>
+                </div>
                 <button type="submit" class="btn btn-info" id="btn_search" style=" margin-right:15px; border:none; outline:none; width:70px; height:40px;">ابحث</button>
             </div>
         </center>
     </form>
 
 </div>
-
-<div style="width: 100%; margin-top:15px; height:1045px; ">
-    @foreach (var item in Model)
+<div style="width: 99%; margin:.5%; margin-top:25px;  height:300px;">
+    @if (Model.Count == 0)
     {
-        <div class="col-md-3 col-sm-5 col-xs-11  thumbnail " style="border-color:#e4e4e4; width:19%; margin:.5%;    border-radius:.2px;">
-            @if (!string.IsNullOrEmpty(item.FirstImage))
+        <h1 style="text-align:center;">لا يوجد نتائج مطابقة للبحث</h1>
+    }
+    else
+    {
+        <div style="width: 100%; margin-top:15px;">
+            @foreach (var item in Model)
             {
-                <img src="@Url.Content(item.FirstImage)" alt="Image" style="width:300px;height:300px;max-width: 100%; height:150px; margin-top:10px;" />
-            }
+                <div class="col-md-3 col-sm-5 col-xs-11  thumbnail " style="border-color:#e4e4e4; width:19%; margin:.5%;    border-radius:.2px;">
+                    @if (!string.IsNullOrEmpty(item.FirstImage))
+                    {
+                        <img src="@Url.Content(item.FirstImage)" alt="Image" style="width:300px;height:300px;max-width: 100%; height:150px; margin-top:10px;" />
+                    }
 
-            <br>
-            <div>
-                <label>نوع العقار :</label>
-                @Html.DisplayFor(model => item.PropertyType.Name)
-            </div>
-            <div>
-                <label> الحي :</label>
-                @Html.DisplayFor(model => item.Neighborhood)
-            </div>
-            <div>
-                <label>السعر :</label>
-                @Html.DisplayFor(modelItem => item.Price) شيكل
-            </div>
-            <hr>
-            <a asp-action="DetailsProperty" class="btn btn-info" asp-route-id="@item.Id" style="margin-bottom:12px; outline:none; border:none;">التفاصيل</a>
+                    <br>
+                    <div>
+                        <label>نوع العقار :</label>
+                        @Html.DisplayFor(model => item.PropertyType.Name)
+                    </div>
+                    <div>
+                        <label> الحي :</label>
+                        @Html.DisplayFor(model => item.Neighborhood)
+                    </div>
+                    <div>
+                        <label>السعر :</label>
+                        @Html.DisplayFor(modelItem => item.Price) شيكل
+                    </div>
+                    <hr>
+                    <a asp-action="DetailsProperty" class="btn btn-info" asp-route-id="@item.Id" style="margin-bottom:12px; outline:none; border:none;">التفاصيل</a>
+                </div>
+            }
+        </div>
+        <br />
+        <div style="width:99%; margin:.5%;  height:50px; ">
+
+            <nav aria-label="paging" style="margin-top:25px;">
+                @await this.Component.InvokeAsync("Pager", new { PagingList = this.Model })
+            </nav>
         </div>
     }
 
 </div>
-
-<div style="width:99%; margin:.5%;  height:50px; ">
-
-    <nav aria-label="Emploee paging" style="margin-top:25px;">
-        @await this.Component.InvokeAsync("Pager", new { PagingList = this.Model })
-    </nav>
-</div>
-
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 
