@@ -4,24 +4,85 @@
     ViewData["Title"] = "Edit";
 }
 
-<h2>تعديل</h2>
+<style>
 
-<h4>نوع العقار</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="حفظ" class="btn btn-primary" />
-                <a asp-action="Index" class="btn btn-success">الرجوع للقائمة</a>
-            </div>
-        </form>
-    </div>
+    body {
+        background-color: #F5F5F5;
+    }
+
+    .box {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width: 400px;
+        padding: 50px;
+        background-color: #fff;
+        border-radius: 5px;
+    }
+
+        .box input {
+            padding: 10px 0;
+            margin-bottom: 30px;
+            width: 100%;
+            box-sizing: border-box;
+            box-shadow: none;
+            outline: none;
+            border: none;
+            border-bottom: 2px solid #ededed;
+        }
+
+        .box form div {
+            position: relative;
+        }
+
+            .box form div label {
+                position: absolute;
+                top: 5px;
+                right: 0px;
+                pointer-events: none;
+                transition: .5s;
+                  font-weight: blod;
+                color:#000029;
+            }
+
+        .box input:focus ~ label,
+        .box input:valid ~ label {
+            top: -12px;
+            right: 0;
+             transition: .5s;
+            font-size: 13px;
+        }
+
+        .box input:focus,
+        .box input:valid {
+         transition: .5s;
+        }
+
+</style>
+
+
+<div class="box thumbnail" style="margin-top:20px;">
+
+    <form asp-action="Edit">
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    
+    <input type="hidden" asp-for="Id" />
+
+        <div>
+            <input type="text" asp-for="Name" required="" autocomplete="off">
+            <span style="margin-top:55px;  right:0; position:absolute;" asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div>
+            <input type="submit" value="حفظ" class="btn" style="background-color:#31B0D5; color:#fff; margin-top:13px; border: none; outline: none;" />
+            <a asp-action="Index"><button type="button" class="btn btn-default" style="border:none; outline: none; padding:9px; margin-bottom:-10px; background-color:#E6E6E6;">إلغاء</button></a>
+        </div>
+    </form>
+    
 </div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

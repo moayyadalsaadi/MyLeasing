@@ -59,44 +59,42 @@
                                 رقم الهاتف
                             </th>
                             <th>تعديل</th>
-                            <th>تفاصيل</th>
+                            <th>التفاصيل</th>
                             <th>حذف</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.User.Document)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.User.FirstName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.User.LastName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.User.Address)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.User.Email)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.User.PhoneNumber)
-                                </td>
-                                <td>
-                                    <a asp-action="Edit" class="btn btn-default" asp-route-id="@item.Id"><i class="glyphicon glyphicon-pencil"></i> </a>
-                                </td>
-
-                                <td>
-                                    <a asp-action="Details" class="btn btn-default" asp-route-id="@item.Id"><i class="glyphicon glyphicon-list"> </i> </a>
-                                </td>
-
-                                <td>
-                                    <button data-id="@item.Id" class="btn btn-danger deleteItem" data-toggle="modal" data-target="#deleteDialog"><i class="glyphicon glyphicon-trash"></i></button>
-                                </td>
-                            </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.User.Document)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.User.FirstName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.User.LastName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.User.Address)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.User.Email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.User.PhoneNumber)
+                            </td>
+                            <td>
+                                <a asp-action="Edit" class="btn btn-default" asp-route-id="@item.Id"><i class="glyphicon glyphicon-pencil"></i> </a>
+                            </td>
+                            <td>
+                                <a asp-action="Details" class="btn btn-default" asp-route-id="@item.Id"><i class="glyphicon glyphicon-list"> </i> </a>
+                            </td>
+                            <td>
+                                <button data-id="@item.Id" class="btn btn-danger deleteItem" data-toggle="modal" data-target="#deleteDialog"><i class="glyphicon glyphicon-trash"></i></button>
+                            </td>
+                        </tr>
                         }
                     </tbody>
                 </table>

@@ -6,204 +6,186 @@
 <style>
 
 
+
     body {
         background-color: #F5F5F5;
     }
 
-    dl {
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
         width: 100%;
-        display: flex;
     }
 
-    dt, dd {
-        display: table-cell;
-        padding: 10px;
-        font-size: 16px;
-        text-align: justify;
+    td, th {
+        border: 1px solid #000;
+        text-align: right;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+
+    #tt {
+        font-size: 20px;
+        font-weight: bold;
     }
 </style>
 
-<div style="margin-top:45px;">
-    <h3 style="font-weight:bold;">تفاصيل العقار</h3>
+<div style="margin-top:50px; border-bottom:2px solid #ededed; padding-bottom:10px;">
+    <h4 style="font-weight:bold; text-decoration: underline;">تفاصيل العقار</h4>
 </div>
 
-<hr />
-<div style="background-color:whitesmoke; opacity:0.8;">
+
+<div style="background-color:whitesmoke; opacity:0.8; margin-top:20px;">
     <div class="row">
         <div class="col-md-6 col-sm-7 col-xs-12">
-            <div>
-                <dl>
-                    <dt>
-                        الحي :
-                    </dt>
-                    <dd>
-                        @Html.DisplayFor(model => model.Neighborhood)
-                    </dd>
-                    <dt>
-                        المنطقة :
-                    </dt>
-                    <dd>
-                        @Html.DisplayFor(model => model.Address)
-                    </dd>
-                </dl>
-
-                <dl>
-                    <dt>
-                        نوع العقار :
-                    </dt>
-                    <dd>
-                        @Html.DisplayFor(model => model.PropertyType.Name)
-                    </dd>
-
-                    <dt>
-                        السعر :
-                    </dt>
-                    <dd>
-                        @Html.DisplayFor(model => model.Price) شيكل
-                    </dd>
-                    <dt>
-                        المساحة :
-                    </dt>
-                    <dd>
-                        @Html.DisplayFor(model => model.SquareMeters) متر
-                    </dd>
-                </dl>
-
-                <dl>
-                    <dt>
-                        الطابق :
-                    </dt>
-                    <dd>
-                        @if (Model.Stratum != null)
-                        {
-                            @Html.DisplayFor(model => model.Stratum)
-                        }
-                        else
-                        {
-                            <p>
-                                لا يوجد
-                            </p>
-                        }
-                    </dd>
-                    <dt>
-                        الغرف :
-                    </dt>
-                    <dd>
-                        @if (Model.Rooms != null)
-                        {
-                            @Html.DisplayFor(model => model.Rooms)
-                        }
-                        else
-                        {
-                            <p>
-                                لا يوجد
-                            </p>
-                        }
-                    </dd>
-
-                    <dt>
-                        الحمامات :
-                    </dt>
-                    <dd>
-                        @if (Model.Bathrooms != null)
-                        {
-                            @Html.DisplayFor(model => model.Bathrooms)
-                        }
-                        else
-                        {
-                            <p>
-                                لا يوجد
-                            </p>
-                        }
-                    </dd>
-
-                    <dt>
-                        الشرفات :
-                    </dt>
-                    <dd>
-                        @if (Model.Balconies != null)
-                        {
-                            @Html.DisplayFor(model => model.Balconies)
-                        }
-                        else
-                        {
-                            <p>
-                                لا يوجد
-                            </p>
-                        }
-                    </dd>
-                </dl>
-
-                @if (User.Identity.IsAuthenticated)
-                {
-                    <dl>
-                        <dt>
-                            اسم المالك :
-                        </dt>
-                        <dd>
-                            @Html.DisplayFor(model => model.Owner.User.FullName)
-                        </dd>
-                        <dt>
-                            رقم الجوال :
-                        </dt>
-                        <dd>
-                            @Html.DisplayFor(model => model.Owner.User.PhoneNumber)
-                        </dd>
-
-                        <dt>
+            <div style="margin-top:10%;">
+                <table>
+                    <tr>
+                        <th id="tt">
+                            الحي :
+                        </th>
+                        <th>
+                            @Html.DisplayFor(model => model.Neighborhood)
+                        </th>
+                        <th id="tt">
+                            المنطقة :
+                        </th>
+                        <th>
+                            @Html.DisplayFor(model => model.Address)
+                        </th>
+                    </tr>
+                    <tr>
+                        <th id="tt">
+                            نوع العقار :
+                        </th>
+                        <th>
+                            @Html.DisplayFor(model => model.PropertyType.Name)
+                        </th>
+                        <th id="tt">
                             طبيعة العقار :
-                        </dt>
-                        <dd>
+                        </th>
+                        <th>
                             @Html.DisplayFor(model => model.Typeprop)
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th id="tt">
+                            السعر :
+                        </th>
+                        <th>
+                            @Html.DisplayFor(model => model.Price) شيكل
+                        </th>
+                        <th id="tt">
+                            المساحة :
+                        </th>
+                        <th>
+                            @Html.DisplayFor(model => model.SquareMeters) متر
+                        </th>
+                    </tr>
+                    <tr>
+                        <th id="tt">
+                            الطابق :
+                        </th>
+                        <th>
+                            @if (Model.Stratum != null)
+                            {
+                                @Html.DisplayFor(model => model.Stratum)
+                            }
+                            else
+                            {
+                                <p>
+                                    لا يوجد
+                                </p>
+                            }
+                        </th>
+                        <th id="tt">
+                            الغرف :
+                        </th>
+                        <th>
+                            @if (Model.Rooms != null)
+                            {
+                                @Html.DisplayFor(model => model.Rooms)
+                            }
+                            else
+                            {
+                                <p>
+                                    لا يوجد
+                                </p>
+                            }
+                        </th>
+                    </tr>
+                    <tr>
+                        <th id="tt">
+                            الحمامات :
+                        </th>
+                        <th>
+                            @if (Model.Bathrooms != null)
+                            {
+                                @Html.DisplayFor(model => model.Bathrooms)
+                            }
+                            else
+                            {
+                                <p>
+                                    لا يوجد
+                                </p>
+                            }
+                        </th>
+                        <th id="tt">
+                            الشرفات :
+                        </th>
+                        <th>
+                            @if (Model.Balconies != null)
+                            {
+                                @Html.DisplayFor(model => model.Balconies)
+                            }
+                            else
+                            {
+                                <p>
+                                    لا يوجد
+                                </p>
+                            }
+                        </th>
+                    </tr>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <tr>
+                            <th id="tt">
+                                اسم المالك :
+                            </th>
+                            <th>
+                                @Html.DisplayFor(model => model.Owner.User.FullName)
+                            </th>
+                            <th id="tt">
+                                رقم الجوال :
+                            </th>
+                            <th>
+                                @Html.DisplayFor(model => model.Owner.User.PhoneNumber)
+                            </th>
+                        </tr>
+                    }
+                    <tr>
+                        <th id="tt">
                             لديها موقف سيارات؟
-                        </dt>
-                        <dd>
-                            @Html.DisplayFor(model => model.HasParkingLot)
-                        </dd>
-                        <dt>
-                            متوفر؟
-                        </dt>
-                        <dd>
-                            @Html.DisplayFor(model => model.IsAvailable)
-                        </dd>
-                    </dl>
-                }
-                else
-                {
-                    <dl>
-                        <dt>
-                            طبيعة العقار :
-                        </dt>
-                        <dd>
-                            @Html.DisplayFor(model => model.Typeprop)
-                        </dd>
-
-                        <dt>
-                            لديها موقف سيارات؟
-                        </dt>
-                        <dd>
-                            @Html.DisplayFor(model => model.HasParkingLot)
-                        </dd>
-                        <dt>
-                            متوفر؟
-                        </dt>
-                        <dd>
-                            @Html.DisplayFor(model => model.IsAvailable)
-                        </dd>
-                    </dl>
-                }
-                <dl>
-                    <dt>
-                        ملاحظات:
-                    </dt>
-                    <dd>
-                        @Html.Raw(Model.Remarks)
-                    </dd>
-                </dl>
+                        </th>
+                        <th>
+                            @if (Model.HasParkingLot != false)
+                            {
+                                <p>
+                                    يوجد
+                                </p>
+                            }
+                            else
+                            {
+                                <p>
+                                    لا يوجد
+                                </p>
+                            }
+                        </th>
+                    </tr>
+                </table>
             </div>
         </div>
         <div class="col-md-6 col-sm-2" style="margin-top:15px; text-align:center;">
@@ -211,8 +193,13 @@
         </div>
     </div>
 </div>
-
+<br />
+<p id="tt">
+    معلومات اضافية:
+</p>
+@Html.Raw(Model.Remarks)
 <hr style="margin-bottom:15px;" />
+
 
 <div>
     <a asp-action="AddImage" asp-route-id="@Model.Id" class="btn btn-info" style=" background-color:#31B0D5; border:none; color:#fff;">اضافة صور</a>

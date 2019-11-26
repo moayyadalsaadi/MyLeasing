@@ -18,164 +18,138 @@
 <style>
 
 
+
     body {
         background-color: #F5F5F5;
     }
 
-    .box {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%,-50%);
-        width:auto;
-        padding:90px;
-        background-color: #fff;
-        border-radius: 5px;
-        margin-top: 30px;
+    input {
+        padding: 10px 0;
+        margin-bottom: 30px;
+        width: 30%;
+        box-sizing: border-box;
+        box-shadow: none;
+        outline: none;
+        border: none;
+        border-bottom: 2px solid #ededed;
+        color: #000029;
     }
 
-        .box input {
-            padding: 10px 0;
-            margin-bottom: 30px;
-            width: 250px;
-            box-sizing: border-box;
-            box-shadow: none;
-            outline: none;
-            border: none;
-            border-bottom: 1px solid #f2f2f2;
-             color:#000029;
-        }
-.box select{
-width:250px;
-box-sizing: border-box;
-box-shadow: none;
-outline: none;
-border: none;
-border-bottom: 1px solid #d8d9d8;
-color:#000029;
-}
-        .box form div {
-            position: relative;
-        }
+    select {
+        width: 30%;
+        box-sizing: border-box;
+        box-shadow: none;
+        outline: none;
+        border: none;
+        border-bottom: 2px solid #d8d9d8;
+        color: #000029;
+        padding: 12px 0;
+    }
 
-            .box form div label {
-                position: absolute;
-                top: 5px;
-                right: 0px;
-                pointer-events: none;
-                transition: .5s ;
-                  font-weight: blod;
-                color:#000029;
-            }
+    form div {
+        position: relative;
+    }
 
-        .box input:focus ~ label,
-        .box input:valid ~ label {
-            top: -12px;
-            right: 0;
-             transition: .5s;
-            font-size: 13px;
+        form div label {
+            position: absolute;
+            top: 5px;
+            right: 0px;
+            pointer-events: none;
+            transition: .5s;
+            font-weight: blod;
+            color: #000029;
         }
 
-        .box input:focus,
-        .box input:valid {
-          border-bottom:1px solid #97D7EA;
+    input:focus ~ label,
+    input:valid ~ label {
+        top: -12px;
+        right: 0;
         transition: .5s;
-            
-        }
-input:-webkit-autofill {
-border: $border-style !important;
--webkit-text-fill-color: $c-white !important;
-background-color: $c-blue !important;
--webkit-box-shadow: 0 0 0px 10px $c-blue inset;
-transition: background-color 5000s ease-in-out 0s;
-} 
+        font-size: 13px;
+    }
 
-*{
- -webkit-user-select: none; /* Safari 3.1+ */
-    -moz-user-select: none; /* Firefox 2+ */
-    -ms-user-select: none; /* IE 10+ */
-    user-select: none; /* Standard syntax */	
-}
+    input:focus,
+    input:valid {
+        transition: .5s;
+    }
 </style>
 
 
-<div class="box thumbnail" style="margin-top:5%;">
-    <div style="margin-top:-40px;">
+<div style="width:90%; margin-right:5%; margin-left:5%; height:auto; margin-top:5%;">
+
+    <div class="thumbnail" style="background-color:#fff; overflow:hidden; width:100%; padding:35px;">
+
         <form asp-action="Register">
+
             <div>
-                <input type="text" asp-for="Username" required="">
+                <input type="text" asp-for="Username" required="" autocomplete="off">
                 <label asp-for="Username"></label>
                 <span style="margin-top:52px; right:0; position:absolute;" asp-validation-for="Username" class="text-danger"></span>
-
             </div>
 
-            <div style="margin-top:-70px ; margin-right: 300px;">
-                <input type="text" asp-for="Document" required="">
+
+            <div style="margin-top:-70px ; right:35%;">
+                <input type="text" asp-for="Document" required="" autocomplete="off">
                 <label asp-for="Document"></label>
                 <span style="margin-top:52px; right:0; position:absolute;" asp-validation-for="Document" class="text-danger"></span>
             </div>
 
-
-
-            <div style="margin-top:-70px ; margin-right: 600px;">
-                <input asp-for="FirstName" required="">
-                <label asp-for="FirstName" ></label>
+            <div style="margin-top:-70px ; right:70%;">
+                <input asp-for="FirstName" required="" autocomplete="off">
+                <label asp-for="FirstName"></label>
                 <span style="margin-top:52px; right:0; position:absolute;" asp-validation-for="FirstName" class="text-danger"></span>
             </div>
 
 
-            <div style="margin-top: 10px;">
-                <input type="text" asp-for="LastName" required="">
-                <label asp-for="LastName" ></label>
+            <div style="margin-top:15px;">
+                <input type="text" asp-for="LastName" required="" autocomplete="off">
+                <label asp-for="LastName"></label>
                 <span style="margin-top:52px; right:0; position:absolute;" asp-validation-for="LastName" class="text-danger"></span>
-
             </div>
 
-            <div style="margin-top:-70px ; margin-right: 300px;">
-                <input asp-for="Address" required="">
-                <label asp-for="Address" ></label>
+
+            <div style="margin-top:-70px; right:35%;">
+                <input asp-for="Address" required="" autocomplete="off">
+                <label asp-for="Address"></label>
                 <span style="margin-top:52px; right:0; position:absolute;" asp-validation-for="Address" class="text-danger"></span>
-
             </div>
 
-            <div style="margin-top:-70px ; margin-right: 600px;">
-                <input asp-for="PhoneNumber" required="">
+            <div style="margin-top:-70px; right:70%;">
+                <input asp-for="PhoneNumber" required="" autocomplete="off">
                 <label asp-for="PhoneNumber"></label>
                 <span style="margin-top:52px; right:0; position:absolute;" asp-validation-for="PhoneNumber" class="text-danger"></span>
-
             </div>
 
-            <div style="margin-top: 25px;">
+            <div style="margin-top:15px;">
                 <select asp-for="RoleId" asp-items="Model.Roles">
                 </select>
-                <span style="margin-top:30px; right:0; position:absolute;" asp-validation-for="RoleId" class="text-danger"></span>
+                <span style="margin-top:50px; right:0; position:absolute;" asp-validation-for="RoleId" class="text-danger"></span>
             </div>
 
-            <div style="margin-top:-40px ; margin-right: 300px;">
-                <input asp-for="Password" required="">
+            <div style="margin-top:-40px; right:35%;">
+                <input asp-for="Password" required="" autocomplete="off">
                 <label asp-for="Password"></label>
                 <span style="margin-top:52px; right:0; position:absolute;" asp-validation-for="Password" class="text-danger"></span>
             </div>
 
-            <div style="margin-top:-70px ; margin-right: 600px;">
-                <input asp-for="PasswordConfirm" required="">
+            <div style="margin-top:-70px ; right:70%;">
+                <input asp-for="PasswordConfirm" required="" autocomplete="off">
                 <label asp-for="PasswordConfirm"></label>
                 <span style="margin-top:52px; right:0; position:absolute;" asp-validation-for="PasswordConfirm" class="text-danger"></span>
-
             </div>
 
             <div class="input-group" style="margin-top:40px;">
-                <label asp-for="CaptchaCode" class="control-label" style="margin-top: -35px;"></label>
+                <label asp-for="CaptchaCode" class="control-label" style="margin-top:-35px;"></label>
                 <div class="input-group-prepend">
-                    <img id="img-captcha" src="~/get-captcha-image" style="width:250px;" />
+                    <img id="img-captcha" src="~/get-captcha-image" style="width:150%;" />
                 </div>
                 <br />
-                <input style=" padding: 0px;" type="text" placeholder="كود التحقق" asp-for="CaptchaCode" maxlength="6"  />
-                <span asp-validation-for="CaptchaCode" class="text-danger" style="margin-top:30px; right:0; position:absolute;"></span>
+                <input style="padding:0px; width:150%;" type="text" autocomplete="off" placeholder="كود التحقق" asp-for="CaptchaCode" maxlength="6" />
+                <span asp-validation-for="CaptchaCode" class="text-danger" style="margin-top:-30px; right:0; position:absolute;"></span>
             </div>
 
-            <div class="input-group" style="margin-bottom:-50px; margin-top:8px;">
-                <input type="submit" value="تسجيل" class="btn btn-info" style="width: 60px; text-align:center ; margin-bottom: 10px; border:none; background-color:#31B0D5; color: #fff;">
+            <div class="input-group" style="margin-top:5px;">
+                <input type="submit" value="تسجيل" class="btn btn-info" style="width:60px; text-align:center; border:none; background-color:#31B0D5; color: #fff;">
                 <div asp-validation-summary="ModelOnly" style="padding-right: 250px; margin-top: -30px;" class="text-danger">
                 </div>
                 <span class="text-success" style="margin-right:150px;">
@@ -186,7 +160,9 @@ transition: background-color 5000s ease-in-out 0s;
                 </span>
             </div>
         </form>
+
     </div>
+
 </div>
 
 

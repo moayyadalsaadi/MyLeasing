@@ -4,117 +4,303 @@
     ViewData["Title"] = "تفاصيل";
 }
 
-<h2>تفاصيل العقار</h2>
 
-<div class="row">
-    <div class="col-md-6">
-        <div>
-            <h4>تفاصيل المالك</h4>
-            <hr />
-            <dl class="dl-horizontal">
+<style>
+
+    body {
+        background-color: #F5F5F5;
+    }
+
+    dl {
+        width: 100%;
+        display: flex;
+    }
+
+    dt, dd {
+        display: table-cell;
+        padding:10px;
+        font-size: 14px;
+        text-align: justify;
+    }
+
+    * {
+        -webkit-user-select: none; /* Safari 3.1+ */
+        -moz-user-select: none; /* Firefox 2+ */
+        -ms-user-select: none; /* IE 10+ */
+        user-select: none; /* Standard syntax */
+    }
+
+</style>
+
+<div style="margin-top:45px;" >
+<h4 style="font-weight:bold; heigth:5px;  text-decoration: underline;">تفاصيل المالك</h4>
+</div>
+
+<div style="border-bottom:2px solid #ededed;">
+<dl style="margin-top:20px;">
                 <dt>
-                   @Html.DisplayNameFor(model => model.Owner.User.Document)
+                   رقم الهوية : 
                 </dt>
                 <dd>
                     @Html.DisplayFor(model => model.Owner.User.Document)
                 </dd>
                 <dt>
-                    @Html.DisplayNameFor(model => model.Owner.User.FullName)
+                    الاسم الكامل : 
                 </dt>
                 <dd>
                     @Html.DisplayFor(model => model.Owner.User.FullName)
                 </dd>
                 <dt>
-                   البريد الالكتروني
+                    البريد الالكتروني : 
                 </dt>
                 <dd>
                     @Html.DisplayFor(model => model.Owner.User.Email)
                 </dd>
                 <dt>
-                   رقم الهاتف
+                  رقم الهاتف : 
                 </dt>
                 <dd>
                     @Html.DisplayFor(model => model.Owner.User.PhoneNumber)
                 </dd>
             </dl>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div>
-            <h4>تفاصيل العقار</h4>
-            <hr />
-            <dl class="dl-horizontal">
-                <dt>
-                    الحي
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.Neighborhood)
-                </dd>
-                <dt>
-                    العنوان
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.Address)
-                </dd>
-                <dt>
-                   السعر
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.Price) شيكل
-                </dd>
-                <dt>
-                    المساحة
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.SquareMeters) متر
-                </dd>
-                <dt>
-                   عدد الغرف
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.Rooms)
-                </dd>
-                <dt>
-                   لديها موقف سيارات؟
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.HasParkingLot)
-                </dd>
-                <dt>
-                    متوفر؟
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.IsAvailable)
-                </dd>
-               
-            </dl>
-        </div>
-    </div>
 </div>
 
-<hr style="margin-bottom:25px;">
-@if (Model.PropertyImages.Count == 0)
-{
-    <div class="alert alert-danger" role="alert" style="text-align:center;">
-        لم يتم اضافة صور !
-    </div>
+
+
+<div style="margin-top:40px;">
+<h4 style="font-weight:bold; text-decoration: underline;">تفاصيل العقار</h4>
+</div>
+
+
+<div style="border-bottom:2px solid #ededed; padding-bottom:10px;">
+<div style="margin-top:20px;">
+                    <dt>
+                        الحي :
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Neighborhood)
+                    </dd>
+                    <dt>
+                        المنطقة :
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Address)
+                    </dd>
+
+                    <dt>
+                        نوع العقار :
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.PropertyType.Name)
+                    </dd>
+
+                    <dt>
+                        السعر :
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Price) شيكل
+                    </dd>
+                    <dt>
+                        المساحة :
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.SquareMeters) متر
+                    </dd>
+                    <dt>
+                        الطابق :
+                    </dt>
+                    <dd>
+                        @if (Model.Stratum != null)
+                        {
+                            @Html.DisplayFor(model => model.Stratum)
+                        }
+                        else
+                        {
+                            <p>
+                                لا يوجد
+                            </p>
+                        }
+                    </dd>
+                     <dt>
+                        الغرف :
+                    </dt>
+                    <dd>
+                        @if (Model.Rooms != null)
+                        {
+                            @Html.DisplayFor(model => model.Rooms)
+                        }
+                        else
+                        {
+                            <p>
+                                لا يوجد
+                            </p>
+                        }
+                    </dd>  
+                     <dt>
+                        الحمامات :
+                    </dt>
+                    <dd>
+                        @if (Model.Bathrooms != null)
+                        {
+                            @Html.DisplayFor(model => model.Bathrooms)
+                        }
+                        else
+                        {
+                            <p>
+                                لا يوجد
+                            </p>
+                        }
+                    </dd>            
+</div>
+
+
+<div>
+
+ @if (User.Identity.IsAuthenticated)
+ {
+ <dt>
+اسم المالك :
+</dt>
+<dd>
+@Html.DisplayFor(model => model.Owner.User.FullName)
+</dd>
+<dt>
+رقم الجوال :
+</dt>
+<dd>
+@Html.DisplayFor(model => model.Owner.User.PhoneNumber)
+</dd>
+
+ <dt>
+طبيعة العقار :
+</dt>
+<dd>
+ @Html.DisplayFor(model => model.Typeprop)
+</dd>
+                  
+<dt>
+لديها موقف سيارات؟
+ </dt>
+ <dd>
+@Html.DisplayFor(model => model.HasParkingLot)
+ </dd>
+<dt>
+ متوفر؟
+ </dt>
+<dd>
+@Html.DisplayFor(model => model.IsAvailable)
+</dd>
 }
-else
-{
-    <div class="row">
+ else
+ {
+                   
+<dt>
+طبيعة العقار :
+</dt>
+<dd>
+ @Html.DisplayFor(model => model.Typeprop)
+</dd>
+
+<dt>
+لديها موقف سيارات؟
+</dt>
+ <dd>
+  @Html.DisplayFor(model => model.HasParkingLot)
+ </dd>
+<dt>
+ متوفر؟
+ </dt>
+ <dd>
+@Html.DisplayFor(model => model.IsAvailable)
+</dd>               
+ } 
+
+<dt>
+الشرفات :
+ </dt>
+<dd>
+ @if (Model.Balconies != null)
+ {
+ @Html.DisplayFor(model => model.Balconies)
+ }
+ else
+ {
+  <p>
+   لا يوجد
+  </p>
+  }
+ </dd>
+       
+</div>
+
+
+<div>
+ <dt>
+معلومات اضافية :
+</dt>
+ <dd>
+@Html.Raw(Model.Remarks)
+</dd>
+</div>
+
+
+</div>
+
+
+<div class="col-md-12" style="margin-top:15px; margin-bottom:15px;">
+   <div id="myDiv" style="width:100%; height:400px;"></div>
+ </div>
+
+<div style="width:100%;  margin-top:435px; height:auto;">
+
+    @if (Model.PropertyImages.Count == 0)
+    {
+        <div class="alert alert-danger" role="alert">
+            لم يتم اضافة صور !
+        </div>
+    }
+    else
+    {
         @if (Model.PropertyImages.Count > 0)
         {
             @foreach (var item in Model.PropertyImages)
             {
-                @if (!string.IsNullOrEmpty(item.ImageUrl))
-                {
-                    <a href="@Url.Content(item.ImageUrl)" target="_blank"><img src="@Url.Content(item.ImageUrl)" alt="Image" class="img-thumbnail" style="width:300px; height:250px; margin-bottom:20px; margin-right:16px;" /></a>
-                }
+                <div class="col-md-3 col-sm-5 col-xs-11  thumbnail " style="border-color:#e4e4e4; width:19%; margin:.5%;   background-color:#f5f5f5;  border-radius:.2px;">
+                    @if (!string.IsNullOrEmpty(item.ImageUrl))
+                    {
+                        <a href="@Url.Content(item.ImageUrl)" target="_blank"><img src="@Url.Content(item.ImageUrl)" alt="Image" class="img-thumbnail" style="width:300px; height:150px; margin-top:10px; margin-bottom:10px;" /></a>
+                    }
+                </div>
             }
         }
-    </div>
-}
+
+    }
+
+</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="https://maps.googleapis.com/maps/api/js?"></script>
+    <script type="text/javascript">
+
+            //Set the Latitude and Longitude of the Map
+            var myAddress = new google.maps.LatLng(@Model.Latitude, @Model.Longitude);
+
+            //Create Options or set different Characteristics of Google Map
+            var mapOptions = {
+                center: myAddress,
+                zoom: 15,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            //Display the Google map in the div control with the defined Options
+            var map = new google.maps.Map(document.getElementById("myDiv"), mapOptions);
+
+            //Set Marker on the Map
+            var marker = new google.maps.Marker({
+                position: myAddress,
+                animation: google.maps.Animation.BOUNCE,
+            });
+            marker.setMap(map);
+    </script>
 }
