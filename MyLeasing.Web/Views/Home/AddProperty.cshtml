@@ -138,7 +138,6 @@
         user-select: none; /* Standard syntax */
     }
 </style>
-<script src="~/lib/ckeditor/ckeditor.js"></script>
 <div class="box thumbnail" style="margin-top:27%;">
     <div>
         <form asp-action="AddProperty">
@@ -182,7 +181,7 @@
                 <label asp-for="Rooms"></label>
                 <span asp-validation-for="Rooms" class="text-danger" style="margin-top:-20px; right:0; position:absolute;"></span>
             </div>
-          
+
 
             <div style="margin-top:12px;">
 
@@ -222,12 +221,12 @@
                 </div>
             </div>
 
-            <div style="margin-top:40px;">
-
+            <div style="margin-top:50px;">
                 <textarea class="ckeditor" asp-for="Remarks"></textarea>
-                <label asp-for="Remarks" style="margin-top:20px;"></label>
+                <label asp-for="Remarks" style="margin-top:-25px;"></label>
                 <span asp-validation-for="Remarks" class="text-danger"></span>
             </div>
+
             <label style="color:#000029;">انقر لتحديد موقع العقار</label>
             <div class="form-group" style="margin-right:-15px;">
                 <div style="padding:10px">

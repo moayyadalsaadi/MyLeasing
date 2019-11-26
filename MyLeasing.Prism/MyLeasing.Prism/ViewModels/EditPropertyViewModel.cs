@@ -31,6 +31,8 @@ namespace MyLeasing.Prism.ViewModels
         private PropertyTypeResponse _propertyType;
         private ObservableCollection<Stratum> _stratums;
         private Stratum _stratum;
+        private ObservableCollection<TypeProp> _typeProps;
+        private TypeProp _typeProp;
         private MediaFile _file;
         private int _positionImage;
         private DelegateCommand _previousImageCommand;
@@ -48,7 +50,6 @@ namespace MyLeasing.Prism.ViewModels
         {
             _navigationService = navigationService;
             _apiService = apiService;
-            LoadTypeProp();
             IsRunning = false;
             IsEnabled = true;
         }
@@ -68,15 +69,22 @@ namespace MyLeasing.Prism.ViewModels
 
         public DelegateCommand DeleteCommand => _deleteCommand ?? (_deleteCommand = new DelegateCommand(Delete));
 
+        public ObservableCollection<TypeProp> TypeProps
+        {
+            get => _typeProps;
+            set => SetProperty(ref _typeProps, value);
+        }
+
+        public TypeProp TypeProp
+        {
+            get => _typeProp;
+            set => SetProperty(ref _typeProp, value);
+        }
         public ObservableCollection<PropertyTypeResponse> PropertyTypes
         {
             get => _propertyTypes;
             set => SetProperty(ref _propertyTypes, value);
         }
-
-        public TypeProp TypeProp { get; set; }
-
-        public ObservableCollection<TypeProp> TypeProps { get; set; }
 
         public PropertyTypeResponse PropertyType
         {
@@ -155,7 +163,7 @@ namespace MyLeasing.Prism.ViewModels
                 IsVisible = true;
                 Title = Languages.NewProperty;
             }
-
+            LoadTypeProp();
             LoadPropertyTypes();
             LoadStratums();
         }
@@ -178,6 +186,16 @@ namespace MyLeasing.Prism.ViewModels
                 new TypeProp { Name = Languages.Sale },
                 new TypeProp { Name = Languages.Rent }
             };
+            if (!string.IsNullOrEmpty(Property.Typeprop) && Property.Typeprop == "بيع")
+            {
+                TypeProp = TypeProps.FirstOrDefault(pt => pt.Name == Languages.Sale);
+                return;
+            }
+            if (!string.IsNullOrEmpty(Property.Typeprop) && Property.Typeprop == "استئجار")
+            {
+                TypeProp = TypeProps.FirstOrDefault(pt => pt.Name == Languages.Rent);
+                return;
+            }
         }
 
         private async void LoadPropertyTypes()
@@ -375,11 +393,11 @@ namespace MyLeasing.Prism.ViewModels
             {
                 await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.SquareMetersError, Languages.Ok);
                 return false;
-            }      
+            }
 
             if (Stratum != null)
             {
-               Property.Stratum = Stratum.Id;              
+                Property.Stratum = Stratum.Id;
             }
 
             if (PropertyType == null)

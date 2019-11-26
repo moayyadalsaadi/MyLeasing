@@ -277,7 +277,7 @@ namespace MyLeasing.Web.Controllers
                     }
                     else
                     {
-                        ModelState.AddModelError(string.Empty, result.Errors.FirstOrDefault().Description);
+                        ModelState.AddModelError(string.Empty, "كلمة المرور الحالية خاطئة");
                     }
                 }
                 else
@@ -360,11 +360,11 @@ namespace MyLeasing.Web.Controllers
                 var result = await _userHelper.ResetPasswordAsync(user, model.Token, model.Password);
                 if (result.Succeeded)
                 {
-                    ViewBag.Message = "إعادة تعيين كلمة المرور بنجاح.";
+                    ViewBag.Message = "تمت إعادة تعيين كلمة المرور بنجاح.";
                     return View();
                 }
 
-                ViewBag.Message = "خطأ أثناء إعادة تعيين كلمة المرور.";
+                ViewBag.Message = "حدث خطأ أثناء إعادة تعيين كلمة المرور.";
                 return View(model);
             }
 
