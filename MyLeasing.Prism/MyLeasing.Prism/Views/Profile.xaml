@@ -5,6 +5,7 @@
          	xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              prism:ViewModelLocator.AutowireViewModel="True"
+             FlowDirection="{x:Static Device.FlowDirection}"
          	x:Class="MyLeasing.Prism.Views.Profile"
          	Title="{Binding Title}">
 

@@ -7,11 +7,12 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="MyLeasing.Prism.Views.HomePage"
              BackgroundColor="{StaticResource colorBackgroud}"
+             FlowDirection="{x:Static Device.FlowDirection}"
              Title="{Binding Title}">
+
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="{i18n:Translate Login}" Command="{Binding LoginCommand}"/>
     </ContentPage.ToolbarItems>
-
 
     <AbsoluteLayout>
         <ScrollView  IsVisible="{Binding Home}"
@@ -20,6 +21,9 @@
                 Padding="10">
             <StackLayout>
                 <ListView
+                      IsRefreshing="{Binding IsRefreshing}"
+            IsPullToRefreshEnabled="True"
+	        RefreshCommand="{Binding RefreshPropertiesCommand}"
             BackgroundColor="Transparent"
             HasUnevenRows="True"
             ItemsSource="{Binding Properties}"
@@ -46,17 +50,13 @@
                                     Source="{Binding FirstImage}"/>
                                         <Grid>
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="Auto"/>
                                                 <ColumnDefinition Width="*"/>
                                                 <ColumnDefinition Width="Auto"/>
                                             </Grid.ColumnDefinitions>
-                                            <Image
-                                        Grid.Column="0"
-                                        Source="ic_more_vert"/>
-                                            <Grid
-                                        Grid.Column="1">
+                                            <Grid 
+                                        Grid.Column="0">
                                                 <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="*"/>
                                                     <ColumnDefinition Width="*"/>
                                                 </Grid.ColumnDefinitions>
                                                 <Grid.RowDefinitions>
@@ -92,7 +92,7 @@
                                                 <Label
                                             Grid.Row="3"
                                             Grid.Column="0"
-                                            Text="{Binding Price, StringFormat='{0:C2}'}"/>
+                                            Text="{Binding Price}"/>
                                                 <Label
                                             Grid.Row="2"
                                             Grid.Column="1"
@@ -102,21 +102,18 @@
                                             Grid.Row="3"
                                             Grid.Column="1"
                                             Text="{Binding PropertyType}"/>
-                                                <Label
-                                            Grid.Row="4"
-                                            Grid.Column="0"
-                                            FontAttributes="Bold"
-                                            Text="{i18n:Translate IsAvailable}"
-                                            VerticalOptions="Center"/>
-                                                <CheckBox
-                                            Grid.Row="4"
-                                            Grid.Column="1"
-                                            HorizontalOptions="Start"
-                                            IsEnabled="False"
-                                            IsChecked="{Binding IsAvailable}"/>
-                                            </Grid>
-
+                                            </Grid> 
+                                            <Image
+                                        Grid.Column="1"
+                                        Source="ic_more_vert"/>
                                         </Grid>
+                                        <Label
+                                            FontAttributes="Bold"
+                                            Text="{i18n:Translate TypeProp}"
+                                            HorizontalOptions="Center"/>
+                                        <Label
+                                            Text="{Binding Typeprop}"
+                                         HorizontalOptions="Center"/>
                                     </StackLayout>
                                 </Frame>
                             </ViewCell>

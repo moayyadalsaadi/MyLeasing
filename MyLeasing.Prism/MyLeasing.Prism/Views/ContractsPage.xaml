@@ -6,6 +6,7 @@
          	 xmlns:i18n="clr-namespace:MyLeasing.Prism.Helpers"
              x:Class="MyLeasing.Prism.Views.ContractsPage"
              BackgroundColor="{StaticResource colorBackgroud}"
+             FlowDirection="{x:Static Device.FlowDirection}"
              IconImageSource="ic_action_list_alt"
              Title="{Binding Title}">
 

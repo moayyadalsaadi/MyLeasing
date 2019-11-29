@@ -47,7 +47,7 @@ namespace MyLeasing.Common.Models
             {
                 if (PropertyImages == null || PropertyImages.Count == 0)
                 {
-                    return "http://localhost:50000/images/Properties/noImage.png";
+                    return "http://myleasing-001-site1.gtempurl.com/images/Properties/noImage.png";
                 }
 
                 return PropertyImages.FirstOrDefault().ImageUrl;

@@ -4,7 +4,9 @@
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
              ios:Page.UseSafeArea="true"
              x:Class="MyLeasing.Prism.Views.SearchPlacePage"
+             FlowDirection="{x:Static Device.FlowDirection}"
              FocusOriginCommand="{Binding FocusOriginCommand}">
+    
        <Grid VerticalOptions="FillAndExpand"
               BackgroundColor="White"
               RowSpacing="0"

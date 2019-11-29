@@ -6,6 +6,7 @@
          	 xmlns:i18n="clr-namespace:MyLeasing.Prism.Helpers"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="MyLeasing.Prism.Views.LoginPage"
+             FlowDirection="{x:Static Device.FlowDirection}"
              BackgroundImageSource="backimg.jpg"
              NavigationPage.HasNavigationBar="False"
              Title="{Binding Title}">

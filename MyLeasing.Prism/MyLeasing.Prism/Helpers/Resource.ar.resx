@@ -127,13 +127,13 @@
     <value>يجب إدخال البريد الإلكتروني.</value>
   </data>
   <data name="Email" xml:space="preserve">
-    <value>البريد الإلكتروني:</value>
+    <value>البريد الإلكتروني</value>
   </data>
   <data name="EmailPlaceHolder" xml:space="preserve">
     <value>أدخل بريدك الإلكتروني</value>
   </data>
   <data name="Password" xml:space="preserve">
-    <value>كلمة المرور:</value>
+    <value>كلمة المرور</value>
   </data>
   <data name="PasswordPlaceHolder" xml:space="preserve">
     <value>أدخل كلمة المرور</value>
@@ -157,19 +157,19 @@
     <value>اسم المستخدم أو كلمة المرور غير صحيحة!</value>
   </data>
   <data name="Document" xml:space="preserve">
-    <value>رقم الهوية:</value>
+    <value>رقم الهوية</value>
   </data>
   <data name="FirstName" xml:space="preserve">
-    <value>الاسم الأول:</value>
+    <value>الاسم الأول</value>
   </data>
   <data name="LastName" xml:space="preserve">
-    <value>اسم العائلة:</value>
+    <value>اسم العائلة</value>
   </data>
   <data name="Address" xml:space="preserve">
-    <value>العنوان:</value>
+    <value>العنوان</value>
   </data>
   <data name="Phone" xml:space="preserve">
-    <value>الهاتف:</value>
+    <value>الهاتف</value>
   </data>
   <data name="PasswordConfirm" xml:space="preserve">
     <value>تأكيد كلمة المرور</value>
@@ -217,7 +217,7 @@
     <value>كلمة المرور والتأكيد غير متطابقين.!</value>
   </data>
   <data name="RegisterAs" xml:space="preserve">
-    <value>تسجيل كـ:</value>
+    <value>تسجيل كـ</value>
   </data>
   <data name="RegisterAsTitle" xml:space="preserve">
     <value>تحديد صلاحية</value>
@@ -280,7 +280,7 @@
     <value>أدخل كلمة المرور الحالية.</value>
   </data>
   <data name="NewPassword" xml:space="preserve">
-    <value>كلمة المرور الجديدة:</value>
+    <value>كلمة المرور الجديدة</value>
   </data>
   <data name="NewPasswordError" xml:space="preserve">
     <value>يجب إدخال كلمة مرور جديدة بطول 6 أحرف على الأقل.!</value>
@@ -304,7 +304,7 @@
     <value>اضغط على الصورة لتغييرها!</value>
   </data>
   <data name="Neighborhood" xml:space="preserve">
-    <value>الحي:</value>
+    <value>الحي</value>
   </data>
   <data name="NeighborhoodError" xml:space="preserve">
     <value>يجب أن تدخل الحي.</value>
@@ -313,7 +313,7 @@
     <value>أدخل الحي الذي يقع فيه العقار</value>
   </data>
   <data name="Price" xml:space="preserve">
-    <value>السعر (شيكل):</value>
+    <value>السعر (شيكل)</value>
   </data>
   <data name="PriceError" xml:space="preserve">
     <value>يجب عليك إدخال سعر!</value>
@@ -322,7 +322,7 @@
     <value>أدخل سعر العقار</value>
   </data>
   <data name="SquareMeters" xml:space="preserve">
-    <value>المساحة (متر مربع):</value>
+    <value>المساحة (متر مربع)</value>
   </data>
   <data name="SquareMetersError" xml:space="preserve">
     <value>يجب إدخال مساحة  العقار.!</value>
@@ -331,7 +331,7 @@
     <value>أدخل مساحة  العقار</value>
   </data>
   <data name="Rooms" xml:space="preserve">
-    <value>الغرف:</value>
+    <value>الغرف</value>
   </data>
   <data name="RoomsError" xml:space="preserve">
     <value>يجب عليك إدخال عدد الغرف.!</value>
@@ -340,16 +340,16 @@
     <value>أدخل عدد الغرف</value>
   </data>
   <data name="Stratum" xml:space="preserve">
-    <value>الطوابق:</value>
+    <value>الطابق</value>
   </data>
   <data name="StratumError" xml:space="preserve">
-    <value>يجب عليك تحديد عدد الطوابق.!</value>
+    <value>يجب عليك تحديد رقم الطابق.!</value>
   </data>
   <data name="StratumPlaceHolder" xml:space="preserve">
-    <value>اختر عدد الطوابق</value>
+    <value>اختر رقم الطابق</value>
   </data>
   <data name="PropertyType" xml:space="preserve">
-    <value>نوع العقار:</value>
+    <value>نوع العقار</value>
   </data>
   <data name="PropertyTypeError" xml:space="preserve">
     <value>يجب تحديد نوع العقار</value>
@@ -364,7 +364,7 @@
     <value>متوفر.</value>
   </data>
   <data name="Remarks" xml:space="preserve">
-    <value>ملاحظات:</value>
+    <value>معلومات اضافية</value>
   </data>
   <data name="Contracts" xml:space="preserve">
     <value>العقود</value>
@@ -454,7 +454,7 @@
     <value>تاريخ الإستئجار</value>
   </data>
   <data name="Name" xml:space="preserve">
-    <value>اسم المالك:</value>
+    <value>اسم المالك</value>
   </data>
   <data name="Message" xml:space="preserve">
     <value>تم إرسال رسالة تأكيد بالبريد الإلكتروني. يرجى تأكيد حسابك وتسجيل الدخول إلى التطبيق</value>
@@ -508,13 +508,13 @@
     <value>بيع</value>
   </data>
   <data name="Balconies" xml:space="preserve">
-    <value>الشرفات:</value>
+    <value>الشرفات</value>
   </data>
   <data name="BalconiesPlaceHolder" xml:space="preserve">
     <value>أدخل عدد الشرفات ...!</value>
   </data>
   <data name="Bathrooms" xml:space="preserve">
-    <value>الحمامات:</value>
+    <value>الحمامات</value>
   </data>
   <data name="BathroomsPlaceHolder" xml:space="preserve">
     <value>أدخل عدد الحمامات ...!</value>

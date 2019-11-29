@@ -1222,7 +1222,7 @@ namespace MyLeasing.Prism.Helpers {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nature of the property.
+        ///   Looks up a localized string similar to Nature of property.
         /// </summary>
         public static string TypeProp {
             get {
@@ -1231,7 +1231,7 @@ namespace MyLeasing.Prism.Helpers {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You must select a Nature of the property.
+        ///   Looks up a localized string similar to You must select a Nature of property.
         /// </summary>
         public static string TypePropError {
             get {
@@ -1240,7 +1240,7 @@ namespace MyLeasing.Prism.Helpers {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select a Nature of the property.
+        ///   Looks up a localized string similar to Select a Nature of property.
         /// </summary>
         public static string TypePropPlaceHolder {
             get {

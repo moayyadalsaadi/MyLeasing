@@ -4,6 +4,7 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              prism:ViewModelLocator.AutowireViewModel="True"
+             FlowDirection="{x:Static Device.FlowDirection}"
              x:Class="MyLeasing.Prism.Views.MapPage"
              BackgroundColor="{StaticResource colorBackgroud}"
              Title="{Binding Title}">

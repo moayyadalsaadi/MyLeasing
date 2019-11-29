@@ -493,13 +493,13 @@
     <value>Choose Pickup</value>
   </data>
   <data name="TypeProp" xml:space="preserve">
-    <value>Nature of the property</value>
+    <value>Nature of property</value>
   </data>
   <data name="TypePropError" xml:space="preserve">
-    <value>You must select a Nature of the property</value>
+    <value>You must select a Nature of property</value>
   </data>
   <data name="TypePropPlaceHolder" xml:space="preserve">
-    <value>Select a Nature of the property</value>
+    <value>Select a Nature of property</value>
   </data>
   <data name="Rent" xml:space="preserve">
     <value>Rent</value>

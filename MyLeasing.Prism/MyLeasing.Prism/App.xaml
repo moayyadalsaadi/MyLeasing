@@ -7,7 +7,7 @@
         <ResourceDictionary>
 
             <!-- Parameters -->
-            <x:String x:Key="UrlAPI">http://localhost:50000/</x:String>
+            <x:String x:Key="UrlAPI">http://myleasing-001-site1.gtempurl.com/</x:String>
 
             <!-- Colors -->
             <Color x:Key="colorBackgroud">#F2F2F2</Color>
@@ -35,6 +35,7 @@
 
             <Style TargetType="Label">
                 <Setter Property="TextColor" Value="{StaticResource colorFont}" />
+                <Setter Property="FontSize" Value="14" />
             </Style>
 
         </ResourceDictionary>

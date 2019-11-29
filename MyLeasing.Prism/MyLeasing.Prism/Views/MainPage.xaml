@@ -4,6 +4,7 @@
              xmlns:i18n="clr-namespace:MyLeasing.Prism.Helpers"
              xmlns:maps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
              x:Class="MyLeasing.Prism.Views.MainPage" 
+             FlowDirection="{x:Static Device.FlowDirection}"
              NavigationPage.BackButtonTitle=""
              NavigationPage.HasNavigationBar="false">
    

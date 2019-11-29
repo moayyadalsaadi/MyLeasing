@@ -24,10 +24,13 @@ namespace MyLeasing.Prism.ViewModels
         private bool _home;
         private bool _check;
         private bool _isRunning;
+        private bool _IsRefreshing;
         private ObservableCollection<PropertyItemViewModel> _properties;
         private DelegateCommand _LoginCommand;
         private DelegateCommand _RefreshCommand;
         private static HomePageViewModel _instance;
+        private DelegateCommand _refreshPropertiesCommand;
+
 
         [Obsolete]
         public HomePageViewModel(
@@ -40,15 +43,14 @@ namespace MyLeasing.Prism.ViewModels
             Title = Languages.Properties1;
             Check = false;
             Home = true;
-            //TODO: delete this lines
             Email = "ameer@gmail.com";
-            //Email = "carlos.zuluaga@globant.com";
             Password = "123456";
             _ = LoadOwner();
             _ = CrossGeolocator.Current.GetLastKnownLocationAsync();
         }
 
         public DelegateCommand LoginCommand => _LoginCommand ?? (_LoginCommand = new DelegateCommand(Login));
+        public DelegateCommand RefreshPropertiesCommand => _refreshPropertiesCommand ?? (_refreshPropertiesCommand = new DelegateCommand(RefreshProperties));
 
         [Obsolete]
         public DelegateCommand RefreshCommand => _RefreshCommand ?? (_RefreshCommand = new DelegateCommand(Refresh));
@@ -74,7 +76,11 @@ namespace MyLeasing.Prism.ViewModels
             get => _isRunning;
             set => SetProperty(ref _isRunning, value);
         }
-
+        public bool IsRefreshing
+        {
+            get => _IsRefreshing;
+            set => SetProperty(ref _IsRefreshing, value);
+        }
         private async void Login()
         {
             await _navigationService.NavigateAsync("LoginPage");
@@ -86,6 +92,14 @@ namespace MyLeasing.Prism.ViewModels
             Check = false;
             Home = true;
             await LoadOwner();
+        }
+
+        [Obsolete]
+        private async void RefreshProperties()
+        {
+            IsRefreshing = true;
+            await LoadOwner();
+            IsRefreshing = false;
         }
         public ObservableCollection<PropertyItemViewModel> Properties
         {
