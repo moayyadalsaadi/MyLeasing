@@ -521,6 +521,7 @@ namespace MyLeasing.Prism.ViewModels
 
             await App.Current.MainPage.DisplayAlert(Languages.Accept, Languages.AddImageConfirm, Languages.Ok);
             _file = null;
+            await _navigationService.GoBackToRootAsync();
         }
 
         private void MoveNextImage()

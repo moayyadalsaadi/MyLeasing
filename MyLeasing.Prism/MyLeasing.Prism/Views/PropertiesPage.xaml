@@ -37,7 +37,7 @@
                                 </Frame.GestureRecognizers>
                                 <StackLayout>
                                     <ffimageloading:CachedImage
-                                    Aspect="AspectFit"
+                                    Aspect="Fill"
                                     CacheDuration= "50"
                                     DownsampleToViewSize = "true"
                                     ErrorPlaceholder= "ErrorImage"

@@ -37,6 +37,12 @@ namespace MyLeasing.Prism.ViewModels
 
         public DelegateCommand AddPropertyCommand => _addPropertyCommand ?? (_addPropertyCommand = new DelegateCommand(AddProperty));
         public DelegateCommand RefreshPropertiesCommand => _refreshPropertiesCommand ?? (_refreshPropertiesCommand = new DelegateCommand(RefreshProperties));
+
+        public override void OnNavigatedTo(INavigationParameters parameters)
+        {
+            base.OnNavigatedFrom(parameters);
+            UpdateOwner();
+        }
         private async void AddProperty()
         {
             if (_owner.RoleId != 1)

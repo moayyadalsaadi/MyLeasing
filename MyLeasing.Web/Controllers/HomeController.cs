@@ -8,12 +8,12 @@ using MyLeasing.Web.Helpers;
 using MyLeasing.Web.Models;
 using Plugin.Settings;
 using Plugin.Settings.Abstractions;
-using ReflectionIT.Mvc.Paging;
 using System;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using X.PagedList;
 
 namespace MyLeasing.Web.Controllers
 {
@@ -58,14 +58,15 @@ namespace MyLeasing.Web.Controllers
             _converterHelper = converterHelper;
         }
 
-        public async Task<IActionResult> Index(int page = 1)
+        public IActionResult Index(int? page)
         {
-            var query = _dataContext.Properties.AsNoTracking()
+            var pag = page ?? 1;
+            var query = _dataContext.Properties
                 .Include(p => p.PropertyType)
                 .Include(p => p.PropertyImages)
                 .Where(p => p.IsAvailable)
                 .OrderByDescending(p => p.Id);
-            var model = await PagingList.CreateAsync(query, 5, page);
+            var model = query.ToList().ToPagedList(pag, 5);
             return View(model);
         }
 
@@ -96,16 +97,18 @@ namespace MyLeasing.Web.Controllers
             return View();
         }
 
-        public async Task<IActionResult> SalePage(string searchty = null,
+        public IActionResult SalePage(string searchty = null,
            string searchho = null, int? searchscf = null, int? searchsct = null,
            string searchro = null, int? searchprf = null,
-           int? searchprt = null, int page = 1)
+           int? searchprt = null, int? page = null)
         {
+            var pag = page ?? 1;
             if (!string.IsNullOrEmpty(searchty) || !string.IsNullOrEmpty(searchho)
                 || searchscf != null || !string.IsNullOrEmpty(searchro)
                 || searchprf != null)
             {
                 var quer = _dataContext.Properties
+               .AsNoTracking()
                .Include(p => p.PropertyType)
                .Include(p => p.PropertyImages)
                .Where(p => p.Typeprop == "بيع" && p.IsAvailable)
@@ -132,29 +135,32 @@ namespace MyLeasing.Web.Controllers
                     quer = quer.Where(p => p.Price >= searchprf && p.Price <= searchprt);
                 }
                 var f = quer.OrderByDescending(p => p.Id);
-                var mode = await PagingList.CreateAsync(f, 15, page);
+                var mode = f.ToList().ToPagedList(pag, 15);
                 return View(mode);
             }
             var query = _dataContext.Properties
+                .AsNoTracking()
                 .Include(p => p.PropertyType)
                 .Include(p => p.PropertyImages)
                 .Where(p => p.Typeprop == "بيع" &&
                 p.IsAvailable)
                 .OrderByDescending(p => p.Id);
-            var model = await PagingList.CreateAsync(query, 15, page);
+            var model = query.ToList().ToPagedList(pag, 15);
             return View(model);
         }
 
-        public async Task<IActionResult> RentPage(string searchty = null,
-          string searchho = null, int? searchscf = null, int? searchsct = null,
-          string searchro = null, int? searchprf = null,
-          int? searchprt = null, int page = 1)
+        public IActionResult RentPage(string searchty = null,
+           string searchho = null, int? searchscf = null, int? searchsct = null,
+           string searchro = null, int? searchprf = null,
+           int? searchprt = null, int? page = null)
         {
+            var pag = page ?? 1;
             if (!string.IsNullOrEmpty(searchty) || !string.IsNullOrEmpty(searchho)
-                || searchscf!=null || !string.IsNullOrEmpty(searchro)
+                || searchscf != null || !string.IsNullOrEmpty(searchro)
                 || searchprf != null)
             {
                 var quer = _dataContext.Properties
+               .AsNoTracking()
                .Include(p => p.PropertyType)
                .Include(p => p.PropertyImages)
                .Where(p => p.Typeprop == "استئجار" && p.IsAvailable)
@@ -181,16 +187,17 @@ namespace MyLeasing.Web.Controllers
                     quer = quer.Where(p => p.Price >= searchprf && p.Price <= searchprt);
                 }
                 var f = quer.OrderByDescending(p => p.Id);
-                var mode = await PagingList.CreateAsync(f, 15, page);
+                var mode = f.ToList().ToPagedList(pag, 15);
                 return View(mode);
             }
             var query = _dataContext.Properties
+                .AsNoTracking()
                 .Include(p => p.PropertyType)
                 .Include(p => p.PropertyImages)
                 .Where(p => p.Typeprop == "استئجار" &&
                 p.IsAvailable)
                 .OrderByDescending(p => p.Id);
-            var model = await PagingList.CreateAsync(query, 15, page);
+            var model = query.ToList().ToPagedList(pag, 15);
             return View(model);
         }
 

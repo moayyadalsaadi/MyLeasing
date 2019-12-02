@@ -39,15 +39,15 @@
                                     </Frame.GestureRecognizers>
                                     <StackLayout>
                                         <ffimageloading:CachedImage
-                                    Aspect="AspectFit"
-                                    CacheDuration= "50"
-                                    DownsampleToViewSize = "true"
-                                    ErrorPlaceholder= "ErrorImage"
-                                    HeightRequest="200"
-                                    LoadingPlaceholder= "LoaderImage"
-                                    RetryCount= "3"
-                                    RetryDelay= "600"
-                                    Source="{Binding FirstImage}"/>
+                                        Aspect="Fill"
+                                        CacheDuration= "50"
+                                        DownsampleToViewSize = "true"
+                                        ErrorPlaceholder= "ErrorImage"
+                                        HeightRequest="200"
+                                        LoadingPlaceholder= "LoaderImage"
+                                        RetryCount= "3"
+                                        RetryDelay= "600"
+                                        Source="{Binding FirstImage}"/>
                                         <Grid>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*"/>

@@ -10,7 +10,6 @@ using Microsoft.IdentityModel.Tokens;
 using MyLeasing.Web.Data;
 using MyLeasing.Web.Data.Entities;
 using MyLeasing.Web.Helpers;
-using ReflectionIT.Mvc.Paging;
 using System;
 using System.Text;
 
@@ -83,9 +82,8 @@ namespace MyLeasing.Web
             services.AddScoped<IConverterHelper, ConverterHelper>();
             services.AddScoped<IImageHelper, ImageHelper>();
             services.AddScoped<IMailHelper, MailHelper>();
-
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            services.AddPaging();
+
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

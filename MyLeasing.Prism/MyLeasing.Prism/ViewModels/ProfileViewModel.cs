@@ -105,7 +105,7 @@ namespace MyLeasing.Prism.ViewModels
 
         private async Task<bool> ValidateData()
         {
-            if (Owner.Document==0 || Owner.Document!= 9)
+            if (Owner.Document.ToString().Length != 9)
             {
                 await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.DocumentError, Languages.Ok);
                 return false;

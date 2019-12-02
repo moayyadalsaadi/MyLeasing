@@ -1,11 +1,14 @@
-﻿@model ReflectionIT.Mvc.Paging.PagingList<MyLeasing.Web.Data.Entities.Property>
-@using ReflectionIT.Mvc.Paging;
-@addTagHelper *,ReflectionIT.Mvc.Paging
+﻿@model IEnumerable<MyLeasing.Web.Data.Entities.Property>
+@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+@using X.PagedList.Mvc.Common;
+
 @{
     ViewData["Title"] = "الصفحة الرئيسية";
 }
 
 <style>
+
 
     body {
         background-color: #F5F5F5;
@@ -82,8 +85,8 @@
     </div>
     <br />
     <div style="width:100%;  margin:.5%;  height:50px; ">
-        <nav aria-label="Emploee paging" style="margin-top:-12px;">
-            @await this.Component.InvokeAsync("Pager", new { PagingList = this.Model })
+        <nav  style="margin-top:-12px;">
+            @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", "Home", new { page=page}))
         </nav>
     </div>
 </div>

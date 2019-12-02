@@ -1,11 +1,13 @@
-﻿@model ReflectionIT.Mvc.Paging.PagingList<MyLeasing.Web.Data.Entities.Property>
-@using ReflectionIT.Mvc.Paging;
-@addTagHelper *,ReflectionIT.Mvc.Paging
+﻿@model X.PagedList.IPagedList<MyLeasing.Web.Data.Entities.Property>
+@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+@using X.PagedList.Mvc.Common;
 @{
     ViewData["Title"] = "الاستئجار";
 }
 
 <style>
+
 
     body {
         background-color: #F5F5F5;
@@ -103,16 +105,14 @@
             }
         </div>
         <br />
-        <div style="width:99%; margin:.5%;  height:50px; ">
-
-            <nav aria-label="paging" style="margin-top:25px;">
-                @await this.Component.InvokeAsync("Pager", new { PagingList = this.Model })
-            </nav>
-        </div>
     }
-
 </div>
-
+<br />
+<div style="width:99%; margin:.5%;  height:50px;">
+    <nav style="margin-top:25px;">
+        @Html.PagedListPager((IPagedList)Model, page => Url.Action("RentPage", "Home", new { page = page }))
+    </nav>
+</div>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 

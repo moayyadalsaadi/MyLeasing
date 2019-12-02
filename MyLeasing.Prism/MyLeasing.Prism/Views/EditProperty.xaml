@@ -78,14 +78,14 @@
                     IsVisible="{Binding IsVisible}"
     	            Source="ic_location_red.png"
     	            VerticalOptions="Center"
-                        HorizontalOptions="Center"
+                    HorizontalOptions="Center"
     	            WidthRequest="40"/>
                     <Label
-                         HorizontalOptions="Center"
+                        HorizontalOptions="Center"
                         VerticalOptions="Center"
-                	IsVisible="{Binding IsVisible}"
-                	Text="{i18n:Translate Map2}"
-                	/>
+                	    IsVisible="{Binding IsVisible}"
+                	    Text="{i18n:Translate Map2}"
+                	    />
                 </StackLayout>
                 <Label
                 	
