@@ -14,7 +14,7 @@
         background-color: #F5F5F5;
     }
 </style>
-<div style="width: 99%; margin:.5%; margin-top:25px;  height:300px;">
+<div style="width: 99%; margin:.5%; margin-top:25px;">
     <div>
         <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000" style="margin-top: 25px; width:100%;">
             <ol class="carousel-indicators">
@@ -83,14 +83,12 @@
             </div>
         }
     </div>
-    <br />
-    <div style="width:100%;  margin:.5%;  height:50px; ">
-        <nav  style="margin-top:-12px;">
-            @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", "Home", new { page=page}))
-        </nav>
-    </div>
 </div>
-
+<div style="width:99%; float:right;  height:50px;">
+    <nav>
+        @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", "Home", new { page = page }))
+    </nav>
+</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
