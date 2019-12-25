@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using MyLeasing.Common.Helpers;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace MyLeasing.Common.Models
@@ -47,7 +48,7 @@ namespace MyLeasing.Common.Models
             {
                 if (PropertyImages == null || PropertyImages.Count == 0)
                 {
-                    return "http://myleasing-001-site1.gtempurl.com/images/Properties/noImage.png";
+                    return $"{URL.UrlAPI}/images/Properties/noImage.png";
                 }
 
                 return PropertyImages.FirstOrDefault().ImageUrl;

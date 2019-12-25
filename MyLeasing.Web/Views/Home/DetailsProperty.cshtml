@@ -33,7 +33,6 @@
         font-size: 20px;
         font-weight: bold;
     }
-
 </style>
 
 <div style="margin-top:50px; border-bottom:2px solid #ededed; padding-bottom:10px;">
@@ -169,8 +168,17 @@
                         </tr>
                     }
                     <tr>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <th id="tt">
+                                البريد الالكتروني:
+                            </th>
+                            <th>
+                                @Html.DisplayFor(model => model.Owner.User.Email)
+                            </th>
+                        }
                         <th id="tt">
-                            لديها موقف سيارات؟
+                            موقف سيارات؟
                         </th>
                         <th>
                             @if (Model.HasParkingLot != false)

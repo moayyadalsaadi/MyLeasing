@@ -71,7 +71,7 @@ namespace MyLeasing.Prism.ViewModels
 
             var token = JsonConvert.DeserializeObject<TokenResponse>(Settings.Token);
 
-            var url = App.Current.Resources["UrlAPI"].ToString();
+            var url = URL.UrlAPI;
             var response = await _apiService.PutAsync(
                 url,
                 "/api",

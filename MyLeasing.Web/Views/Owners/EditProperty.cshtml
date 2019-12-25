@@ -155,14 +155,12 @@
                 </div>
             </div>
 
-
-
             <div style="margin-top:20px;">
                 <label asp-for="Remarks" style="margin-top:20px;"></label>
             </div>
 
             <div style="margin-top:80px;">
-<textarea class="ckeditor" asp-for="Remarks"></textarea>
+                <textarea class="ckeditor" asp-for="Remarks"></textarea>
                 <span asp-validation-for="Remarks" class="text-danger"></span>
             </div>
 
@@ -176,8 +174,8 @@
                     <div id="map" style="height: 400px; width: 100%;"></div>
                 </div>
 
-                <input id="latclicked" asp-for="Latitude" autocomplete="off" style="margin-right:12px; padding-right:5px;" />
-                <input id="longclicked" asp-for="Longitude" autocomplete="off" style="margin-right:12px; padding-right:5px;" />
+                <input id="latclicked" disabled asp-for="Latitude" autocomplete="off" style="margin-right:12px; padding-right:5px;" />
+                <input id="longclicked" disabled asp-for="Longitude" autocomplete="off" style="margin-right:12px; padding-right:5px;" />
             </div>
 
 
@@ -240,5 +238,5 @@
         });
     }
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDzxxQKGH86uDAJ-cKS3ZbrYm360vOqLI&callback=initMap"
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCA3uR2Lg1KZY9DsfRTJoTen14DtiYu2xY&callback=initMap"
         async defer></script>

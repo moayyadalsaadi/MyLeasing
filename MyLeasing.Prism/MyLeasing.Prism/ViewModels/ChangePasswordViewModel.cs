@@ -67,7 +67,7 @@ namespace MyLeasing.Prism.ViewModels
                 OldPassword = CurrentPassword
             };
 
-            var url = App.Current.Resources["UrlAPI"].ToString();
+            var url = URL.UrlAPI;
             var response = await _apiService.ChangePasswordAsync(
                 url,
                 "/api",

@@ -58,7 +58,7 @@ namespace MyLeasing.Prism.ViewModels
                 Email = Email
             };
 
-            var url = App.Current.Resources["UrlAPI"].ToString();
+            var url = URL.UrlAPI;
             var response = await _apiService.RecoverPasswordAsync(
                 url,
                 "/api",

@@ -5,6 +5,7 @@ using MyLeasing.Prism.Helpers;
 using Newtonsoft.Json;
 using Prism.Commands;
 using Prism.Navigation;
+using System;
 
 namespace MyLeasing.Prism.ViewModels
 {
@@ -27,13 +28,9 @@ namespace MyLeasing.Prism.ViewModels
             Title = "Login";
             IsEnabled = true;
             IsRemember = true;
-
-            //TODO: delete this lines
-            //Email = "jzuluaga55@hotmail.com";
-           // Password = "123456";
         }
 
-        [System.Obsolete]
+        [Obsolete]
         public DelegateCommand LoginCommand => _loginCommand ?? (_loginCommand = new DelegateCommand(Login));
         public DelegateCommand RegisterCommand => _registerCommand ?? (_registerCommand = new DelegateCommand(Register));
         public DelegateCommand ForgotPasswordCommand => _forgotPasswordCommand ?? (_forgotPasswordCommand = new DelegateCommand(ForgotPassword));
@@ -59,7 +56,7 @@ namespace MyLeasing.Prism.ViewModels
             set => SetProperty(ref _isEnabled, value);
         }
 
-        [System.Obsolete]
+        [Obsolete]
         private async void Login()
         {
             if (string.IsNullOrEmpty(Email))
@@ -76,8 +73,8 @@ namespace MyLeasing.Prism.ViewModels
 
             IsRunning = true;
             IsEnabled = false;
-           
-            var url = App.Current.Resources["UrlAPI"].ToString();
+
+            var url = URL.UrlAPI;
             var connection = await _apiService.CheckConnectionAsync(url);
             if (!connection)
             {
@@ -93,7 +90,7 @@ namespace MyLeasing.Prism.ViewModels
                 Username = Email
             };
 
-            var response = await _apiService.GetTokenAsync(url, "Account", "/CreateToken", request);
+            var response = await _apiService.GetTokenAsync(url, "/Account", "/CreateToken", request);
 
             if (!response.IsSuccess)
             {
@@ -105,7 +102,7 @@ namespace MyLeasing.Prism.ViewModels
             }
 
             var token = response.Result;
-            var response2 = await _apiService.GetOwnerByEmailAsync(url, "api", "/Owners/GetOwnerByEmail", "bearer", token.Token, Email);
+            var response2 = await _apiService.GetOwnerByEmailAsync(url, "/api", "/Owners/GetOwnerByEmail", "bearer", token.Token, Email);
             if (!response2.IsSuccess)
             {
                 IsRunning = false;

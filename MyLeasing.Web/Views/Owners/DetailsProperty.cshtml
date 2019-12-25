@@ -166,42 +166,42 @@
                             </th>
                         </tr>
                     }
-                    <tr>
-                        <th id="tt">
-                            لديها موقف سيارات؟
-                        </th>
-                        <th>
-                            @if (Model.HasParkingLot != false)
-                            {
-                                <p>
-                                    يوجد
-                                </p>
-                            }
-                            else
-                            {
-                                <p>
-                                    لا يوجد
-                                </p>
-                            }
-                        </th>
-                        <th id="tt">
-                            متوفر؟
-                        </th>
-                        <th>
-                            @if (Model.IsAvailable != false)
-                            {
-                                <p>
-                                    متاح
-                                </p>
-                            }
-                            else
-                            {
-                                <p>
-                                    غير متاح
-                                </p>
-                            }
-                        </th>
-                    </tr>
+                <tr>
+                    <th id="tt">
+                        موقف سيارات؟
+                    </th>
+                    <th>
+                        @if (Model.HasParkingLot != false)
+                        {
+                            <p>
+                                يوجد
+                            </p>
+                        }
+                        else
+                        {
+                            <p>
+                                لا يوجد
+                            </p>
+                        }
+                    </th>
+                    <th id="tt">
+                        متوفر؟
+                    </th>
+                    <th>
+                        @if (Model.IsAvailable != false)
+                        {
+                            <p>
+                                متاح
+                            </p>
+                        }
+                        else
+                        {
+                            <p>
+                                غير متاح
+                            </p>
+                        }
+                    </th>
+                </tr>
                 </table>
             </div>
         </div>

@@ -19,6 +19,7 @@ namespace MyLeasing.Common.Helpers
 
             return true;
         }
+
         public static byte[] ReadFully(Stream input)
         {
             using (MemoryStream ms = new MemoryStream())
@@ -27,6 +28,5 @@ namespace MyLeasing.Common.Helpers
                 return ms.ToArray();
             }
         }
-
     }
 }

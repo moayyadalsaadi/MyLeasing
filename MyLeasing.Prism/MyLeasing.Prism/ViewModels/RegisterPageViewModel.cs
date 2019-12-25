@@ -100,7 +100,7 @@ namespace MyLeasing.Prism.ViewModels
                 Longitude = _position.Longitude
             };
 
-            var url = App.Current.Resources["UrlAPI"].ToString();
+            var url = URL.UrlAPI;
             var response = await _apiService.RegisterUserAsync(
                 url,
                 "/api",

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using MyLeasing.Common.Helpers;
+using System.ComponentModel.DataAnnotations;
 
 namespace MyLeasing.Web.Data.Entities
 {
@@ -12,7 +13,7 @@ namespace MyLeasing.Web.Data.Entities
         // TODO: Change the path when publish
         public string ImageFullPath => string.IsNullOrEmpty(ImageUrl) 
             ? null
-            : $"http://localhost:50000{ImageUrl.Substring(1)}";
+            : $"{URL.UrlAPI}{ImageUrl.Substring(1)}";
 
         public Property Property { get; set; }
     }

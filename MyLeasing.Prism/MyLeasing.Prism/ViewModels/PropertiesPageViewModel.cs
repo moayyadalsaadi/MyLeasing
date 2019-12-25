@@ -111,7 +111,7 @@ namespace MyLeasing.Prism.ViewModels
 
         public async Task UpdateOwner()
         {
-            var url = App.Current.Resources["UrlAPI"].ToString();
+            var url = URL.UrlAPI;
             var token = JsonConvert.DeserializeObject<TokenResponse>(Settings.Token);
 
             var response = await _apiService.GetOwnerByEmailAsync(

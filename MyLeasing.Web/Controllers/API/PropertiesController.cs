@@ -83,7 +83,7 @@ namespace MyLeasing.Web.Controllers.API
             var property = await _dataContext.Properties.FindAsync(request.PropertyId);
             if (property == null)
             {
-                return BadRequest("غير صالحة الملكية.");
+                return BadRequest("Not valid property.");
             }
 
             var imageUrl = string.Empty;
@@ -112,6 +112,7 @@ namespace MyLeasing.Web.Controllers.API
             await _dataContext.SaveChangesAsync();
             return Ok(propertyImage);
         }
+
 
 
         [HttpPut("{id}")]

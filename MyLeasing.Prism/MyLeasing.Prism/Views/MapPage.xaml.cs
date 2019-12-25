@@ -39,13 +39,13 @@ namespace MyLeasing.Prism.Views
         }
         private async void ShowPropertiesAsync()
         {
-          
-            var url = App.Current.Resources["UrlAPI"].ToString();
+
+            var url = URL.UrlAPI;
             var token = JsonConvert.DeserializeObject<TokenResponse>(Settings.Token);
 
             var response = await _apiService.GetListAsync<PropertyResponse>(
                 url,
-                "api",
+                "/api",
                 "/Owners/GetAvailbleProperties",
                 "bearer",
                 token.Token);

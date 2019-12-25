@@ -203,7 +203,7 @@ namespace MyLeasing.Prism.ViewModels
             IsRunning = true;
             IsEnabled = false;
 
-            var url = App.Current.Resources["UrlAPI"].ToString();
+            var url = URL.UrlAPI;
             var token = JsonConvert.DeserializeObject<TokenResponse>(Settings.Token);
 
             var response = await _apiService.GetListAsync<PropertyTypeResponse>(url, "/api", "/PropertyTypes", "bearer", token.Token);
@@ -281,7 +281,7 @@ namespace MyLeasing.Prism.ViewModels
                 return;
             }
 
-            var url = App.Current.Resources["UrlAPI"].ToString();
+            var url = URL.UrlAPI;
             var token = JsonConvert.DeserializeObject<TokenResponse>(Settings.Token);
             var owner = JsonConvert.DeserializeObject<OwnerResponse>(Settings.Owner);
 
@@ -316,7 +316,7 @@ namespace MyLeasing.Prism.ViewModels
                 response = await _apiService.PostAsync(url, "/api", "/Properties", propertyRequest, "bearer", token.Token);
             }
 
-            byte[] imageArray;
+            byte[] imageArray = null;
             if (_file != null)
             {
                 imageArray = FilesHelper.ReadFully(_file.GetStream());
@@ -459,7 +459,7 @@ namespace MyLeasing.Prism.ViewModels
             IsRunning = true;
             IsEnabled = false;
 
-            var url = App.Current.Resources["UrlAPI"].ToString();
+            var url = URL.UrlAPI;
             var token = JsonConvert.DeserializeObject<TokenResponse>(Settings.Token);
             var response = await _apiService.DeleteAsync(url, "/api", "/Properties", Property.Id, "bearer", token.Token);
 
@@ -506,20 +506,22 @@ namespace MyLeasing.Prism.ViewModels
                 ImageArray = imageArray
             };
 
-            var url = App.Current.Resources["UrlAPI"].ToString();
+            var url = URL.UrlAPI;
             var token = JsonConvert.DeserializeObject<TokenResponse>(Settings.Token);
             var response = await _apiService.PostAsync(url, "/api", "/Properties/AddImageToProperty", imageRequest, "bearer", token.Token);
 
             IsRunning = false;
             IsEnabled = true;
 
-            if (!response.IsSuccess)
+            if (response.IsSuccess)
             {
-                await App.Current.MainPage.DisplayAlert(Languages.Error, response.Message, Languages.Ok);
+                await App.Current.MainPage.DisplayAlert(Languages.Accept, Languages.AddImageConfirm, Languages.Ok);
+                _file = null;
+                await _navigationService.GoBackToRootAsync();
                 return;
             }
 
-            await App.Current.MainPage.DisplayAlert(Languages.Accept, Languages.AddImageConfirm, Languages.Ok);
+            await App.Current.MainPage.DisplayAlert(Languages.Error, response.Message, Languages.Ok);
             _file = null;
             await _navigationService.GoBackToRootAsync();
         }
@@ -578,7 +580,7 @@ namespace MyLeasing.Prism.ViewModels
                 PropertyId = Property.Id,
             };
 
-            var url = App.Current.Resources["UrlAPI"].ToString();
+            var url = URL.UrlAPI;
             var token = JsonConvert.DeserializeObject<TokenResponse>(Settings.Token);
             var response = await _apiService.PostAsync(url, "/api", "/Properties/DeleteImageToProperty", imageRequest, "bearer", token.Token);
 

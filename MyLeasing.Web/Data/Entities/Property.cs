@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using MyLeasing.Common.Helpers;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 namespace MyLeasing.Web.Data.Entities
@@ -76,7 +77,7 @@ namespace MyLeasing.Web.Data.Entities
             {
                 if (PropertyImages == null || PropertyImages.Count == 0)
                 {
-                    return "http://localhost:50000/images/Properties/noImage.png";
+                    return $"{URL.UrlAPI}/images/Properties/noImage.png";
                 }
 
                 return PropertyImages.FirstOrDefault().ImageUrl;
